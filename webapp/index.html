@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>client</title>
+	</head>
+	<body>
+		<div ng-app='myApp' ng-controller='myAppController'>
+			
+			<div>
+				<table class="table table-striped">
+				  <thead class="thead-dark">
+				    <tr>
+				      <th scope="col">Code</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Size</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="n in cities" ng-click="selectObject(n)" ng-dblclick="edit(n)">
+				      	<td>{{n.id}}</td>
+				      	<td>{{n.name}}</td>
+				      	<td>{{n.size}}</td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+			
+			<div class="col-md-12">
+			  <div class="input-group-prepend">
+			  </div>
+			  <input id="fName" type="text" class="form-control" placeholder="Type Name" aria-label="Username" aria-describedby="basic-addon1" ng-model="city.name">
+			</div>
+			<br><br>
+			<div class="col-md-12">
+			  <div class="input-group-prepend">
+			  </div>
+			  <input id="fSize" type="text" class="form-control" placeholder="Type Size" aria-label="Username" aria-describedby="basic-addon1" ng-model="city.size">
+			</div>
+			<br><br><br>
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert(city)" ng-disabled="!city.name">Insert</button>
+				</div>
+				<div class="col-md-6">
+					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Delete</button>
+				</div>
+			</div>
+		</div>
+		
+		<!-- EDIT Modal -->
+		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div>
+			      	<div class="col-md-12">
+				  		<div class="input-group-prepend">
+				  		</div>
+				  		<input id="fName" type="text" class="form-control" placeholder="Type Name" aria-label="Username" aria-describedby="basic-addon1" ng-model="city.name">
+					</div>
+					<br><br>
+					<div class="col-md-12">
+					  <div class="input-group-prepend">
+					  </div>
+					  <input id="fSize" type="text" class="form-control" placeholder="Type Size" aria-label="Username" aria-describedby="basic-addon1" ng-model="city.size">
+					</div>
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+		<!-- INSERT Modal -->
+		<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div>
+			      	<div class="col-md-12">
+				  		<div class="input-group-prepend">
+				  		</div>
+				  		<input id="fName" type="text" class="form-control" placeholder="Type Name" aria-label="Username" aria-describedby="basic-addon1" ng-model="city.name">
+					</div>
+					<br><br>
+					<div class="col-md-12">
+					  <div class="input-group-prepend">
+					  </div>
+					  <input id="fSize" type="text" class="form-control" placeholder="Type Size" aria-label="Username" aria-describedby="basic-addon1" ng-model="city.size">
+					</div>
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+		<!-- WARNING Modal -->
+		<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div>
+			      	<div class="col-md-12">
+			  		  <div class="input-group-prepend">
+			  		  </div>
+			  		  <input id="fName" type="text" class="form-control" placeholder="Type Name" aria-label="Username" aria-describedby="basic-addon1" ng-model="city.name">
+					</div>
+					<br><br>
+					<div class="col-md-12">
+					  <div class="input-group-prepend">
+					  </div>
+					  <input id="fSize" type="text" class="form-control" placeholder="Type Size" aria-label="Username" aria-describedby="basic-addon1" ng-model="city.size">
+					</div>
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+	</body>
+</html>

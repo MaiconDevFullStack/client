@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="client">
+		<class>client.model.City</class>
+		<properties>
+	    	<!-- POSTGRESQL LOCALHOST -->
+	    	<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+		    <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/client"/>
+		    <property name="javax.persistence.jdbc.user" value="postgres"/>
+		    <property name="javax.persistence.jdbc.password" value="mfc"/>
+		    <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+		    <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>		
+	        <property name="hibernate.show_sql" value="false"/>
+	        <property name="hibernate.hbm2ddl.auto" value="update" />
+	        
+	        
+	        <!-- SQL SERVER LOCALHOST 
+			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+	        <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=cliente;sendStringParametersAsUnicode=false;"/>
+	        <property name="javax.persistence.jdbc.user" value="sa"/>
+	        <property name="javax.persistence.jdbc.password" value="mfc"/>
+	        <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect"/> 
+	      	<property name="hibernate.show_sql" value="false"/>
+	      	<property name="hibernate.hbm2ddl.auto" value="update" />
+	      	-->
+	      	
+	      	<!-- ORACLE LOCALHOST 
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SID=ORCL)))"/> 
+		    <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+		    <property name="javax.persistence.jdbc.user" value="sys"/>
+		    <property name="javax.persistence.jdbc.password" value="Felipe01"/>
+			<property name="hibernate.default_schema" value="client"/>
+		    <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>	
+		    <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" /> 	
+	        <property name="hibernate.show_sql" value="false"/>
+	        <property name="hibernate.hbm2ddl.auto" value="update" />
+	        -->
+    	</properties>
+	</persistence-unit>
+</persistence>
