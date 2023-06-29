@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<html  data-bs-theme="dark">
+	<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="include/lib/angular-1.6.9/angular.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
 	<link rel="stylesheet" href="include/css/style.css">
@@ -14,16 +14,16 @@
 		<div ng-app='myApp' ng-controller='myAppController'>
 			
 			<div>
-				<table class="table table-striped">
+				<table class="table table-bordered table-striped">
 				  <thead class="thead-dark">
 				    <tr>
-				      <th scope="col">Code</th>
+				      <th scope="col" class="col-md-1">Code</th>
 				      <th scope="col">Name</th>
 				      <th scope="col">Size</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr ng-repeat="n in cities" ng-click="selectObject(n)" ng-dblclick="edit(n)">
+				    <tr ng-repeat="n in cities" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
 				      	<td>{{n.id}}</td>
 				      	<td>{{n.name}}</td>
 				      	<td>{{n.size}}</td>
@@ -65,7 +65,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
+			         <button type="button" class="btn btn-primary" ng-click="confirmEdit()">Save changes</button>
 			      </div>
 			    </div>
 			  </div>
@@ -76,7 +76,7 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="insertModalLabel">Insert City</h5>
+			        <h5 class="modal-title" id="insertModalLabel">{{modalTitle}}</h5>
 			      </div>
 			      <div class="modal-body position1">
 			      	<div>
@@ -93,29 +93,16 @@
 						</div>
 					</div>
 			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="insertCity(city)">Save changes</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			
-			<!-- WARNING Modal -->
-			<div class="modal fade" id="warningModal" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="warningModalLabel">Modal title</h5>
-			      </div>
-			      <div class="modal-body position1">
-			      	<div>
-				      	<span>{{modalMessage}}</span>
+			      <div ng-show="error">
+			      	<div class="position3">
+			      		<form class="formColor">
+				      		<span>{{modalMessage}}</span>
+						</form>
 					</div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
+			        <button type="button" class="btn btn-primary" ng-click="insertCity(city)">Save</button>
 			      </div>
 			    </div>
 			  </div>
@@ -126,16 +113,23 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
+			        <h5 class="modal-title" id="deleteModalLabel">{{modalTitle}}</h5>
 			      </div>
-			      <div class="modal-body position1">
+			      <div class="modal-body">
 			      	<div>
-				      	<span>{{modalMessage}}</span>
+			      		<form class="formColor">
+				      		<span>{{modalMessage}}</span>
+						</form>
+						<div class="position4">
+							<form>
+								<span>{{modalMessageObject}}</span>
+							</form>
+						</div>
 					</div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="deleteCity(selectedObject)">Ok</button>
+			        <button type="button" class="btn btn-primary" ng-click="deleteCity(selectedObject)">Confirm</button>
 			      </div>
 			    </div>
 			  </div>

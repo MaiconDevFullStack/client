@@ -4,3 +4,26 @@
 .position1{
 	margin-bottom: 40px;
 }
+.formColor{
+	color: red;
+	text-align: center;
+	margin-top: 40px;
+	font-size: 20px;
+}
+.position3{
+	margin-bottom: 15px;
+}
+.position4{
+	padding: 30px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.selectedLine {
+  background-color: #d1d1d1!important;
+}
+.position5 {
+	margin-left: 40%;
+	margin-right: 40%;
+	margin-top: 5%;
+	text-align: center;
+}
