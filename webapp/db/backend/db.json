@@ -1,0 +1,29 @@
+{
+  "City": [
+    {
+      "name": "Apucarana",
+      "size": "120.000",
+      "id": 1
+    },
+    {
+      "name": "Califórnia",
+      "size": "30.000",
+      "id": 2
+    },
+    {
+      "name": "Arapongas",
+      "size": "100.000",
+      "id": 3
+    },
+    {
+      "name": "Londrina",
+      "size": "500.000",
+      "id": 4
+    },
+    {
+      "name": "Maringá",
+      "size": "450.000",
+      "id": 5
+    }
+  ]
+}
