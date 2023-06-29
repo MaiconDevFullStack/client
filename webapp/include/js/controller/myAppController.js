@@ -7,6 +7,7 @@ var app = angular.module("myApp", []);
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
 	
+	
 	refresh();
 	
 	function refresh(){
@@ -14,6 +15,7 @@ var app = angular.module("myApp", []);
 			$scope.cities = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
+			$scope.lengthCity = $scope.cities.length;
 		});
 	}
 	
@@ -32,20 +34,24 @@ var app = angular.module("myApp", []);
 		if(!city.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';
+			document.getElementById("iName").focus();
 			return;
 		}
-		if(!city.size){
+		else if(!city.size){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Size!';
+			document.getElementById("iSize").focus();
 			return;
 		}
-		$http.post("http://localhost:3001/City", city).then(function(){
-			delete $scope.city;
-			$scope.selectedObject = null;
-			$scope.modalTitle = null;
-			$('#insertModal').modal('hide');
-			refresh();
-		});
+		else {
+			$http.post("http://localhost:3001/City", city).then(function(){
+				delete $scope.city;
+				$scope.selectedObject = null;
+				$scope.modalTitle = null;
+				$('#insertModal').modal('hide');
+				refresh();
+			});
+		}
 	}
 	
 	$scope.btnDelete = function(){
@@ -87,16 +93,31 @@ var app = angular.module("myApp", []);
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
 		var parameter2 = $scope.city;
-		$http.patch("http://localhost:3001/City/"+parameter, parameter2).then(function(){
-			$scope.selectedObject = null;
-			$scope.modalTitle = null;
-			$('#editModal').modal('hide');
-			refresh();	
-		});
+		if(!parameter2.name){
+			$scope.error = true;
+			$scope.modalMessage = 'Please Insert the Name!';
+			document.getElementById("eName").focus();
+			return;
+		}
+		else if(!parameter2.size){
+			$scope.error = true;
+			$scope.modalMessage = 'Please Insert the Size!';
+			document.getElementById("eSize").focus();
+			return;
+		}
+		else {
+			$http.patch("http://localhost:3001/City/"+parameter, parameter2).then(function(){
+				$scope.selectedObject = null;
+				$scope.modalTitle = null;
+				$scope.error = false;
+				$('#editModal').modal('hide');
+				refresh();	
+			});
+		}
 	}
 	
 	$scope.selectObject = function(obj){
 		$scope.selectedObject = obj;
-		console.log($scope.selectedObject);
 	}
+	
 })
