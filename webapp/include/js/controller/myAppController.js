@@ -11,7 +11,7 @@ var app = angular.module("myApp", []);
 	refresh();
 	
 	function refresh(){
-		$http.get("http://localhost:3001/City").then(function(response){
+		$http.get("http://localhost:3001/city").then(function(response){
 			$scope.cities = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
@@ -73,7 +73,7 @@ var app = angular.module("myApp", []);
 	
 	$scope.deleteCity = function(){
 		var parameter = $scope.selectedObject.id; 
-		$http.delete("http://localhost:3001/City/"+parameter).then(function(){
+		$http.delete("http://localhost:3001/city/"+parameter).then(function(){
 			$scope.selectedObject = null;
 			$scope.modalTitle = null;
 			$scope.modalMessageObject = null;
@@ -106,7 +106,7 @@ var app = angular.module("myApp", []);
 			return;
 		}
 		else {
-			$http.patch("http://localhost:3001/City/"+parameter, parameter2).then(function(){
+			$http.patch("http://localhost:3001/city/"+parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;
