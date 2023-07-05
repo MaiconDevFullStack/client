@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="login">
+<html ng-app="login" ng-controller="loginController">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
@@ -7,6 +7,7 @@
 	<script src="include/lib/angular-1.6.9/angular.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="include/js/controller/loginController.js"></script>
+	<script type="text/javascript" src="include/js/services/loginAPIService.js"></script>
 	<link rel="stylesheet" href="include/css/style.css">
     <title>Signin Template for Bootstrap</title>
 	
@@ -17,17 +18,17 @@
     <link rel="stylesheet" href="include/css/style.css">
   </head>
 
-  <body class="text-center position5 backgroundColor1" ng-controller="loginController">
+  <body class="text-center position5 backgroundColor1">
     <form class="form-signin">
       <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputUser" class="sr-only">Email address</label>
-      <input type="text" id="inputUser" class="form-control" placeholder="User" ng-model="acess.user" required autofocus>
+      <input type="text" id="inputUser" class="form-control" placeholder="User" ng-model="user.login" required autofocus>
       <br>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="acess.password" required>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="user.password" required>
       <br><br>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="validLogin(acess)">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="validLogin(user)">Sign in</button>
       <br><br>
       <p class="mt-5 mb-3 text-muted">&copy; 2023-2023</p>
     </form>

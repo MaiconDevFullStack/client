@@ -1,4 +1,4 @@
-angular.module("recordCity").controller("recordCityController", function($scope, cityAPI){
+var app = angular.module("recordCity",[]).controller("recordCityController", function($scope, cityAPI){
 	
 	$scope.cities = [];
 	$scope.modalMessage = null;
@@ -113,6 +113,10 @@ angular.module("recordCity").controller("recordCityController", function($scope,
 				refresh();	
 			});
 		}
+	}
+	
+	$scope.location = function(){
+		location.href ="root.html";
 	}
 	
 	$scope.selectObject = function(obj){

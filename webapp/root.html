@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html  ng-app='myApp'>
+<html  ng-app='myApp' ng-controller="myAppController">
 	<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script src="include/lib/angular-1.6.9/angular.js"></script>
-	<script src="include/lib/angular-1.6.9/angular-route.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="include/js/app.js"></script>
-	<script type="text/javascript" src="include/js/recordCity.js"></script>
 	<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordCityController.js"></script>
 	<script type="text/javascript" src="include/js/services/cityAPIService.js"></script>
@@ -22,11 +19,11 @@
 		<!-- Example single danger button -->
 		<div class="btn-group col-md-2" role="group">
 		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Dropdown
+		      Records
 		     <span class="caret"></span>
 		   </button>
 		   <ul class="dropdown-menu">
-		     <li><a href="#">Dropdown link</a></li>
+		     <li><a href="recordCity.html">Record City</a></li>
 		     <li><a href="#">Dropdown link</a></li>
 		   </ul>
 		</div>

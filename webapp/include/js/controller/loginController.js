@@ -1,19 +1,28 @@
-var app = angular.module('login', []);
-app.controller('loginController', function($scope, $http){
+var app = angular.module('login', []).controller('loginController', function($scope, loginAPI){
 	
-	$scope.acess = [{user:"MAICON", password:"123"},{user:"JOAO", password:"123"}];
+	$scope.users = [];
 	
-	$scope.validLogin = function(ac){
-		for(a in $scope.acess){
-			if(ac.user === $scope.acess[a].user && ac.password === $scope.acess[a].password){
-				console.log("ENTER");
-				return;
+	$scope.validLogin = function(user){
+		
+		loginAPI.get().then(function(response){
+			$scope.users = response.data;
+			$scope.modalMessage = null;
+			$scope.error = false;
+			
+			debugger;
+			
+			for(a in $scope.users){
+				if(user != $scope.users[a]){
+					console.log("ENTER");
+					location.href ="root.html";
+				}
+				else {
+					console.log("ERROR");
+				}
 			}
-			else {
-				console.log("ERROR");
-				return;
-			}
-		}
+			
+		});
+		
 	}
 	
 });
