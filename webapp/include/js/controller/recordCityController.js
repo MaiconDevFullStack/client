@@ -1,4 +1,5 @@
 var app = angular.module("recordCity",['recordState']).controller("recordCityController",['$scope', 'cityAPI','stateAPI', function($scope, cityAPI, stateAPI){
+
 	
 	$scope.cities = [];
 	$scope.modalMessage = null;
