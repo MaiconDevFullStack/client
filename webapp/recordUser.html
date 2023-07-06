@@ -1,4 +1,4 @@
-<form ng-app="recordCity" ng-controller='recordCityController'>
+<form ng-app="recordUser" ng-controller='recordUserController'>
 	<div>
 		<head>
 			<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
@@ -6,27 +6,25 @@
 			<script src="include/lib/angular-1.6.9/angular.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 			<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
-			<script type="text/javascript" src="include/js/controller/recordCityController.js"></script>
-			<script type="text/javascript" src="include/js/controller/recordStateController.js"></script>
-			<script type="text/javascript" src="include/js/services/cityAPIService.js"></script>
-			<script type="text/javascript" src="include/js/services/stateAPIService.js"></script>
+			<script type="text/javascript" src="include/js/controller/recordUserController.js"></script>
+			<script type="text/javascript" src="include/js/services/userAPIService.js"></script>
 			<link rel="stylesheet" href="include/css/style.css">
 		</head>
 		<div class="col-md-12 jumbotron" >	
 			<div>
-				<table id="tableCity" class="table table-bordered table-striped">
+				<table id="tableUser" class="table table-bordered table-striped">
 				  <thead class="thead-dark">
 				    <tr>
 				      <th scope="col" class="col-md-1">Code</th>
 				      <th scope="col">Name</th>
-				      <th scope="col">State</th>
+				      <th scope="col">Login</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr ng-repeat="n in cities" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
+				    <tr ng-repeat="n in users" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
 				      	<td>{{n.id}}</td>
 				      	<td>{{n.name}}</td>
-				      	<td>{{n.state.sail}}</td>
+				      	<td>{{n.login}}</td>
 				    </tr>
 				  </tbody>
 				</table>
@@ -77,23 +75,27 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="editModalLabel">Edit City</h5>
+			        <h5 class="modal-title" id="editModalLabel">Edit User</h5>
 			      </div>
 			      <div class="modal-body position1">
 			      	<div>
 				      	<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="eName" type="text" class="form-control" placeholder="Type Name" ng-model="city.name">
+					  	  <div class="input-group-prepend">
+					  	  </div>
+					  	  <input id="eName" type="text" class="form-control" placeholder="Type Name" ng-model="user.name">
 						</div>
 						<br><br>
 						<div class="col-md-12">
-	                        <div class="input-group-prepend">
-	                            <select ng-model = "city.state" class = "form-control form-select" ng-options="state as state.name for state in states track by state.id">
-								 	<option value=''>Select State/Province</option>
-								</select>
-	                        </div>
-	                    </div>
+						  <div class="input-group-prepend">
+						  </div>
+						  <input id="eLogin" type="text" class="form-control" placeholder="Type Login" ng-model="user.login">
+						</div>
+						<br><br>
+						<div class="col-md-12">
+						  <div class="input-group-prepend">
+						  </div>
+						  <input id="ePassword" type="password" class="form-control" placeholder="Type Password" ng-model="user.password">
+						</div>
 					</div>
 			      </div>
 			      <div ng-show="error">
@@ -120,21 +122,23 @@
 			      </div>
 			      <div class="modal-body position1">
 			      	<div>
-				      	<div class="col-md-12 ">
-				  		  <div class="input-group-prepend">
-				  		  </div>
-				  		  <input id="iName" type="text" class="form-control" placeholder="Type Name" ng-model="city.name">
+				      	<div class="col-md-12">
+					  	  <div class="input-group-prepend">
+					  	  </div>
+					  	  <input id="iName" type="text" class="form-control" placeholder="Type Name" ng-model="user.name">
 						</div>
-						<!-- CAMPO BANCO DE DADOS -->
 						<br><br>
-	                    <div class="col-md-12">
-	                        <div class="input-group-prepend">
-	                            <select ng-model = "city.state" class = "form-control form-select" ng-options="state as state.name for state in states track by state.id">
-								 	<option value=''>Select State/Province</option>
-								</select>
-	                        </div>
-	                    </div>
-						
+						<div class="col-md-12">
+						  <div class="input-group-prepend">
+						  </div>
+						  <input id="iLogin" type="text" class="form-control" placeholder="Type Login" ng-model="user.login">
+						</div>
+						<br><br>
+						<div class="col-md-12">
+						  <div class="input-group-prepend">
+						  </div>
+						  <input id="iPassword" type="password" class="form-control" placeholder="Type Password" ng-model="user.password">
+						</div>
 					</div>
 			      </div>
 			      <div ng-show="error">
@@ -146,7 +150,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="insertCity(city)">Save</button>
+			        <button type="button" class="btn btn-primary" ng-click="insertUser(user)">Save</button>
 			      </div>
 			    </div>
 			  </div>
@@ -173,7 +177,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="deleteCity(selectedObject)">Confirm</button>
+			        <button type="button" class="btn btn-primary" ng-click="deleteUser(selectedObject)">Confirm</button>
 			      </div>
 			    </div>
 			  </div>

@@ -1,29 +1,81 @@
 {
-  "City": [
-    {
-      "name": "Apucarana",
-      "size": "120.000",
-      "id": 1
-    },
+  "city": [
     {
       "name": "Califórnia",
-      "size": "30.000",
-      "id": 2
-    },
-    {
-      "name": "Arapongas",
-      "size": "100.000",
-      "id": 3
-    },
-    {
-      "name": "Londrina",
-      "size": "500.000",
-      "id": 4
+      "size": "sa",
+      "id": 11,
+      "state": {
+        "name": "Parana",
+        "sail": "PR",
+        "id": 1
+      }
     },
     {
       "name": "Maringá",
-      "size": "450.000",
-      "id": 5
+      "size": "450",
+      "id": 12,
+      "state": {
+        "name": "Parana",
+        "sail": "PR",
+        "id": 1
+      }
+    },
+    {
+      "state": {
+        "name": "Parana",
+        "sail": "PR",
+        "id": 1
+      },
+      "name": "Apucarana",
+      "id": 13
+    },
+    {
+      "name": "Ivaipoâ",
+      "state": {
+        "name": "Paraná",
+        "sail": "PR",
+        "id": 1
+      },
+      "id": 14
+    },
+    {
+      "name": "Joinvile",
+      "state": {
+        "name": "Santa Catarina",
+        "sail": "SC",
+        "id": 3
+      },
+      "id": 15
+    }
+  ],
+  "state": [
+    {
+      "name": "Paraná",
+      "sail": "PR",
+      "id": 1
+    },
+    {
+      "name": "São Paulo",
+      "sail": "SP",
+      "id": 2
+    },
+    {
+      "name": "Santa Catarina",
+      "sail": "SC",
+      "id": 3
+    },
+    {
+      "name": "Rio Grande Do Sul",
+      "sail": "RS",
+      "id": 4
+    }
+  ],
+  "user": [
+    {
+      "name": "Maicon",
+      "login": "maicon",
+      "password": "123",
+      "id": 1
     }
   ]
 }

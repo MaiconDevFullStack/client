@@ -1,11 +1,10 @@
-var app = angular.module("recordCity",['recordState']).controller("recordCityController",['$scope', 'cityAPI','stateAPI', function($scope, cityAPI, stateAPI){
+var app = angular.module("recordState",[]).controller("recordStateController", ['$scope', 'stateAPI', function($scope, stateAPI){
 	
-	$scope.cities = [];
+	$scope.states = [];
 	$scope.modalMessage = null;
 	$scope.error = false;
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
-	$scope.states = [];
 	
 	
 	refresh();
@@ -13,42 +12,39 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	function refresh(){
 		stateAPI.get().then(function(response){
 			$scope.states = response.data;
-			cityAPI.get().then(function(response){
-				$scope.cities = response.data;
-				$scope.modalMessage = null;
-				$scope.error = false;
-				$scope.lengthCity = $scope.cities.length;
-			});
+			$scope.modalMessage = null;
+			$scope.error = false;
+			$scope.lengthCity = $scope.states.length;
 		});
 	}
 	
 	$scope.btnInsert = function(){
-		$scope.city = {};
+		$scope.state = {};
 		$scope.modalMessage = null;
 		$scope.error = false;
 		$scope.selectedObject = null;
-		$scope.modalTitle = 'Insert City';
+		$scope.modalTitle = 'Insert State';
 		$(document).ready(function() {
 			$('#insertModal').modal();
 		});
 	}
 	
-	$scope.insertCity = function(city){
-		if(!city.name){
+	$scope.insertState = function(state){
+		if(!state.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';
 			document.getElementById("iName").focus();
 			return;
 		}
-		else if(!city.state){
+		else if(!state.sail){
 			$scope.error = true;
-			$scope.modalMessage = 'Please Select the State/Provincy!';
-			document.getElementById("iState").focus();
+			$scope.modalMessage = 'Please Insert the Sail!';
+			document.getElementById("iSail").focus();
 			return;
 		}
 		else {
-			cityAPI.post(city).then(function(){
-				delete $scope.city;
+			stateAPI.post(state).then(function(){
+				delete $scope.state;
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$('#insertModal').modal('hide');
@@ -58,25 +54,17 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	}
 	
 	$scope.btnDelete = function(){
-		if(!$scope.selectedObject){
-			$(document).ready(function() {
-				$('#warningModal').modal();
-			});
-			$scope.modalMessage = 'Please Select At Least One Record!';
-			return;
-		} else {
-			$scope.modalMessage = 'Do You Really Want Remove The Record?';
-			$scope.modalTitle = 'Delete City';
-			$scope.modalMessageObject = $scope.selectedObject.name;
-			$(document).ready(function() {
-				$('#deleteModal').modal();
-			});
-		}
+		$scope.modalMessage = 'Do You Really Want Remove The Record?';
+		$scope.modalTitle = 'Delete State!';
+		$scope.modalMessageObject = $scope.selectedObject.name;
+		$(document).ready(function() {
+			$('#deleteModal').modal();
+		});
 	}
 	
-	$scope.deleteCity = function(){
+	$scope.deleteState = function(){
 		var parameter = $scope.selectedObject.id; 
-		cityAPI.delete(parameter).then(function(){
+		stateAPI.delete(parameter).then(function(){
 			$scope.selectedObject = null;
 			$scope.modalTitle = null;
 			$scope.modalMessageObject = null;
@@ -85,8 +73,8 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		});
 	}
 	
-	$scope.edit = function(city){
-		$scope.city = angular.copy(city);
+	$scope.edit = function(state){
+		$scope.state = angular.copy(state);
 		$scope.modalTitle = 'Edit City';
 		$(document).ready(function() {
 			$('#editModal').modal();
@@ -95,21 +83,21 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
-		var parameter2 = $scope.city;
+		var parameter2 = $scope.state;
 		if(!parameter2.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';
 			document.getElementById("eName").focus();
 			return;
 		}
-		else if(!parameter2.state){
+		else if(!parameter2.sail){
 			$scope.error = true;
-			$scope.modalMessage = 'Please Insert the State!';
-			document.getElementById("eState").focus();
+			$scope.modalMessage = 'Please Insert the Sail!';
+			document.getElementById("eSail").focus();
 			return;
 		}
 		else {
-			cityAPI.patch(parameter, parameter2).then(function(){
+			stateAPI.patch(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;
