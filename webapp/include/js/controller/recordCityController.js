@@ -1,4 +1,4 @@
-var app = angular.module("recordCity",[]).controller("recordCityController", function($scope, cityAPI){
+var app = angular.module("recordCity",[]).controller("recordCityController", ['$scope', 'cityAPI', function($scope, cityAPI){
 	
 	$scope.cities = [];
 	$scope.modalMessage = null;
@@ -123,4 +123,4 @@ var app = angular.module("recordCity",[]).controller("recordCityController", fun
 		$scope.selectedObject = obj;
 	}
 	
-})
+}])

@@ -1,4 +1,5 @@
-var app = angular.module('login', []).controller('loginController', function($scope, loginAPI){
+var app = angular.module('login', []);
+app.controller('loginController',['$scope', 'loginAPI', function($scope, loginAPI){
 	
 	$scope.users = [];
 	
@@ -9,14 +10,15 @@ var app = angular.module('login', []).controller('loginController', function($sc
 			$scope.modalMessage = null;
 			$scope.error = false;
 			
-			debugger;
-			
 			for(a in $scope.users){
-				if(user != $scope.users[a]){
+				if(angular.equals(user, $scope.users[a])){
 					console.log("ENTER");
 					location.href ="root.html";
+					return;
 				}
 				else {
+					console.log(user);
+					console.log($scope.users[a]);
 					console.log("ERROR");
 				}
 			}
@@ -25,4 +27,4 @@ var app = angular.module('login', []).controller('loginController', function($sc
 		
 	}
 	
-});
+}]);

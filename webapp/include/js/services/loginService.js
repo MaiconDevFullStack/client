@@ -4,8 +4,8 @@ angular.module("login").service("loginAPI", function($http){
 		return $http.get("http://localhost:3001/user");
 	};
 	
-	this.post = function(user){
-		return $http.post("http://localhost:3001/user", user);
+	this.post = function(login){
+		return $http.post("http://localhost:3001/user", login);
 	};
 	
 	this.delete = function(parameter){
