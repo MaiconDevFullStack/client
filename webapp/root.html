@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html  ng-app='myApp' ng-controller="myAppController">
+	
+	<!-- LIBRARIES AND ARCHIEVES -->
 	<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="include/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script src="include/lib/angular-1.6.9/angular.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	<!-- CONTROLLERS -->
 	<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordCityController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordUserController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordStateController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordProductController.js"></script>
+	<script type="text/javascript" src="include/js/controller/cashController.js"></script>
+	
+	<!-- SERVICES -->
 	<script type="text/javascript" src="include/js/services/cityAPIService.js"></script>
 	<script type="text/javascript" src="include/js/services/userAPIService.js"></script>
 	<script type="text/javascript" src="include/js/services/stateAPIService.js"></script>
 	<script type="text/javascript" src="include/js/services/productAPIService.js"></script>
-	<link rel="stylesheet" href="include/css/style.css">
+	<script type="text/javascript" src="include/js/services/cashAPIService.js"></script>
+	
 	<head>
 		<meta charset="UTF-8">
 		<title>client</title>
@@ -41,7 +50,18 @@
 		<!-- Example single danger button -->
 		<div class="btn-group col-md-2" role="group">
 		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Dropdown
+		      Utilities
+		     <span class="caret"></span>
+		   </button>
+		   <ul class="dropdown-menu">
+		     <li><a href="cash.html">Cash</a></li>
+		   </ul>
+		</div>
+		
+		<!-- Example single danger button -->
+		<div class="btn-group col-md-2" role="group">
+		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		      Administration
 		     <span class="caret"></span>
 		   </button>
 		   <ul class="dropdown-menu">
@@ -77,19 +97,7 @@
 		<!-- Example single danger button -->
 		<div class="btn-group col-md-2" role="group">
 		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Dropdown
-		     <span class="caret"></span>
-		   </button>
-		   <ul class="dropdown-menu">
-		     <li><a href="#">Dropdown link</a></li>
-		     <li><a href="#">Dropdown link</a></li>
-		   </ul>
-		</div>
-		
-		<!-- Example single danger button -->
-		<div class="btn-group col-md-2" role="group">
-		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Dropdown
+		      Suport
 		     <span class="caret"></span>
 		   </button>
 		   <ul class="dropdown-menu">

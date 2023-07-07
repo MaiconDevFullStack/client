@@ -76,9 +76,10 @@
 				</div>
 			</div>
 			
+			
 			<!-- EDIT Modal -->
-			<div class="modal fade" id="editModal" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
+			<div class="modal fade bd-example-modal-lg" id="editModal" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="editModalLabel">{{modalTitle}}</h5>
@@ -138,13 +139,13 @@
 			</div>
 			
 			<!-- INSERT Modal -->
-			<div class="modal fade" id="insertModal" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
+			<div class="modal fade bd-example-modal-lg" id="insertModal" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="insertModalLabel">{{modalTitle}}</h5>
 			      </div>
-			      <div class="modal-body">
+			      <div class="modal-body position1">
 			      	<div>
 				      	<div class="col-md-12">
 					  		<div class="input-group-prepend">
@@ -158,8 +159,10 @@
 					  		<input id="iCodeBar" type="text" class="form-control" placeholder="Type Code Bar" ng-model="product.codeBar">
 						</div>
 						<br><br>
-						<div class="form-group col-md-12">
-						    <textarea id="iDescription" class="form-control" placeholder="Type Description" ng-model="product.description" rows="3"></textarea>
+						<div class="col-md-12">
+					  		<div class="input-group-prepend">
+					  		</div>
+					  		<input id="iDescription" type="text" class="form-control" placeholder="Type Description" ng-model="product.description">
 						</div>
 						<br><br>
 						<div class="col-md-12">
@@ -197,18 +200,18 @@
 			</div>
 			
 			<!-- DELETE Modal -->
-			<div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
+			<div class="modal fade bd-example-modal-lg" id="deleteModal" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="deleteModalLabel">{{modalTitle}}</h5>
 			      </div>
-			      <div class="modal-body">
+			      <div class="modal-body position1">
 			      	<div>
 			      		<form class="formColor">
 				      		<span>{{modalMessage}}</span>
 						</form>
-						<div class="position4">
+						<div>
 							<form>
 								<span>{{modalMessageObject}}</span>
 							</form>

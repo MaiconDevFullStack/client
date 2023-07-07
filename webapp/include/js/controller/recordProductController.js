@@ -120,37 +120,37 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
 		var parameter2 = $scope.product;
-		if(!product.name){
+		if(!parameter2.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';
 			document.getElementById("eName").focus();
 			return;
 		}
-		else if(!product.codeBar){
+		else if(!parameter2.codeBar){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Code Bar Number!';
 			document.getElementById("eCodeBar").focus();
 			return;
 		}
-		else if(!product.description){
+		else if(!parameter2.description){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the Description!';
 			document.getElementById("eDescription").focus();
 			return;
 		}
-		else if(!product.costPrice){
+		else if(!parameter2.costPrice){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the Cost Price!';
 			document.getElementById("eCostPrice").focus();
 			return;
 		}
-		else if(!product.costSale){
+		else if(!parameter2.costSale){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the Cost of Sale!';
 			document.getElementById("eCostSale").focus();
 			return;
 		}
-		else if(!product.expDate){
+		else if(!parameter2.expDate){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the Expiration Date!';
 			document.getElementById("eExpDate").focus();
