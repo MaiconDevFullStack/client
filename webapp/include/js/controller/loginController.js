@@ -2,6 +2,7 @@ var app = angular.module('login', []);
 app.controller('loginController',['$scope', 'loginAPI', function($scope, loginAPI){
 	
 	$scope.users = [];
+	$scope.messageError = null;
 	
 	$scope.validLogin = function(user){
 		
@@ -10,21 +11,27 @@ app.controller('loginController',['$scope', 'loginAPI', function($scope, loginAP
 			$scope.modalMessage = null;
 			$scope.error = false;
 			
-			for(a in $scope.users){
-				if(angular.equals(user, $scope.users[a])){
+			for(b in $scope.users){
+				$scope.usersMinified = [{login: $scope.users[b].login, password: $scope.users[b].password}];
+			}
+			
+			for(a in $scope.usersMinified){
+				if(angular.equals(user, $scope.usersMinified[a])){
 					console.log("ENTER");
 					location.href ="root.html";
 					return;
 				}
 				else {
-					console.log(user);
-					console.log($scope.users[a]);
+					console.log($scope.usersMinified[a]);
 					console.log("ERROR");
 				}
 			}
-			
 		});
 		
+		$scope.usersMinified = null;
 	}
 	
+	$scope.location = function(){
+		location.href ="client.html";
+	}
 }]);

@@ -3,14 +3,17 @@
 	<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script src="include/lib/angular-1.6.9/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordCityController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordUserController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordStateController.js"></script>
+	<script type="text/javascript" src="include/js/controller/recordProductController.js"></script>
 	<script type="text/javascript" src="include/js/services/cityAPIService.js"></script>
 	<script type="text/javascript" src="include/js/services/userAPIService.js"></script>
 	<script type="text/javascript" src="include/js/services/stateAPIService.js"></script>
+	<script type="text/javascript" src="include/js/services/productAPIService.js"></script>
 	<link rel="stylesheet" href="include/css/style.css">
 	<head>
 		<meta charset="UTF-8">
@@ -18,7 +21,7 @@
 	</head>
 	<body>
 		<div ng-view></div>
-	
+		
 		<div class="col-md-12 jumbotron" >
 		<!-- Example single danger button -->
 		<div class="btn-group col-md-2" role="group">
@@ -30,6 +33,7 @@
 		     <li><a href="recordCity.html">Record City</a></li>
 		     <li><a href="recordUser.html">Record User</a></li>
 		     <li><a href="recordState.html">Record State</a></li>
+		     <li><a href="recordProduct.html">Record Product</a></li>
 
 		   </ul>
 		</div>
