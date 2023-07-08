@@ -18,63 +18,44 @@
 		</head>
 		<div class="col-md-12 jumbotron" >	
 			<div>
-				<table id="tableProduct" class="table table-bordered table-striped">
+				<input class="form-control form-control-lg fieldStyle" type="text" placeholder="BAR-CODE" ng-model="codeBar">
+			</div>
+			<br><br>
+			<div>
+				<table id="tableCity" class="table table-bordered table-striped">
 				  <thead class="thead-dark">
 				    <tr>
 				      <th scope="col" class="col-md-1">Code</th>
 				      <th scope="col">Name</th>
-				      <th scope="col">Cost Sale</th>
-				      <th scope="col">Expiration Date</th>
+				      <th scope="col">Bar Code</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr ng-repeat="n in products" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
-				      	<td>{{n.id}}</td>
+				    <tr ng-repeat="n in sale" ng-click="selectObject(n)" ng-class="{selectedLine: n == selectedObject}">
+				      	<td>{{n.code}}</td>
 				      	<td>{{n.name}}</td>
-				      	<td>{{n.costSale}}</td>
-				      	<td>{{n.expDate}}</td>
+				      	<td>{{n.codeBar}}</td>
 				    </tr>
 				  </tbody>
 				</table>
 			</div>
-	
-			
-			<!--  
-			<nav aria-label="Page navigation example" class="text-center">
-			  <ul class="pagination">
-			    <li class="page-item">
-			      <a class="page-link" href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			        <span class="sr-only">Previous</span>
-			      </a>
-			    </li>
-			    <li class="page-item" ng-repeat="l in cities">
-			   		{{l.length}}
-			      <a class="page-link" href="#" aria-label="Next">
-			        <span aria-hidden="true">&laquo;</span>
-			        <span class="sr-only"></span>
-			      </a>
-			    </li>
-			    <li class="page-item">
-			      <a class="page-link" href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			        <span class="sr-only">Next</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
-			-->
 			
 			<br>
 			<div class="col-md-12">
-				<div class="col-md-5">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Insert</button>
+				<div class="col-md-12">
+					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Insert</button>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-4">
+					<button type="button" class="btn btn-primary btn-lg btn-block">Insert</button>
+				</div>
+				<div class="col-md-4">
 					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Delete</button>
 				</div>
 				<div class="col-md-2">
 					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="location()">Return</button>
+				</div>
+				<div class="col-md-2">
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="toggleFullScreen()">Full Screen</button>
 				</div>
 			</div>
 			
