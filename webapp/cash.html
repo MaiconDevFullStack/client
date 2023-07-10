@@ -25,18 +25,29 @@
 				<table id="tableCity" class="table table-bordered table-striped">
 				  <thead class="thead-dark">
 				    <tr>
-				      <th scope="col" class="col-md-1">Code</th>
-				      <th scope="col">Name</th>
-				      <th scope="col">Bar Code</th>
+				      <th scope="col" class="col-md-1"><h2>Code</h2></th>
+				      <th scope="col"><h2>Name</h2></th>
+				      <th scope="col"><h2>Bar Code</h2></th>
+				      <th scope="col"><h2>Quantity</h2></th>
+				      <th scope="col"><h2>Price</h2></th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				    <tr ng-repeat="n in sale" ng-click="selectObject(n)" ng-class="{selectedLine: n == selectedObject}">
-				      	<td>{{n.code}}</td>
-				      	<td>{{n.name}}</td>
-				      	<td>{{n.codeBar}}</td>
+				      	<td><h2>{{n.id}}</h2></td>
+				      	<td><h2>{{n.name}}</h2></td>
+				      	<td><h2>{{n.codeBar}}</h2></td>
+				      	<td><h2>{{n.qtdProduct}}</h2></td>
+				      	<td><h2>{{n.costSale}}</h2></td>
 				    </tr>
 				  </tbody>
+				  <tfoot>
+				  		<td></td>
+				   		<td></td>
+				      	<td></td>
+				      	<td></td>
+				      	<td><h1>Total: {{totalSale}}</h2></td>
+				  </tfoot> 
 				</table>
 			</div>
 			
@@ -44,9 +55,6 @@
 			<div class="col-md-12">
 				<div class="col-md-12">
 					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Insert</button>
-				</div>
-				<div class="col-md-4">
-					<button type="button" class="btn btn-primary btn-lg btn-block">Insert</button>
 				</div>
 				<div class="col-md-4">
 					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Delete</button>

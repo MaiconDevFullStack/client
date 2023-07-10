@@ -167,6 +167,10 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 		}
 	}
 	
+	///////////////////////////////////////////
+	//OBRIGATORY FUNCTIONS
+	///////////////////////////////////////////
+	
 	$scope.location = function(){
 		location.href ="root.html";
 	}

@@ -120,6 +120,10 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		}
 	}
 	
+	///////////////////////////////////////////
+	//OBRIGATORY FUNCTIONS
+	///////////////////////////////////////////
+	
 	$scope.location = function(){
 		location.href ="root.html";
 	}
