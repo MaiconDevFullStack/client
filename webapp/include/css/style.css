@@ -50,5 +50,8 @@
 }
 .fieldStyle {
 	height: 80px;
-    font-size: 40px
+    font-size: 40px;
+}
+.textOrientation {
+	margin-top: -30px;
 }

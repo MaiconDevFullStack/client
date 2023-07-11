@@ -40,31 +40,31 @@
 				      	<td><h2>{{n.qtdProduct}}</h2></td>
 				      	<td><h2>{{n.costSale}}</h2></td>
 				    </tr>
-				  </tbody>
-				  <tfoot>
-				  		<td></td>
-				   		<td></td>
-				      	<td></td>
-				      	<td></td>
-				      	<td><h1>Total: {{totalSale}}</h2></td>
-				  </tfoot> 
+				  </tbody> 
 				</table>
 			</div>
 			
 			<br>
 			<div class="col-md-12">
-				<div class="col-md-12">
+				
+				<div class="col-md-4">
 					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Insert</button>
 				</div>
+				<div class="col-md-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="location()">Return</button>
+				</div>
+				<div class="col-md-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="toggleFullScreen()">Full Screen</button>
+				</div>
+				<div class="col-md-2 textOrientation">
+					<h1>Total: {{totalSale}}</h1>
+				</div>
+				
+				<!-- 
 				<div class="col-md-4">
 					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Delete</button>
 				</div>
-				<div class="col-md-2">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="location()">Return</button>
-				</div>
-				<div class="col-md-2">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="toggleFullScreen()">Full Screen</button>
-				</div>
+				 -->
 			</div>
 			
 			

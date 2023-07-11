@@ -111,6 +111,10 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 	$scope.edit = function(product){
 		//insert data solution
 		$scope.product = angular.copy(product);
+		if($scope.product.expDate){
+			$scope.product.expDate = new Date($scope.product.expDate);
+		}
+		
 		$scope.modalTitle = 'Edit Product';
 		$(document).ready(function() {
 			$('#editModal').modal();
@@ -120,6 +124,7 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
 		var parameter2 = $scope.product;
+		
 		if(!parameter2.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';

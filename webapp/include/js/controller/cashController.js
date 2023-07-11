@@ -14,20 +14,17 @@ var app = angular.module('cash',['recordProduct']).controller('cashController',[
 	//IMPLEMENTNG SALE
 	$scope.btnInsert = function(codeBar){
 		
-		
 		$scope.totalSale = 0;
 		
 		for(a in $scope.products){
 			if(codeBar == $scope.products[a].codeBar){
-				console.log('Product exist');
 				$scope.sale.push($scope.products[a]);
-				delete codeBar;
-				
-				$scope.totalSale = $scope.products[a].costSale + $scope.totalSale;
-			}
-			else{
-				console.log('Product doesnt exist');
+				console.log($scope.sale);
 			}	
+		}
+		
+		for(b in $scope.sale){
+			$scope.totalSale = $scope.totalSale + $scope.sale[b].costSale; 
 		}
 	}	
 	
