@@ -18,7 +18,7 @@
 		</head>
 		<div class="col-md-12 jumbotron" >	
 			<div>
-				<input class="form-control form-control-lg fieldStyle" type="text" placeholder="BAR-CODE" ng-model="codeBar">
+				<input id="iBarCode" class="form-control form-control-lg fieldStyle" type="text" placeholder="BAR-CODE" ng-model="codeBar">
 			</div>
 			<br><br>
 			<div>
@@ -33,7 +33,7 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr ng-repeat="n in sale" ng-click="selectObject(n)" ng-class="{selectedLine: n == selectedObject}">
+				    <tr ng-repeat="n in sale.product" ng-click="selectObject(n)" ng-class="{selectedLine: n == selectedObject}">
 				      	<td><h2>{{n.id}}</h2></td>
 				      	<td><h2>{{n.name}}</h2></td>
 				      	<td><h2>{{n.codeBar}}</h2></td>
@@ -47,17 +47,23 @@
 			<br>
 			<div class="col-md-12">
 				
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Insert</button>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-1">
 					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="location()">Return</button>
 				</div>
-				<div class="col-md-3">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="toggleFullScreen()">Full Screen</button>
+				<div class="col-md-1">
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="toggleFullScreen()">
+						Full 
+						<span class="glyphicon glyphicon-resize-full"></span>
+					</button>
 				</div>
-				<div class="col-md-2 textOrientation">
-					<h1>Total: {{totalSale}}</h1>
+				<div class="col-md-3">
+					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnFinishSale()">Finish Sale</button>
+				</div>
+				<div class="col-md-3 textOrientation">
+					<h1>Total: {{sale.totalSale}}</h1>
 				</div>
 				
 				<!-- 
@@ -67,135 +73,12 @@
 				 -->
 			</div>
 			
-			
-			<!-- EDIT Modal -->
-			<div class="modal fade bd-example-modal-lg" id="editModal" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-lg" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="editModalLabel">{{modalTitle}}</h5>
-			      </div>
-			      <div class="modal-body position1">
-			      	<div>
-				      	<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="eName" type="text" class="form-control" placeholder="Type Name" ng-model="product.name">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="eCodeBar" type="text" class="form-control" placeholder="Type Code Bar" ng-model="product.codeBar">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="eDescription" type="text" class="form-control" placeholder="Type Description" ng-model="product.description">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="eCostPrice" type="text" class="form-control" placeholder="Type Cost Price" ng-model="product.costPrice">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="eCostSale" type="text" class="form-control" placeholder="Type Cost Sale" ng-model="product.costSale">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="eExpDate" type="text" class="form-control" placeholder="Type Expiration Date" ng-model="product.expDate">
-						</div>
-					</div>
-			      </div>
-			      <div ng-show="error">
-			      	<div class="position3">
-			      		<form class="formColor">
-				      		<span>{{modalMessage}}</span>
-						</form>
-					</div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			         <button type="button" class="btn btn-primary" ng-click="confirmEdit()">Save changes</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			
-			<!-- INSERT Modal -->
-			<div class="modal fade bd-example-modal-lg" id="insertModal" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-lg" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="insertModalLabel">{{modalTitle}}</h5>
-			      </div>
-			      <div class="modal-body position1">
-			      	<div>
-				      	<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="iName" type="text" class="form-control" placeholder="Type Name" ng-model="product.name">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="iCodeBar" type="text" class="form-control" placeholder="Type Code Bar" ng-model="product.codeBar">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="iDescription" type="text" class="form-control" placeholder="Type Description" ng-model="product.description">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="iCostPrice" type="text" class="form-control" placeholder="Type Cost Price" ng-model="product.costPrice">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="iCostSale" type="text" class="form-control" placeholder="Type Cost Sale" ng-model="product.costSale">
-						</div>
-						<br><br>
-						<div class="col-md-12">
-					  		<div class="input-group-prepend">
-					  		</div>
-					  		<input id="iExpDate" type="text" class="form-control" placeholder="Type Expiration Date" ng-model="product.expDate">
-						</div>
-					</div>
-			      </div>
-			      <div ng-show="error">
-			      	<div class="position3">
-			      		<form class="formColor">
-				      		<span>{{modalMessage}}</span>
-						</form>
-					</div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="insertProduct(product)">Save</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			
 			<!-- DELETE Modal -->
-			<div class="modal fade bd-example-modal-lg" id="deleteModal" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+			<div class="modal fade bd-example-modal-lg" id="finishModal" role="dialog" aria-labelledby="finishModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="deleteModalLabel">{{modalTitle}}</h5>
+			        <h5 class="modal-title" id="finishModalLabel">{{modalTitle}}</h5>
 			      </div>
 			      <div class="modal-body position1">
 			      	<div>
@@ -204,14 +87,14 @@
 						</form>
 						<div>
 							<form>
-								<span>{{modalMessageObject}}</span>
+								<span>{{modalObject}}: {{sale.totalSale}}</span>
 							</form>
 						</div>
 					</div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="deleteProduct(selectedObject)">Confirm</button>
+			        <button type="button" class="btn btn-primary" ng-click="finishSale()">Confirm</button>
 			      </div>
 			    </div>
 			  </div>
