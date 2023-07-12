@@ -1,0 +1,53 @@
+
+<form ng-app="constructDataBase" ng-controller='constructDataBaseController'>
+	<div>
+		<head>
+			<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+			<script src="include/lib/angular-1.6.9/angular.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
+			<script type="text/javascript" src="include/js/controller/constructDataBaseController.js"></script>
+			<script type="text/javascript" src="include/js/services/constructDataBaseAPIService.js"></script>
+			<link rel="stylesheet" href="include/css/style.css">
+		</head>
+		<div class="col-md-12 jumbotron" >	
+			
+			<br>
+			<div class="col-md-12">
+				<div class="col-md-12">
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnCreate()">Create Data Base</button>
+				</div>
+			</div>
+			
+			
+			<!-- DELETE Modal -->
+			<div class="modal fade" id="warningModal" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="warningModalLabel">{{modalTitle}}</h5>
+			      </div>
+			      <div class="modal-body">
+			      	<div>
+			      		<form class="formColor">
+				      		<span>{{modalMessage}}</span>
+						</form>
+						<div class="position4">
+							<form>
+								<span>{{modalMessageObject}}</span>
+							</form>
+						</div>
+					</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
+			<p class="mt-5 mb-1 text-muted positionTrade">&copy; 2023-2023</p>
+		</div>
+	</div>
+</form>

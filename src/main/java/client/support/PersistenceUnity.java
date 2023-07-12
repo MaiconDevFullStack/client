@@ -5,18 +5,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class PersistenceUnity {
-private static final EntityManagerFactory em = Persistence.createEntityManagerFactory("client");
 	
-	private PersistenceUnity() {
-		
-	}
+	private static final EntityManagerFactory em = Persistence.createEntityManagerFactory("client");
 	
 	public static EntityManager createEntityManager() {
-    	return createEntityManager(true);
-    }
+	    return em.createEntityManager();
+	}
 	
-	private static EntityManager createEntityManager(boolean controlar) {
-    	
-        return em.createEntityManager();
-    }
+	
 }
