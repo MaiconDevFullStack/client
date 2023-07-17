@@ -1,4 +1,4 @@
-var app = angular.module("myApp",[]);
-app.controller("myAppController", function($scope){
+var app = angular.module("myApp",["ngRoute"]);
+app.controller("myAppController", function($scope, ngRoute){
 	
 });

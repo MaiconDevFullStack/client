@@ -12,10 +12,10 @@ import javax.persistence.Table;
 public class City {
 	@Id
 	@Column(name = "ID_CITY")
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCity;
 	
-	@Column(name = "ID_CITY", nullable = false)
+	@Column(name = "NAME_CITY", nullable = false)
 	private String nameCity;
 	
 	public City() {

@@ -78,5 +78,33 @@
       "id": 1
     }
   ],
-  "product":[]
+  "product": [
+    {
+      "name": "My product",
+      "codeBar": "456",
+      "description": "product test",
+      "costPrice": 36.56,
+      "costSale": 45.78,
+      "expDate": "2023-07-17T03:00:00.000Z",
+      "id": 1
+    }
+  ],
+  "sale": [
+    {
+      "product": [
+        {
+          "name": "My product",
+          "codeBar": "456",
+          "description": "product test",
+          "costPrice": 36.56,
+          "costSale": 45.78,
+          "expDate": "2023-07-17T03:00:00.000Z",
+          "id": 1
+        }
+      ],
+      "totalSale": 45.78,
+      "saleDate": "2023-07-17T20:20:42.727Z",
+      "id": 1
+    }
+  ]
 }

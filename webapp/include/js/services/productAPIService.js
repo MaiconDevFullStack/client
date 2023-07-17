@@ -1,11 +1,7 @@
 angular.module("recordProduct").service("productAPI", function($http){
-	/*
+	
 	this.get = function(){
 		return $http.get("http://localhost:3001/product");
-	};
-	*/
-	this.get = function(){
-		return $http.get("http://localhost:3300/retrieveProduct");
 	};
 	
 	this.post = function(city){

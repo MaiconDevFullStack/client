@@ -2,6 +2,7 @@ package client.rescources;
 
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.ws.rs.GET;

@@ -1,12 +1,9 @@
 angular.module("recordUser").service("userAPI", function($http){
-	/*
+	
 	this.get = function(){
 		return $http.get("http://localhost:3001/User");
 	};
-	*/
-	this.get = function(){
-		return $http.get("http://localhost:3300/usuario");
-	};
+	
 	
 	this.post = function(user){
 		return $http.post("http://localhost:3001/User", user);

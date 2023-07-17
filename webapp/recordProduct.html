@@ -29,8 +29,8 @@
 				    <tr ng-repeat="n in products" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
 				      	<td>{{n.id}}</td>
 				      	<td>{{n.name}}</td>
-				      	<td>{{n.costsale}}</td>
-				      	<td>{{n.expdate |  date:'dd/MM/yyyy'}}</td>
+				      	<td>{{n.costSale}}</td>
+				      	<td>{{n.expDate |  date:'dd/MM/yyyy'}}</td>
 				    </tr>
 				  </tbody>
 				</table>
