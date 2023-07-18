@@ -27,17 +27,6 @@ app.post('/create', (req, res)=>{
 		}
 		res.status(201).send(`Created product`);
 	});
-	
-	client.query(`create table user
-				 (id serial primary key, 
-				  name varchar(40), 
-				  login varchar(40), 
-				  password varchar(40))`, (err, result)=>{
-		if(err){
-			throw err;
-		}
-		res.status(201).send(`Created user`);
-	});
 });
 
 app.get('/retrieveProduct', (req, res)=>{

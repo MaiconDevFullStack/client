@@ -1,7 +1,7 @@
 var app = angular.module("recordService",[]).controller("recordServiceController",['$scope', 'serviceAPI', function($scope, serviceAPI){
 
 	
-	$scope.products = [];
+	$scope.services = [];
 	$scope.modalMessage = null;
 	$scope.error = false;
 	$scope.modalMessageObject = null;
@@ -12,66 +12,48 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 	
 	function refresh(){
 		
-		productAPI.get().then(function(response){
-			$scope.products = response.data;
+		serviceAPI.get().then(function(response){
+			$scope.services = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
-			$scope.lengthCity = $scope.products.length;
+			$scope.lengthCity = $scope.services.length;
 		});
 		
 	}
 	
 	$scope.btnInsert = function(){
-		$scope.product = {};
+		$scope.service = {};
 		$scope.modalMessage = null;
 		$scope.error = false;
 		$scope.selectedObject = null;
-		$scope.modalTitle = 'Insert Product';
+		$scope.modalTitle = 'Insert Service';
 		$(document).ready(function() {
 			$('#insertModal').modal();
 		});
 	}
 	
-	$scope.insertProduct = function(product){
-		if(!product.name){
+	$scope.insertService = function(service){
+		if(!service.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';
 			document.getElementById("iName").focus();
 			return;
 		}
-		else if(!product.codeBar){
+		else if(!service.description){
 			$scope.error = true;
-			$scope.modalMessage = 'Please Insert the Code Bar Number!';
-			document.getElementById("iCodeBar").focus();
-			return;
-		}
-		else if(!product.description){
-			$scope.error = true;
-			$scope.modalMessage = 'Please Select the Description!';
+			$scope.modalMessage = 'Please Insert the Description!';
 			document.getElementById("iDescription").focus();
 			return;
 		}
-		else if(!product.costPrice){
+		else if(!service.price){
 			$scope.error = true;
-			$scope.modalMessage = 'Please Select the Cost Price!';
-			document.getElementById("iCostPrice").focus();
-			return;
-		}
-		else if(!product.costSale){
-			$scope.error = true;
-			$scope.modalMessage = 'Please Select the Cost of Sale!';
-			document.getElementById("iCostSale").focus();
-			return;
-		}
-		else if(!product.expDate){
-			$scope.error = true;
-			$scope.modalMessage = 'Please Select the Expiration Date!';
-			document.getElementById("iExpDate").focus();
+			$scope.modalMessage = 'Please Insert the Price!';
+			document.getElementById("iPrice").focus();
 			return;
 		}
 		else {
-			productAPI.post(product).then(function(){
-				delete $scope.product;
+			serviceAPI.post(service).then(function(){
+				delete $scope.service;
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$('#insertModal').modal('hide');
@@ -97,9 +79,9 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 		}
 	}
 	
-	$scope.deleteProduct = function(){
+	$scope.deleteService = function(){
 		var parameter = $scope.selectedObject.id; 
-		productAPI.delete(parameter).then(function(){
+		serviceAPI.delete(parameter).then(function(){
 			$scope.selectedObject = null;
 			$scope.modalTitle = null;
 			$scope.modalMessageObject = null;
@@ -108,11 +90,11 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 		});
 	}
 	
-	$scope.edit = function(product){
+	$scope.edit = function(service){
 		//insert data solution
-		$scope.product = angular.copy(product);
-		if($scope.product.expDate){
-			$scope.product.expDate = new Date($scope.product.expDate);
+		$scope.service = angular.copy(service);
+		if($scope.service.expDate){
+			$scope.service.expDate = new Date($scope.service.expDate);
 		}
 		
 		$scope.modalTitle = 'Edit Product';
@@ -123,7 +105,7 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 	
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
-		var parameter2 = $scope.product;
+		var parameter2 = $scope.service;
 		
 		if(!parameter2.name){
 			$scope.error = true;
@@ -131,38 +113,20 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 			document.getElementById("eName").focus();
 			return;
 		}
-		else if(!parameter2.codeBar){
-			$scope.error = true;
-			$scope.modalMessage = 'Please Insert the Code Bar Number!';
-			document.getElementById("eCodeBar").focus();
-			return;
-		}
 		else if(!parameter2.description){
 			$scope.error = true;
-			$scope.modalMessage = 'Please Select the Description!';
+			$scope.modalMessage = 'Please Insert the Description!';
 			document.getElementById("eDescription").focus();
 			return;
 		}
-		else if(!parameter2.costPrice){
+		else if(!parameter2.price){
 			$scope.error = true;
-			$scope.modalMessage = 'Please Select the Cost Price!';
-			document.getElementById("eCostPrice").focus();
-			return;
-		}
-		else if(!parameter2.costSale){
-			$scope.error = true;
-			$scope.modalMessage = 'Please Select the Cost of Sale!';
-			document.getElementById("eCostSale").focus();
-			return;
-		}
-		else if(!parameter2.expDate){
-			$scope.error = true;
-			$scope.modalMessage = 'Please Select the Expiration Date!';
-			document.getElementById("eExpDate").focus();
+			$scope.modalMessage = 'Please Insert the Price!';
+			document.getElementById("ePrice").focus();
 			return;
 		}
 		else {
-			productAPI.patch(parameter, parameter2).then(function(){
+			serviceAPI.patch(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;

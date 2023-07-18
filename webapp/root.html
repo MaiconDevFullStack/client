@@ -15,8 +15,10 @@
 	<script type="text/javascript" src="include/js/controller/recordUserController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordStateController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordProductController.js"></script>
+	<script type="text/javascript" src="include/js/controller/recordServiceController.js"></script>
 	<script type="text/javascript" src="include/js/controller/cashController.js"></script>
 	<script type="text/javascript" src="include/js/controller/constructDataBaseController.js"></script>
+	
 	
 	<!-- SERVICES -->
 	<script type="text/javascript" src="include/js/services/cityAPIService.js"></script>
@@ -24,6 +26,7 @@
 	<script type="text/javascript" src="include/js/services/stateAPIService.js"></script>
 	<script type="text/javascript" src="include/js/services/productAPIService.js"></script>
 	<script type="text/javascript" src="include/js/services/cashAPIService.js"></script>
+	<script type="text/javascript" src="include/js/services/serviceAPIService.js"></script>
 	<script type="text/javascript" src="include/js/services/constructDataBaseAPIService.js"></script>
 	
 	
@@ -34,7 +37,7 @@
 	<body>
 		<div ng-view></div>
 		
-		<div class="col-md-12 jumbotron" >
+	<div class="col-md-12 jumbotron" >
 		<!-- Example single danger button -->
 		<div class="btn-group col-md-2" role="group">
 		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,11 +45,11 @@
 		     <span class="caret"></span>
 		   </button>
 		   <ul class="dropdown-menu">
-		     <li><a href="recordCity.html">Record City</a></li>
+		     <li><a href="#!recordCity">Record City</a></li>
 		     <li><a href="recordUser.html">Record User</a></li>
 		     <li><a href="recordState.html">Record State</a></li>
 		     <li><a href="recordProduct.html">Record Product</a></li>
-
+		     <li><a href="recordService.html">Record Service</a></li>
 		   </ul>
 		</div>
 		
@@ -110,8 +113,7 @@
 		   </ul>
 		</div>
 	</div>	
-	<br>
-			
+	<div ng-view></div>	
 	</body>
 </html>
 
