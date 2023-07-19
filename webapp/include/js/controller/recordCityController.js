@@ -8,7 +8,6 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	$scope.modalTitle = null;
 	$scope.states = [];
 	
-	
 	refresh();
 	
 	function refresh(){
@@ -19,9 +18,11 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 				$scope.modalMessage = null;
 				$scope.error = false;
 				$scope.lengthCity = $scope.cities.length;
+				$scope.itensPerPage = $scope.lengthCity/5;
 			});
 		});
 	}
+	
 	
 	$scope.btnInsert = function(){
 		$scope.city = {};

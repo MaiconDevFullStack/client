@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  ng-app='myApp' ng-controller="myAppController">
+<html  ng-app='root' ng-controller="rootController">
 	
 	<!-- LIBRARIES AND ARCHIEVES -->
 	<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
@@ -10,7 +10,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	
 	<!-- CONTROLLERS -->
-	<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
+	<script type="text/javascript" src="include/js/controller/rootController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordCityController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordUserController.js"></script>
 	<script type="text/javascript" src="include/js/controller/recordStateController.js"></script>
@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="include/js/controller/cashController.js"></script>
 	<script type="text/javascript" src="include/js/controller/constructDataBaseController.js"></script>
 	
+	<script type="text/javascript" src="include/js/config/rootConfig.js"></script>
 	
 	<!-- SERVICES -->
 	<script type="text/javascript" src="include/js/services/cityAPIService.js"></script>
@@ -35,85 +36,82 @@
 		<title>client</title>
 	</head>
 	<body>
-		<div ng-view></div>
-		
-	<div class="col-md-12 jumbotron" >
-		<!-- Example single danger button -->
-		<div class="btn-group col-md-2" role="group">
-		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Records
-		     <span class="caret"></span>
-		   </button>
-		   <ul class="dropdown-menu">
-		     <li><a href="#!recordCity">Record City</a></li>
-		     <li><a href="recordUser.html">Record User</a></li>
-		     <li><a href="recordState.html">Record State</a></li>
-		     <li><a href="recordProduct.html">Record Product</a></li>
-		     <li><a href="recordService.html">Record Service</a></li>
-		   </ul>
-		</div>
-		
-		<!-- Example single danger button -->
-		<div class="btn-group col-md-2" role="group">
-		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Utilities
-		     <span class="caret"></span>
-		   </button>
-		   <ul class="dropdown-menu">
-		     <li><a href="cash.html">Cash</a></li>
-		     <li><a href="constructDataBase.html">Construct Data Base</a></li>
-		   </ul>
-		</div>
-		
-		<!-- Example single danger button -->
-		<div class="btn-group col-md-2" role="group">
-		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Administration
-		     <span class="caret"></span>
-		   </button>
-		   <ul class="dropdown-menu">
-		     <li><a href="#">Dropdown link</a></li>
-		     <li><a href="#">Dropdown link</a></li>
-		   </ul>
-		</div>
-		
-		<!-- Example single danger button -->
-		<div class="btn-group col-md-2" role="group">
-		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Dropdown
-		     <span class="caret"></span>
-		   </button>
-		   <ul class="dropdown-menu">
-		     <li><a href="#">Dropdown link</a></li>
-		     <li><a href="#">Dropdown link</a></li>
-		   </ul>
-		</div>
-		
-		<!-- Example single danger button -->
-		<div class="btn-group col-md-2" role="group">
-		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Dropdown
-		     <span class="caret"></span>
-		   </button>
-		   <ul class="dropdown-menu">
-		     <li><a href="#">Dropdown link</a></li>
-		     <li><a href="#">Dropdown link</a></li>
-		   </ul>
-		</div>
-		
-		<!-- Example single danger button -->
-		<div class="btn-group col-md-2" role="group">
-		   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Suport
-		     <span class="caret"></span>
-		   </button>
-		   <ul class="dropdown-menu">
-		     <li><a href="#">Dropdown link</a></li>
-		     <li><a href="#">Dropdown link</a></li>
-		   </ul>
-		</div>
-	</div>	
-	<div ng-view></div>	
+		<div class="col-md-12 jumbotron" >
+			<!-- Example single danger button -->
+			<div class="btn-group col-md-2" role="group">
+			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      Records
+			     <span class="caret"></span>
+			   </button>
+			   <ul class="dropdown-menu">
+			     <li><a href="recordCity.html">Record City</a></li>
+			     <li><a href="recordUser.html">Record User</a></li>
+			     <li><a href="recordState.html">Record State</a></li>
+			     <li><a href="recordProduct.html">Record Product</a></li>
+			     <li><a href="recordService.html">Record Service</a></li>
+			   </ul>
+			</div>
+			
+			<!-- Example single danger button -->
+			<div class="btn-group col-md-2" role="group">
+			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      Utilities
+			     <span class="caret"></span>
+			   </button>
+			   <ul class="dropdown-menu">
+			     <li><a href="cash.html">Cash</a></li>
+			     <li><a href="constructDataBase.html">Construct Data Base</a></li>
+			   </ul>
+			</div>
+			
+			<!-- Example single danger button -->
+			<div class="btn-group col-md-2" role="group">
+			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      Administration
+			     <span class="caret"></span>
+			   </button>
+			   <ul class="dropdown-menu">
+			     <li><a href="#">Dropdown link</a></li>
+			     <li><a href="#">Dropdown link</a></li>
+			   </ul>
+			</div>
+			
+			<!-- Example single danger button -->
+			<div class="btn-group col-md-2" role="group">
+			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      Dropdown
+			     <span class="caret"></span>
+			   </button>
+			   <ul class="dropdown-menu">
+			     <li><a href="#">Dropdown link</a></li>
+			     <li><a href="#">Dropdown link</a></li>
+			   </ul>
+			</div>
+			
+			<!-- Example single danger button -->
+			<div class="btn-group col-md-2" role="group">
+			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      Dropdown
+			     <span class="caret"></span>
+			   </button>
+			   <ul class="dropdown-menu">
+			     <li><a href="#">Dropdown link</a></li>
+			     <li><a href="#">Dropdown link</a></li>
+			   </ul>
+			</div>
+			
+			<!-- Example single danger button -->
+			<div class="btn-group col-md-2" role="group">
+			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      Suport
+			     <span class="caret"></span>
+			   </button>
+			   <ul class="dropdown-menu">
+			     <li><a href="#">Dropdown link</a></li>
+			     <li><a href="#">Dropdown link</a></li>
+			   </ul>
+			</div>
+		</div>	
 	</body>
 </html>
 
