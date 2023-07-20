@@ -20,9 +20,10 @@
 				  <thead class="thead-dark">
 				    <tr>
 				      <th scope="col" class="col-md-1">Code</th>
-				      <th scope="col">Name</th>
-				      <th scope="col">Cost Sale</th>
-				      <th scope="col">Expiration Date</th>
+				      <th scope="col" class="col-md-3">Name</th>
+				      <th scope="col" class="col-md-2">Cost Sale</th>
+				      <th scope="col" class="col-md-2">Expiration Date</th>
+				      <th scope="col" class="col-md-4">Bar Code</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -31,6 +32,7 @@
 				      	<td>{{n.name}}</td>
 				      	<td>{{n.costSale}}</td>
 				      	<td>{{n.expDate |  date:'dd/MM/yyyy'}}</td>
+				      	<td>{{n.codeBar}}</td>
 				    </tr>
 				  </tbody>
 				</table>
