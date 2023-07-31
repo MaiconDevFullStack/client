@@ -1,4 +1,5 @@
 <form ng-app="recordService" ng-controller='recordServiceController'>
+	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Close">&times;</button>
 	<div>
 		<head>
 			<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
@@ -67,14 +68,11 @@
 			
 			<br>
 			<div class="col-md-12">
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Insert</button>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Delete</button>
-				</div>
-				<div class="col-md-2">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="location()">Return</button>
 				</div>
 			</div>
 			

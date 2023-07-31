@@ -6,6 +6,7 @@ var app = angular.module('cash',['recordProduct']).controller('cashController',[
 	$scope.modalTitle = null;
 	$scope.modalMessage = null;
 	$scope.modalObject = null;
+	$scope.message = 'Full Screen';
 	
 	retrieveProducts();
 	
@@ -14,6 +15,8 @@ var app = angular.module('cash',['recordProduct']).controller('cashController',[
 			$scope.products = response.data;
 		});
 	}
+	
+	
 	
 	//IMPLEMENTNG SALE
 	$scope.btnInsert = function(codeBar){
@@ -60,23 +63,30 @@ var app = angular.module('cash',['recordProduct']).controller('cashController',[
 	///////////////////////////////////////////
 	
 	$scope.toggleFullScreen = function() {
+		
 		if ((document.fullScreenElement && document.fullScreenElement !== null) ||
 			(!document.mozFullScreen && !document.webkitIsFullScreen)) {
 			if (document.documentElement.requestFullScreen) {
 				document.documentElement.requestFullScreen();
+				$scope.message = 'Restore Screen';
 			} else if (document.documentElement.mozRequestFullScreen) {
 				document.documentElement.mozRequestFullScreen();
+				$scope.message = 'Restore Screen';
 			} else if (document.documentElement.webkitRequestFullScreen) {
 				document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+				$scope.message = 'Restore Screen';
 			}
 			$scope.maximize = true
 		} else {
 			if (document.cancelFullScreen) {
 				document.cancelFullScreen();
+				$scope.message = 'Full Screen';
 			} else if (document.mozCancelFullScreen) {
 				document.mozCancelFullScreen();
+				$scope.message = 'Full Screen';
 			} else if (document.webkitCancelFullScreen) {
 				document.webkitCancelFullScreen();
+				$scope.message = 'Full Screen';
 			}
 			$scope.maximize = false
 		}

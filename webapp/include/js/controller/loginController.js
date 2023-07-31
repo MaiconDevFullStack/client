@@ -4,6 +4,9 @@ app.controller('loginController',['$scope', 'loginAPI', function($scope, loginAP
 	$scope.users = [];
 	$scope.messageError = null;
 	$scope.usersMinified = [];
+	$scope.flag = false;
+	
+	refresh();
 	
 	$scope.validLogin = function(user){
 		
@@ -12,44 +15,33 @@ app.controller('loginController',['$scope', 'loginAPI', function($scope, loginAP
 			$scope.modalMessage = null;
 			$scope.error = false;
 			
-			for(b in $scope.users){
-				$scope.usersMinified.push({login: $scope.users[b].login, password: $scope.users[b].password});
-			}
-			
-			for(a in $scope.usersMinified)
-				if(user === $scope.usersMinified[a]){
-				console.log("ENTER");
-				console.log(user);
-				console.log($scope.usersMinified);
-			}
-			else{
-				console.log("ERROR");
-				console.log(user);
-				console.log($scope.usersMinified);
-			}
-			
-			/*
-			for(a in $scope.usersMinified){
-				if(angular.equals(user, $scope.usersMinified[a])){
-					console.log("ENTER");
+			for(n in $scope.users){
+				if($scope.users[n].login == user.login && $scope.users[n].password == user.password){
+					console.log($scope.users[n].name);
 					location.href ="root.html";
-					return;
-				}
-				else {
-					console.log($scope.usersMinified[a]);
-					refresh();
 				}
 			}
-			*/
 		});
-		//$scope.usersMinified = null;
 	}
 	
+	function preAtivador() {
+		console.log(location);
+		
+		if(location.pathname = "/client/index.html"){
+			$scope.flag = true;
+			console.log($scope.flag);
+		}
+		
+		if(location.href != 'http://localhost:8080/client/index.html'){
+			location.href ="http://localhost:8080/client";
+		}
+	}	
+		
+
 	function refresh(){
-		location.href ="/client";
-		$scope.messageError = 'Please Check Login or Password';
-		console.log("ERROR", $scope.messageError);
+		preAtivador()
 	}
+	
 	
 	$scope.location = function(){
 		location.href ="client.html";

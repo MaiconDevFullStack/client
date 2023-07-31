@@ -1,11 +1,12 @@
 <form ng-app="cash" ng-controller='cashController'>
+	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Close">&times;</button>
+	<button type="button" class="close x_close" data-dismiss="modal" ng-click="toggleFullScreen()" aria-hidden="true" title={{message}}>&EmptySmallSquare;</button>
 	<div>
 		<head>
 			<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 			<script src="include/lib/angular-1.6.9/angular.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="include/js/controller/myAppController.js"></script>
 			<script type="text/javascript" src="include/js/controller/recordCityController.js"></script>
 			<script type="text/javascript" src="include/js/controller/recordProductController.js"></script>
 			<script type="text/javascript" src="include/js/controller/recordStateController.js"></script>
@@ -47,19 +48,10 @@
 			<br>
 			<div class="col-md-12">
 				
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Insert</button>
 				</div>
-				<div class="col-md-1">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="location()">Return</button>
-				</div>
-				<div class="col-md-1">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="toggleFullScreen()">
-						Full 
-						<span class="glyphicon glyphicon-resize-full"></span>
-					</button>
-				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnFinishSale()">Finish Sale</button>
 				</div>
 				<div class="col-md-3 textOrientation">
