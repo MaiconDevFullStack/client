@@ -6,7 +6,7 @@ app.controller('loginController',['$scope', 'loginAPI', function($scope, loginAP
 	$scope.usersMinified = [];
 	$scope.flag = false;
 	
-	refresh();
+	//refresh();
 	
 	$scope.validLogin = function(user){
 		

@@ -39,13 +39,19 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 			document.getElementById("iName").focus();
 			return;
 		}
+		else if(!service.codeBar){
+			$scope.error = true;
+			$scope.modalMessage = 'Please Insert the Code!';
+			document.getElementById("iCode").focus();
+			return;
+		}
 		else if(!service.description){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Description!';
 			document.getElementById("iDescription").focus();
 			return;
 		}
-		else if(!service.price){
+		else if(!service.costSale){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Price!';
 			document.getElementById("iPrice").focus();
@@ -71,7 +77,7 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 			return;
 		} else {
 			$scope.modalMessage = 'Do You Really Want Remove The Record?';
-			$scope.modalTitle = 'Delete Product';
+			$scope.modalTitle = 'Delete Service';
 			$scope.modalMessageObject = $scope.selectedObject.name;
 			$(document).ready(function() {
 				$('#deleteModal').modal();
@@ -97,7 +103,7 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 			$scope.service.expDate = new Date($scope.service.expDate);
 		}
 		
-		$scope.modalTitle = 'Edit Product';
+		$scope.modalTitle = 'Edit Service';
 		$(document).ready(function() {
 			$('#editModal').modal();
 		});

@@ -1,5 +1,6 @@
-var app = angular.module('cash',['recordProduct']).controller('cashController',['$scope', 'cashAPI', 'productAPI', function($scope, cashAPI, productAPI){
+var app = angular.module('cash',['recordProduct']).controller('cashController',['$scope', 'cashAPI', 'productAPI', 'serviceAPI', function($scope, cashAPI, productAPI, serviceAPI){
 	
+	$scope.services = [];
 	$scope.products = [];
 	$scope.sale = {};
 	$scope.sale.product = [];
@@ -8,11 +9,14 @@ var app = angular.module('cash',['recordProduct']).controller('cashController',[
 	$scope.modalObject = null;
 	$scope.message = 'Full Screen';
 	
-	retrieveProducts();
+	retrieve();
 	
-	function retrieveProducts(){
+	function retrieve(){
 		productAPI.get().then(function(response){
 			$scope.products = response.data;
+			serviceAPI.get().then(function(response){
+				$scope.services = response.data;
+			});		
 		});
 	}
 	
@@ -24,8 +28,13 @@ var app = angular.module('cash',['recordProduct']).controller('cashController',[
 		$scope.sale.totalSale = 0;
 		
 		for(a in $scope.products){
-			if(codeBar == $scope.products[a].codeBar){
-				$scope.sale.product.push($scope.products[a]);
+			for(c in $scope.services){
+				if(codeBar == $scope.products[a].codeBar){
+					$scope.sale.product.push($scope.products[a]);
+				}
+				else if (codeBar == $scope.services[c].codeBar){
+					$scope.sale.product.push($scope.services[a]);
+				}
 			}	
 		}
 		
