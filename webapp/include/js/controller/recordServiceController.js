@@ -125,7 +125,7 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 			document.getElementById("eDescription").focus();
 			return;
 		}
-		else if(!parameter2.price){
+		else if(!parameter2.costSale){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Price!';
 			document.getElementById("ePrice").focus();

@@ -5,8 +5,8 @@ angular.module("recordService").service("serviceAPI", function($http){
 	};
 	
 	
-	this.post = function(user){
-		return $http.post("http://localhost:3001/service", user);
+	this.post = function(service){
+		return $http.post("http://localhost:3001/service", service);
 	};
 	
 	this.delete = function(parameter){
