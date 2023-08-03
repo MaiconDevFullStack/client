@@ -1,5 +1,8 @@
 var app = angular.module('cash',['recordProduct', 'recordService']).controller('cashController',['$scope', 'cashAPI', 'productAPI', 'serviceAPI', function($scope, cashAPI, productAPI, serviceAPI){
-
+	
+	$scope.sale = {};
+	$scope.sale.product = [];
+	$scope.sale.service = [];
 	$scope.modalTitle = null;
 	$scope.modalMessage = null;
 	$scope.modalObject = null;
@@ -21,29 +24,15 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 	
 	//IMPLEMENTNG SALE
 	$scope.btnInsert = function(codeBar){
-		$scope.sale = {};
-		$scope.sale.product = [];
+		
 		$scope.sale.totalSale = 0;
 		
-		
-		
-		
-		
-		
 		for(a in $scope.products){
-			for(c in $scope.services){
-				if(codeBar != $scope.products[a].codeBar && codeBar != $scope.services[c].codeBar){
-					console.log('Product or Service not exists!');
-					return;
-				}
-				else if (codeBar == $scope.services[c].codeBar){
-					$scope.sale.product.push($scope.services[c]);
-				}
-				else if(codeBar == $scope.products[a].codeBar){
-					$scope.sale.product.push($scope.products[a]);
-				}
-			}
+			if(codeBar == $scope.products[a].codeBar){
+				$scope.sale.product.push($scope.products[a]);
+			}	
 		}
+		
 		
 		for(b in $scope.sale.product){
 			$scope.sale.totalSale = $scope.sale.totalSale + $scope.sale.product[b].costSale; 

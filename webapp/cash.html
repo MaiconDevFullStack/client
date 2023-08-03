@@ -51,12 +51,12 @@
 			<div class="col-md-12">
 				
 				<div class="col-md-4">
-					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Insert</button>
+					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Add Item</button>
 				</div>
 				<div class="col-md-4">
 					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnFinishSale()">Finish Sale</button>
 				</div>
-				<div class="col-md-3 textOrientation">
+				<div class="col-md-4 textOrientation">
 					<h1>Total: {{sale.totalSale}}</h1>
 				</div>
 				
@@ -67,21 +67,21 @@
 				 -->
 			</div>
 			
-			<!-- DELETE Modal -->
+			<!-- CONFIRM Modal -->
 			<div class="modal fade bd-example-modal-lg" id="finishModal" role="dialog" aria-labelledby="finishModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="finishModalLabel">{{modalTitle}}</h5>
+			        <h5 class="modal-title" id="deleteModalLabel">{{modalTitle}}</h5>
 			      </div>
-			      <div class="modal-body position1">
+			      <div class="modal-body formColor">
 			      	<div>
 			      		<form class="formColor">
 				      		<span>{{modalMessage}}</span>
 						</form>
-						<div>
+						<div class="position4">
 							<form>
-								<span>{{modalObject}}: {{sale.totalSale}}</span>
+								<span><h1><b>{{modalObject}}: {{sale.totalSale}}</b></h1></span>
 							</form>
 						</div>
 					</div>
