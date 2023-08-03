@@ -1,38 +1,57 @@
-var app = angular.module('cash',['recordProduct']).controller('cashController',['$scope', 'cashAPI', 'productAPI', function($scope, cashAPI, productAPI){
-	
-	$scope.products = [];
-	$scope.sale = {};
-	$scope.sale.product = [];
+var app = angular.module('cash',['recordProduct', 'recordService']).controller('cashController',['$scope', 'cashAPI', 'productAPI', 'serviceAPI', function($scope, cashAPI, productAPI, serviceAPI){
+
 	$scope.modalTitle = null;
 	$scope.modalMessage = null;
 	$scope.modalObject = null;
 	$scope.message = 'Full Screen';
 	
-	retrieveProducts();
+	retrieve();
 	
-	function retrieveProducts(){
+	function retrieve(){
+		$scope.services = [];
+		$scope.products = [];
 		productAPI.get().then(function(response){
 			$scope.products = response.data;
+			serviceAPI.get().then(function(response){
+				$scope.services = response.data;
+			});		
 		});
 	}
 	
 	
-	
 	//IMPLEMENTNG SALE
 	$scope.btnInsert = function(codeBar){
-		
+		$scope.sale = {};
+		$scope.sale.product = [];
 		$scope.sale.totalSale = 0;
 		
+		
+		
+		
+		
+		
 		for(a in $scope.products){
-			if(codeBar == $scope.products[a].codeBar){
-				$scope.sale.product.push($scope.products[a]);
-			}	
+			for(c in $scope.services){
+				if(codeBar != $scope.products[a].codeBar && codeBar != $scope.services[c].codeBar){
+					console.log('Product or Service not exists!');
+					return;
+				}
+				else if (codeBar == $scope.services[c].codeBar){
+					$scope.sale.product.push($scope.services[c]);
+				}
+				else if(codeBar == $scope.products[a].codeBar){
+					$scope.sale.product.push($scope.products[a]);
+				}
+			}
 		}
 		
 		for(b in $scope.sale.product){
 			$scope.sale.totalSale = $scope.sale.totalSale + $scope.sale.product[b].costSale; 
 		}
+		
+		$scope.codeBar = null;
 	}
+	
 	
 	$scope.btnFinishSale = function(){
 		$scope.modalMessage = 'Do You Really Want Finish This Sale?';
