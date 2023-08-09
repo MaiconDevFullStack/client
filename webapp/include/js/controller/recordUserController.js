@@ -42,7 +42,7 @@ var app = angular.module("recordUser",[]).controller("recordUserController",['$s
 			document.getElementById("iLogin").focus();
 			return;
 		}
-		else if(!user.password){
+		else if(!user.pass){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Password!';
 			document.getElementById("iPassword").focus();
@@ -110,14 +110,14 @@ var app = angular.module("recordUser",[]).controller("recordUserController",['$s
 			document.getElementById("eLogin").focus();
 			return;
 		}
-		else if(!parameter2.password){
+		else if(!parameter2.pass){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Password!';
 			document.getElementById("ePassword").focus();
 			return;
 		}
 		else {
-			userAPI.patch(parameter, parameter2).then(function(){
+			userAPI.put(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;

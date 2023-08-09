@@ -16,7 +16,7 @@ app.controller('loginController',['$scope', 'loginAPI', function($scope, loginAP
 			$scope.error = false;
 			
 			for(n in $scope.users){
-				if($scope.users[n].login == user.login && $scope.users[n].password == user.password){
+				if($scope.users[n].login == user.login && $scope.users[n].pass == user.password){
 					console.log($scope.users[n].name);
 					location.href ="root.html";
 				}

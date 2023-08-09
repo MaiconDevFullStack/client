@@ -97,7 +97,7 @@ var app = angular.module("recordState",[]).controller("recordStateController", [
 			return;
 		}
 		else {
-			stateAPI.patch(parameter, parameter2).then(function(){
+			stateAPI.put(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;

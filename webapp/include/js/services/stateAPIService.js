@@ -1,20 +1,20 @@
 angular.module("recordState").service("stateAPI", function($http){
 	
 	this.get = function(){
-		return $http.get("http://localhost:3001/state");
+		return $http.get("http://localhost:3300/state/getAll");
 	};
 	
 	this.post = function(state){
-		return $http.post("http://localhost:3001/state", state);
+		return $http.post("http://localhost:3300/state/insert", state);
 	};
 	
 	this.delete = function(parameter){
-		return $http.delete("http://localhost:3001/state/"+parameter);
+		return $http.delete("http://localhost:3300/state/delete/"+parameter);
 	};
 	
 
-	this.patch = function(parameter, parameter2){
-		return $http.patch("http://localhost:3001/state/"+parameter, parameter2);
+	this.put = function(parameter, parameter2){
+		return $http.put("http://localhost:3300/state/edit/"+parameter, parameter2);
 	};
 	
 });

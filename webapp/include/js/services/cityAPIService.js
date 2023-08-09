@@ -1,20 +1,20 @@
 angular.module("recordCity").service("cityAPI", function($http){
 	
 	this.get = function(){
-		return $http.get("http://localhost:3001/City");
+		return $http.get("http://localhost:3300/city/getAll");
 	};
 	
 	this.post = function(city){
-		return $http.post("http://localhost:3001/City", city);
+		return $http.post("http://localhost:3300/city/insert", city);
 	};
 	
 	this.delete = function(parameter){
-		return $http.delete("http://localhost:3001/City/"+parameter);
+		return $http.delete("http://localhost:3300/city/delete/"+parameter);
 	};
 	
 
-	this.patch = function(parameter, parameter2){
-		return $http.patch("http://localhost:3001/City/"+parameter, parameter2);
+	this.put = function(parameter, parameter2){
+		return $http.put("http://localhost:3300/city/edit/"+parameter, parameter2);
 	};
 	
 });

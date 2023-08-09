@@ -97,7 +97,7 @@ var app = angular.module("recordGender",[]).controller("recordGenderController",
 			return;
 		}
 		else {
-			genderAPI.patch(parameter, parameter2).then(function(){
+			genderAPI.put(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;

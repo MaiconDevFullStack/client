@@ -1,20 +1,20 @@
 angular.module("recordGender").service("genderAPI", function($http){
 	
 	this.get = function(){
-		return $http.get("http://localhost:3001/gender");
+		return $http.get("http://localhost:3300/gender/getAll");
 	};
 	
 	this.post = function(gender){
-		return $http.post("http://localhost:3001/gender", gender);
+		return $http.post("http://localhost:3300/gender/insert", gender);
 	};
 	
 	this.delete = function(parameter){
-		return $http.delete("http://localhost:3001/gender/"+parameter);
+		return $http.delete("http://localhost:3300/gender/delete/"+parameter);
 	};
 	
 
-	this.patch = function(parameter, parameter2){
-		return $http.patch("http://localhost:3001/gender/"+parameter, parameter2);
+	this.put = function(parameter, parameter2){
+		return $http.put("http://localhost:3300/gender/edit/"+parameter, parameter2);
 	};
 	
 });

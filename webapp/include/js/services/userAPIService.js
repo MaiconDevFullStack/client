@@ -1,19 +1,19 @@
 angular.module("recordUser").service("userAPI", function($http){
 	
 	this.get = function(){
-		return $http.get("http://localhost:3001/User");
+		return $http.get("http://localhost:3300/user/getAll");
 	};
 	
 	
 	this.post = function(user){
-		return $http.post("http://localhost:3001/User", user);
+		return $http.post("http://localhost:3300/user/insert", user);
 	};
 	
 	this.delete = function(parameter){
-		return $http.delete("http://localhost:3001/User/"+parameter);
+		return $http.delete("http://localhost:3300/user/delete/"+parameter);
 	};
 	
-	this.patch = function(parameter, parameter2){
-		return $http.patch("http://localhost:3001/User/"+parameter, parameter2);
+	this.put = function(parameter, parameter2){
+		return $http.put("http://localhost:3300/user/edit/"+parameter, parameter2);
 	};
 });

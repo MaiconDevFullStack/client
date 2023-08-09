@@ -111,7 +111,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 			return;
 		}
 		else {
-			cityAPI.patch(parameter, parameter2).then(function(){
+			cityAPI.put(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;
