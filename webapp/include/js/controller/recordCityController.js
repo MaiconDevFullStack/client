@@ -15,6 +15,8 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 			$scope.states = response.data;
 			cityAPI.get().then(function(response){
 				$scope.cities = response.data;
+				
+				console.log(...$scope.cities);
 				$scope.modalMessage = null;
 				$scope.error = false;
 				$scope.lengthCity = $scope.cities.length;
@@ -42,10 +44,10 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 			document.getElementById("iName").focus();
 			return;
 		}
-		else if(!city.idState){
+		else if(!city.idstate){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the State/Provincy!';
-			document.getElementById("idState").focus();
+			document.getElementById("idstate").focus();
 			return;
 		}
 		else {
@@ -87,13 +89,35 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		});
 	}
 	
+	
 	$scope.edit = function(city){
 		$scope.city = angular.copy(city);
 		$scope.modalTitle = 'Edit City';
 		$(document).ready(function() {
 			$('#editModal').modal();
 		});
+		console.log($scope.city.sail);
 	}
+	
+	/*
+	$scope.edit = function(){
+		$scope.city2 = {}
+		var parameter = $scope.selectedObject.id; 
+		cityAPI.getById(parameter).then(function(response){
+			var city = response.data;
+		
+			$scope.city2 = angular.copy(city);
+			
+			console.log(city);
+			
+			$scope.modalTitle = 'Edit City';
+			$(document).ready(function() {
+				$('#editModal').modal();
+			});
+				
+		});
+	}
+	*/
 	
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
@@ -104,7 +128,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 			document.getElementById("eName").focus();
 			return;
 		}
-		else if(!parameter2.state){
+		else if(!parameter2.idstate){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the State!';
 			document.getElementById("eState").focus();

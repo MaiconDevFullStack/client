@@ -20,14 +20,12 @@ const client = new Client({
 	database: "client"
 });
 
-module.exports = client;
 
+//////////////////////////////////////
+//CREATE TABLE GENDER
+/////////////////////////////////////
 const Gender = sequelize.define('gender', {
-	/*
-	id: {
-		type: Sequelize.DataTypes.INTEGER, primaryKey: true, autoincrement: true
-	},
-	*/
+	
 	name : {
 		type: Sequelize.DataTypes.STRING, allowNull : false
 	},
@@ -46,12 +44,12 @@ Gender.sync().then((data)=>{
 	console.log('error sync');
 });
 
+
+//////////////////////////////////////
+//CREATE TABLE STATE
+/////////////////////////////////////
 const State = sequelize.define('state', {
-	/*
-	id: {
-		type: Sequelize.DataTypes.INTEGER, primaryKey: true, autoincrement: true
-	},
-	*/
+	
 	name : {
 		type: Sequelize.DataTypes.STRING, allowNull : false
 	},
@@ -70,12 +68,12 @@ State.sync().then((data)=>{
 	console.log('error sync');
 });
 
+
+//////////////////////////////////////
+//CREATE TABLE CITY
+/////////////////////////////////////
 const City = sequelize.define('city', {
-	/*
-	id: {
-		type: Sequelize.DataTypes.INTEGER, primaryKey: true, autoincrement: true
-	},
-	*/
+	
 	name : {
 		type: Sequelize.DataTypes.STRING, allowNull : false
 	}
@@ -85,9 +83,12 @@ const City = sequelize.define('city', {
 	timestamps: false		
 });
 
-City.belongsTo(State, {
+////////////////
+///RELATIONS
+////////////////
+State.hasMany(City,{
 	constraint: true,
-	foreignKey: 'idState'
+	foreignKey: 'idstate'
 });
 
 City.sync().then((data)=>{
@@ -97,6 +98,78 @@ City.sync().then((data)=>{
 });
 
 
+
+//////////////////////////////////////
+//CREATE TABLE CITY
+/////////////////////////////////////
+const SysUser = sequelize.define('sysuser', {
+	
+	name : {
+		type: Sequelize.DataTypes.STRING, allowNull : false
+	},
+	login :{
+		type: Sequelize.DataTypes.STRING, allowNull : false
+	},
+	pass : {
+		type: Sequelize.DataTypes.STRING, allowNull : false
+	}
+},
+{
+	freezeTableName: true, 
+	timestamps: false		
+});
+
+SysUser.sync().then((data)=>{
+	console.log('table and model sync successful');
+}).catch((err)=>{
+	console.log(err);
+});
+
+
+
+//////////////////////////////////////
+//CREATE TABLE COSTUMER
+/////////////////////////////////////
+const Costumer = sequelize.define('costumer', {
+	
+	name : {
+		type: Sequelize.DataTypes.STRING, allowNull : false
+	},
+	datebirth : {
+		type: "TIMESTAMP", allowNull : false
+	},
+	adress : {
+		type: Sequelize.DataTypes.STRING, allowNull : false
+	}
+},
+{
+	freezeTableName: true, 
+	timestamps: false		
+});
+
+////////////////
+///RELATIONS
+////////////////
+Costumer.belongsTo(Gender,{
+	constraint: true,
+	foreignKey: 'idgender'
+});
+
+Costumer.belongsTo(City,{
+	constraint: true,
+	foreignKey: 'idcity'
+});
+
+Costumer.sync().then((data)=>{
+	console.log('table and model sync successful');
+}).catch((err)=>{
+	console.log(err);
+});
+
+//////////////////////////////////////
+//EXPORT MODULE TO ALL APPLICATION
+/////////////////////////////////////
+module.exports = client;
 
 
 

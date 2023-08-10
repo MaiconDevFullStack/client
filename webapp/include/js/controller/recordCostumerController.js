@@ -1,7 +1,7 @@
-var app = angular.module("recordClient",['recordCity','recordGender']).controller("recordClientController",['$scope', 'clientAPI','cityAPI', 'genderAPI', function($scope, clientAPI, cityAPI, genderAPI){
+var app = angular.module("recordCostumer",['recordCity','recordGender']).controller("recordCostumerController",['$scope', 'costumerAPI','cityAPI', 'genderAPI', function($scope, costumerAPI, cityAPI, genderAPI){
 
 	
-	$scope.clients = [];
+	$scope.costumers = [];
 	$scope.modalMessage = null;
 	$scope.error = false;
 	$scope.modalMessageObject = null;
@@ -16,11 +16,11 @@ var app = angular.module("recordClient",['recordCity','recordGender']).controlle
 			$scope.genders = response.data;
 			cityAPI.get().then(function(response){
 				$scope.cities = response.data;
-				clientAPI.get().then(function(response){
-					$scope.clients = response.data;
+				costumerAPI.get().then(function(response){
+					$scope.costumers = response.data;
 					$scope.modalMessage = null;
 					$scope.error = false;
-					$scope.lengthClient = $scope.clients.length;
+					$scope.lengthCostumer = $scope.costumers.length;
 					$scope.itensPerPage = $scope.lengthCity/5;
 				});
 			});
@@ -29,7 +29,7 @@ var app = angular.module("recordClient",['recordCity','recordGender']).controlle
 	
 	
 	$scope.btnInsert = function(){
-		$scope.client = {};
+		$scope.costumer = {};
 		$scope.modalMessage = null;
 		$scope.error = false;
 		$scope.selectedObject = null;
@@ -39,22 +39,22 @@ var app = angular.module("recordClient",['recordCity','recordGender']).controlle
 		});
 	}
 	
-	$scope.insertClient = function(client){
-		if(!client.name){
+	$scope.insertClient = function(costumer){
+		if(!costumer.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';
 			document.getElementById("iName").focus();
 			return;
 		}
-		else if(!client.city){
+		else if(!costumer.city){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the City!';
 			document.getElementById("iCity").focus();
 			return;
 		}
 		else {
-			clientAPI.post(client).then(function(){
-				delete $scope.client;
+			costumerAPI.post(costumer).then(function(){
+				delete $scope.costumer;
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$('#insertModal').modal('hide');
@@ -82,7 +82,7 @@ var app = angular.module("recordClient",['recordCity','recordGender']).controlle
 	
 	$scope.deleteClient = function(){
 		var parameter = $scope.selectedObject.id; 
-		clientAPI.delete(parameter).then(function(){
+		costumerAPI.delete(parameter).then(function(){
 			$scope.selectedObject = null;
 			$scope.modalTitle = null;
 			$scope.modalMessageObject = null;
@@ -91,11 +91,11 @@ var app = angular.module("recordClient",['recordCity','recordGender']).controlle
 		});
 	}
 	
-	$scope.edit = function(client){
-		$scope.client = angular.copy(client);
+	$scope.edit = function(costumer){
+		$scope.costumer = angular.copy(costumer);
 		
-		if($scope.client.dateBirth){
-			$scope.client.dateBirth = new Date($scope.client.dateBirth);
+		if($scope.costumer.dateBirth){
+			$scope.costumer.dateBirth = new Date($scope.costumer.dateBirth);
 		}
 		
 		$scope.modalTitle = 'Edit Client';
@@ -106,7 +106,7 @@ var app = angular.module("recordClient",['recordCity','recordGender']).controlle
 	
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
-		var parameter2 = $scope.client;
+		var parameter2 = $scope.costumer;
 		if(!parameter2.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';
@@ -120,7 +120,7 @@ var app = angular.module("recordClient",['recordCity','recordGender']).controlle
 			return;
 		}
 		else {
-			clientAPI.patch(parameter, parameter2).then(function(){
+			costumerAPI.patch(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;

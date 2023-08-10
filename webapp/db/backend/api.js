@@ -88,9 +88,32 @@ app.get('/city/getAll', (req, res)=>{
 	});
 });
 
+app.get('/city/getAllForPrincipalTable', (req, res)=>{
+	client.query(`select c.id as id, 
+					   c.name as name, 
+					   s.sail as sail 
+				  from city c 
+				  left join state s on s.id = c.idstate
+				  order by 1 desc`, (err, result)=>{
+		if(!err){
+			res.send(result.rows);
+		}	
+	});
+});
+
+app.get('/city/getById/:id', (req, res)=>{
+	client.query(`select * from city c
+				  where c.id = ${req.params.id} 
+				  order by 1 desc`, (err, result)=>{
+		if(!err){
+			res.send(result.rows);
+		}	
+	});
+});
+
 app.post('/city/insert', (req, res)=>{
 	var city = req.body;
-	client.query(`insert into city(name, idState)values('${city.name}','${city.idState}')`,(err, result)=>{
+	client.query(`insert into city(name, idstate)values('${city.name}','${city.idstate}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}
@@ -114,7 +137,7 @@ app.put('/city/edit/:id',(req, res)=>{
 	let city = req.body;
 	client.query(`update city 
 				  set name = '${city.name}', 
-				  idState = '${city.idState}' 
+				  idstate = '${city.idstate}' 
 				  where id = ${city.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Edition was successful`);
@@ -128,19 +151,19 @@ app.put('/city/edit/:id',(req, res)=>{
 
 
 //////////////////////////////////////
-//USER METHODS
+//SYSUSER METHODS
 /////////////////////////////////////
-app.get('/user/getAll', (req, res)=>{
-	client.query(`select * from user_sys order by 1 desc`, (err, result)=>{
+app.get('/sysuser/getAll', (req, res)=>{
+	client.query(`select * from sysuser order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
 	});
 });
 
-app.post('/user/insert', (req, res)=>{
+app.post('/sysuser/insert', (req, res)=>{
 	const user = req.body;
-	client.query(`insert into user_sys(name, login, pass)values('${user.name}','${user.login}','${user.pass}')`,(err, result)=>{
+	client.query(`insert into sysuser(name, login, pass)values('${user.name}','${user.login}','${user.pass}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}
@@ -150,8 +173,8 @@ app.post('/user/insert', (req, res)=>{
 });
 
 
-app.delete('/user/delete/:id',(req, res)=>{
-	client.query(`delete from user_sys where id=${req.params.id}`, (err, result)=>{
+app.delete('/sysuser/delete/:id',(req, res)=>{
+	client.query(`delete from sysuser where id=${req.params.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Deletion was successful`);
 		}
@@ -160,9 +183,9 @@ app.delete('/user/delete/:id',(req, res)=>{
 	client.end;
 });
 
-app.put('/user/edit/:id',(req, res)=>{
+app.put('/sysuser/edit/:id',(req, res)=>{
 	let user = req.body;
-	client.query(`update user_sys 
+	client.query(`update sysuser 
 				 set name = '${user.name}', 
 				 login = '${user.login}',
 				 pass =  '${user.pass}'
@@ -217,6 +240,57 @@ app.put('/gender/edit/:id',(req, res)=>{
 				 set name = '${gender.name}', 
 				 sail = '${gender.sail}'
 				 where id = ${gender.id}`, (err, result)=>{
+		if(!err){
+			res.send(`Edition was successful`);
+		}
+		else{console.log(err.message)}
+	});
+	client.end;
+});
+
+
+//////////////////////////////////////
+//COSTUMER METHODS
+/////////////////////////////////////
+app.get('/costumer/getAll', (req, res)=>{
+	client.query(`select * from costumer order by 1 desc`, (err, result)=>{
+		if(!err){
+			res.send(result.rows);
+		}	
+	});
+});
+
+app.post('/costumer/insert', (req, res)=>{
+	const costumer = req.body;
+	client.query(`insert into costumer(name, datebirth, adress, idgender, idcity)values('${costumer.name}','${costumer.datebirth}','${costumer.adress}','${costumer.idgender}','${costumer.idcity}')`,(err, result)=>{
+		if(!err){
+			res.send('Insertion was successful')
+		}
+		else {console.log(err.message)}
+	});
+	client.end;
+});
+
+
+app.delete('/costumer/delete/:id',(req, res)=>{
+	client.query(`delete from costumer where id=${req.params.id}`, (err, result)=>{
+		if(!err){
+			res.send(`Deletion was successful`);
+		}
+		else{console.log(err.message)}
+	});
+	client.end;
+});
+
+app.put('/costumer/edit/:id',(req, res)=>{
+	let costumer = req.body;
+	client.query(`update costumer 
+				 set name = '${costumer.name}', 
+				 datebirth = '${costumer.datebirth}',
+				 adress = '${costumer.adress}',
+				 idgender = '${costumer.idgender}',
+				 idcity = '${costumer.idcity}'
+				 where id = ${costumer.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Edition was successful`);
 		}
