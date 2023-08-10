@@ -42,10 +42,10 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 			document.getElementById("iName").focus();
 			return;
 		}
-		else if(!city.state){
+		else if(!city.idState){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the State/Provincy!';
-			document.getElementById("iState").focus();
+			document.getElementById("idState").focus();
 			return;
 		}
 		else {

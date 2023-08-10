@@ -77,7 +77,7 @@ app.put('/state/edit/:id',(req, res)=>{
 
 
 //////////////////////////////////////
-//STATE METHODS
+//CITY METHODS
 /////////////////////////////////////
 
 app.get('/city/getAll', (req, res)=>{
@@ -89,8 +89,8 @@ app.get('/city/getAll', (req, res)=>{
 });
 
 app.post('/city/insert', (req, res)=>{
-	const city = req.body;
-	client.query(`insert into city(name, state)values('${city.name}','${city.state}')`,(err, result)=>{
+	var city = req.body;
+	client.query(`insert into city(name, idState)values('${city.name}','${city.idState}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}
@@ -114,7 +114,7 @@ app.put('/city/edit/:id',(req, res)=>{
 	let city = req.body;
 	client.query(`update city 
 				  set name = '${city.name}', 
-				  state = '${city.state}' 
+				  idState = '${city.idState}' 
 				  where id = ${city.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Edition was successful`);
@@ -176,54 +176,6 @@ app.put('/user/edit/:id',(req, res)=>{
 });
 
 
-
-//////////////////////////////////////
-//CITY METHODS
-/////////////////////////////////////
-app.get('/city/getAll', (req, res)=>{
-	client.query(`select * from city order by 1 desc`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-});
-
-app.post('/city/insert', (req, res)=>{
-	const city = req.body;
-	client.query(`insert into city(name, login, pass)values('${user.name}','${user.login}','${user.pass}')`,(err, result)=>{
-		if(!err){
-			res.send('Insertion was successful')
-		}
-		else {console.log(err.message)}
-	});
-	client.end;
-});
-
-
-app.delete('/city/delete/:id',(req, res)=>{
-	client.query(`delete from city where id=${req.params.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Deletion was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-
-app.put('/city/edit/:id',(req, res)=>{
-	let city = req.body;
-	client.query(`update city 
-				 set name = '${user.name}', 
-				 login = '${user.login}',
-				 pass =  '${user.pass}'
-				 where id = ${user.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Edition was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
 
 
 //////////////////////////////////////

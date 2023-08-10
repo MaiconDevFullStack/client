@@ -40,6 +40,12 @@ const Gender = sequelize.define('gender', {
 	timestamps: false		
 });
 
+Gender.sync().then((data)=>{
+	console.log('table and model sync successful');
+}).catch((err)=>{
+	console.log('error sync');
+});
+
 const State = sequelize.define('state', {
 	/*
 	id: {
@@ -58,6 +64,12 @@ const State = sequelize.define('state', {
 	timestamps: false		
 });
 
+State.sync().then((data)=>{
+	console.log('table and model sync successful');
+}).catch((err)=>{
+	console.log('error sync');
+});
+
 const City = sequelize.define('city', {
 	/*
 	id: {
@@ -66,10 +78,6 @@ const City = sequelize.define('city', {
 	*/
 	name : {
 		type: Sequelize.DataTypes.STRING, allowNull : false
-	},
-	
-	state: {
-		type: Sequelize.DataTypes.STRING, allowNull : false
 	}
 },
 {
@@ -77,24 +85,20 @@ const City = sequelize.define('city', {
 	timestamps: false		
 });
 
-
-State.hasMany(City);
-
-Gender.sync().then((data)=>{
-	console.log('table and model sync successful');
-}).catch((err)=>{
-	console.log('error sync');
-});
-
-State.sync().then((data)=>{
-	console.log('table and model sync successful');
-}).catch((err)=>{
-	console.log('error sync');
+City.belongsTo(State, {
+	constraint: true,
+	foreignKey: 'idState'
 });
 
 City.sync().then((data)=>{
 	console.log('table and model sync successful');
 }).catch((err)=>{
-	console.log('error sync');
+	console.log(err);
 });
+
+
+
+
+
+
 
