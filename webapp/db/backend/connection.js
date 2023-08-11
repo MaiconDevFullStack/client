@@ -100,7 +100,7 @@ City.sync().then((data)=>{
 
 
 //////////////////////////////////////
-//CREATE TABLE CITY
+//CREATE TABLE SYSUSER
 /////////////////////////////////////
 const SysUser = sequelize.define('sysuser', {
 	

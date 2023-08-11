@@ -11,12 +11,11 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	refresh();
 	
 	function refresh(){
-		stateAPI.get().then(function(response){
-			$scope.states = response.data;
-			cityAPI.get().then(function(response){
-				$scope.cities = response.data;
-				
-				console.log(...$scope.cities);
+		cityAPI.get().then(function(response){
+			$scope.cities = response.data;
+			stateAPI.get().then(function(response){
+				$scope.states = response.data;
+			
 				$scope.modalMessage = null;
 				$scope.error = false;
 				$scope.lengthCity = $scope.cities.length;
@@ -89,7 +88,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		});
 	}
 	
-	
+	/*
 	$scope.edit = function(city){
 		$scope.city = angular.copy(city);
 		$scope.modalTitle = 'Edit City';
@@ -98,17 +97,12 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		});
 		console.log($scope.city.sail);
 	}
+	*/
 	
-	/*
 	$scope.edit = function(){
-		$scope.city2 = {}
 		var parameter = $scope.selectedObject.id; 
 		cityAPI.getById(parameter).then(function(response){
-			var city = response.data;
-		
-			$scope.city2 = angular.copy(city);
-			
-			console.log(city);
+			$scope.city = response.data;	
 			
 			$scope.modalTitle = 'Edit City';
 			$(document).ready(function() {
@@ -117,7 +111,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 				
 		});
 	}
-	*/
+	
 	
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;

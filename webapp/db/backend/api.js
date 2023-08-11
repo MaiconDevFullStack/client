@@ -262,7 +262,7 @@ app.get('/costumer/getAll', (req, res)=>{
 
 app.post('/costumer/insert', (req, res)=>{
 	const costumer = req.body;
-	client.query(`insert into costumer(name, datebirth, adress, idgender, idcity)values('${costumer.name}','${costumer.datebirth}','${costumer.adress}','${costumer.idgender}','${costumer.idcity}')`,(err, result)=>{
+	client.query(`insert into costumer(name, datebirth, adress, idgender, idcity)values('${costumer.name}','${costumer.datebirth}','${costumer.adress}','${costumer.gender}','${costumer.city}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}

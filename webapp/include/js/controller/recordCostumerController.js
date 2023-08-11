@@ -46,12 +46,6 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 			document.getElementById("iName").focus();
 			return;
 		}
-		else if(!costumer.city){
-			$scope.error = true;
-			$scope.modalMessage = 'Please Select the City!';
-			document.getElementById("iCity").focus();
-			return;
-		}
 		else {
 			costumerAPI.post(costumer).then(function(){
 				delete $scope.costumer;
@@ -94,8 +88,8 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	$scope.edit = function(costumer){
 		$scope.costumer = angular.copy(costumer);
 		
-		if($scope.costumer.dateBirth){
-			$scope.costumer.dateBirth = new Date($scope.costumer.dateBirth);
+		if($scope.costumer.datebirth){
+			$scope.costumer.datebirth = new Date($scope.costumer.datebirth);
 		}
 		
 		$scope.modalTitle = 'Edit Client';
@@ -113,14 +107,8 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 			document.getElementById("eName").focus();
 			return;
 		}
-		else if(!parameter2.city){
-			$scope.error = true;
-			$scope.modalMessage = 'Please Insert the City!';
-			document.getElementById("eCity").focus();
-			return;
-		}
 		else {
-			costumerAPI.patch(parameter, parameter2).then(function(){
+			costumerAPI.put(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;
