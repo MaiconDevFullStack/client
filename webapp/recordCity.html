@@ -23,7 +23,7 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr ng-repeat="n in cities" ng-click="selectObject(n)" ng-dblclick="edit()" ng-class="{selectedLine: n == selectedObject}">
+				    <tr ng-repeat="n in cities" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
 				      	<td>{{n.id}}</td>
 				      	<td>{{n.name}}</td>
 				      	<td>{{n.sail}}</td>
@@ -95,7 +95,7 @@
 						<br><br>
 						<div class="col-md-12">
 	                        <div class="input-group-prepend">
-	                            <select ng-model = "city.idstate" class = "form-control form-select" ng-options="state.id as state.sail for city in cities track by city.idstate">
+	                            <select ng-model = "city.idstate" class = "form-control form-select" ng-options="state.id as state.name for state in states track by selectedObject.idstate">
 								 	<option value=''>Select State/Province</option>
 								</select>
 	                        </div>
@@ -135,7 +135,7 @@
 						<br><br>
 	                    <div class="col-md-12">
 	                        <div class="input-group-prepend">
-	                            <select ng-model = "city.idstate" class = "form-control form-select" ng-options="state.id as state.sail for state in states track by state.id">
+	                            <select ng-model = "city.idstate" class = "form-control form-select" ng-options="state.id as state.name for state in states track by state.id">
 								 	<option value=''>Select State/Province</option>
 								</select>
 	                        </div>

@@ -103,7 +103,7 @@
 						<br><br>
 						<div class="col-md-12">
 	                        <div class="input-group-prepend">
-	                            <select ng-model = "costumer.gender" class = "form-control form-select" ng-options="gender.id as gender.name for gender in genders track by costumer.idgender">
+	                            <select ng-model = "costumer.idgender" class = "form-control form-select" ng-options="gender.id as gender.name for gender in genders track by gender.id">
 								 	<option value=''>Select Gender</option>
 								</select>
 	                        </div>
@@ -111,7 +111,7 @@
 						<br><br>
 						<div class="col-md-12">
 	                        <div class="input-group-prepend">
-	                            <select ng-model = "costumer.city" class = "form-control form-select" ng-options="city.id as city.name for city in cities track by city.id">
+	                            <select ng-model = "costumer.idcity" class = "form-control form-select" ng-options="city.id as city.name for city in cities track by city.id">
 								 	<option value=''>Select City</option>
 								</select>
 	                        </div>
@@ -162,7 +162,7 @@
 						<br><br>
 						<div class="col-md-12">
 	                        <div class="input-group-prepend">
-	                            <select ng-model = "costumer.gender" class = "form-control form-select" ng-options="gender.id as gender.name for gender in genders track by gender.id">
+	                            <select ng-model = "costumer.idgender" class = "form-control form-select" ng-options="gender.id as gender.name for gender in genders track by gender.id">
 								 	<option value=''>Select Gender</option>
 								</select>
 	                        </div>
@@ -170,7 +170,7 @@
 						<br><br>
 						<div class="col-md-12">
 	                        <div class="input-group-prepend">
-	                            <select ng-model = "costumer.city" class = "form-control form-select" ng-options="city.id as city.name for city in cities track by city.id">
+	                            <select ng-model = "costumer.idcity" class = "form-control form-select" ng-options="city.id as city.name for city in cities track by city.id">
 								 	<option value=''>Select City</option>
 								</select>
 	                        </div>

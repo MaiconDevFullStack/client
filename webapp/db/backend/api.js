@@ -30,7 +30,8 @@ app.use(bodyParser.json());
 /////////////////////////////////////
 
 app.get('/state/getAll', (req, res)=>{
-	client.query(`select * from state order by 1 desc`, (err, result)=>{
+	client.query(`select * from state 
+				  order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
@@ -39,7 +40,10 @@ app.get('/state/getAll', (req, res)=>{
 
 app.post('/state/insert', (req, res)=>{
 	const state = req.body;
-	client.query(`insert into state(name, sail)values('${state.name}','${state.sail}')`,(err, result)=>{
+	client.query(`insert into state(name,
+								    sail)
+							  values('${state.name}',
+							  		 '${state.sail}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}
@@ -50,7 +54,8 @@ app.post('/state/insert', (req, res)=>{
 
 
 app.delete('/state/delete/:id',(req, res)=>{
-	client.query(`delete from state where id=${req.params.id}`, (err, result)=>{
+	client.query(`delete from state
+				  where id=${req.params.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Deletion was successful`);
 		}
@@ -63,7 +68,7 @@ app.put('/state/edit/:id',(req, res)=>{
 	let state = req.body;
 	client.query(`update state 
 				  set name = '${state.name}', 
-				  sail = '${state.sail}' 
+				  	  sail = '${state.sail}' 
 				  where id = ${state.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Edition was successful`);
@@ -76,22 +81,33 @@ app.put('/state/edit/:id',(req, res)=>{
 
 
 
+
 //////////////////////////////////////
 //CITY METHODS
 /////////////////////////////////////
 
+/*
 app.get('/city/getAll', (req, res)=>{
-	client.query(`select * from city order by 1 desc`, (err, result)=>{
+	client.query(`select * from city
+				  order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
 	});
 });
+*/
+app.get('/city/getAll', (req, res)=>{
+	 City.findAll({
+	  	where: {
+	  		include: [{ model: Picture }]
+	 	}
+	 })
+})
 
 app.get('/city/getAllForPrincipalTable', (req, res)=>{
 	client.query(`select c.id as id, 
-					   c.name as name, 
-					   s.sail as sail 
+					   	 c.name as name, 
+					   	 s.sail as sail 
 				  from city c 
 				  left join state s on s.id = c.idstate
 				  order by 1 desc`, (err, result)=>{
@@ -113,7 +129,10 @@ app.get('/city/getById/:id', (req, res)=>{
 
 app.post('/city/insert', (req, res)=>{
 	var city = req.body;
-	client.query(`insert into city(name, idstate)values('${city.name}','${city.idstate}')`,(err, result)=>{
+	client.query(`insert into city(name,
+							       idstate)
+							  values('${city.name}',
+							  		 '${city.idstate}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}
@@ -124,7 +143,8 @@ app.post('/city/insert', (req, res)=>{
 
 
 app.delete('/city/delete/:id',(req, res)=>{
-	client.query(`delete from city where id=${req.params.id}`, (err, result)=>{
+	client.query(`delete from city
+				  where id=${req.params.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Deletion was successful`);
 		}
@@ -137,7 +157,7 @@ app.put('/city/edit/:id',(req, res)=>{
 	let city = req.body;
 	client.query(`update city 
 				  set name = '${city.name}', 
-				  idstate = '${city.idstate}' 
+				  	  idstate = '${city.idstate}' 
 				  where id = ${city.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Edition was successful`);
@@ -150,11 +170,13 @@ app.put('/city/edit/:id',(req, res)=>{
 
 
 
+
 //////////////////////////////////////
 //SYSUSER METHODS
 /////////////////////////////////////
 app.get('/sysuser/getAll', (req, res)=>{
-	client.query(`select * from sysuser order by 1 desc`, (err, result)=>{
+	client.query(`select * from sysuser
+				  order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
@@ -163,7 +185,12 @@ app.get('/sysuser/getAll', (req, res)=>{
 
 app.post('/sysuser/insert', (req, res)=>{
 	const user = req.body;
-	client.query(`insert into sysuser(name, login, pass)values('${user.name}','${user.login}','${user.pass}')`,(err, result)=>{
+	client.query(`insert into sysuser(name,
+									  login, 
+									  pass)
+							  values('${user.name}',
+							  		 '${user.login}',
+							  		 '${user.pass}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}
@@ -174,7 +201,8 @@ app.post('/sysuser/insert', (req, res)=>{
 
 
 app.delete('/sysuser/delete/:id',(req, res)=>{
-	client.query(`delete from sysuser where id=${req.params.id}`, (err, result)=>{
+	client.query(`delete from sysuser
+				  where id=${req.params.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Deletion was successful`);
 		}
@@ -186,10 +214,10 @@ app.delete('/sysuser/delete/:id',(req, res)=>{
 app.put('/sysuser/edit/:id',(req, res)=>{
 	let user = req.body;
 	client.query(`update sysuser 
-				 set name = '${user.name}', 
-				 login = '${user.login}',
-				 pass =  '${user.pass}'
-				 where id = ${user.id}`, (err, result)=>{
+				  set name = '${user.name}', 
+				  	  login = '${user.login}',
+				  	  pass =  '${user.pass}'
+				  where id = ${user.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Edition was successful`);
 		}
@@ -201,11 +229,13 @@ app.put('/sysuser/edit/:id',(req, res)=>{
 
 
 
+
 //////////////////////////////////////
 //GENDER METHODS
 /////////////////////////////////////
 app.get('/gender/getAll', (req, res)=>{
-	client.query(`select * from gender order by 1 desc`, (err, result)=>{
+	client.query(`select * from gender 
+				  order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
@@ -214,7 +244,10 @@ app.get('/gender/getAll', (req, res)=>{
 
 app.post('/gender/insert', (req, res)=>{
 	const gender = req.body;
-	client.query(`insert into gender(name, sail)values('${gender.name}','${gender.sail}')`,(err, result)=>{
+	client.query(`insert into gender(name, 
+									 sail)
+							  values('${gender.name}',
+							  		 '${gender.sail}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}
@@ -225,7 +258,8 @@ app.post('/gender/insert', (req, res)=>{
 
 
 app.delete('/gender/delete/:id',(req, res)=>{
-	client.query(`delete from gender where id=${req.params.id}`, (err, result)=>{
+	client.query(`delete from gender
+				  where id=${req.params.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Deletion was successful`);
 		}
@@ -235,11 +269,11 @@ app.delete('/gender/delete/:id',(req, res)=>{
 });
 
 app.put('/gender/edit/:id',(req, res)=>{
-	let gender = req.body;
+	const gender = req.body;
 	client.query(`update gender 
-				 set name = '${gender.name}', 
-				 sail = '${gender.sail}'
-				 where id = ${gender.id}`, (err, result)=>{
+				  set name = '${gender.name}', 
+				 	  sail = '${gender.sail}'
+				  where id = ${gender.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Edition was successful`);
 		}
@@ -249,11 +283,15 @@ app.put('/gender/edit/:id',(req, res)=>{
 });
 
 
+
+
+
 //////////////////////////////////////
 //COSTUMER METHODS
 /////////////////////////////////////
 app.get('/costumer/getAll', (req, res)=>{
-	client.query(`select * from costumer order by 1 desc`, (err, result)=>{
+	client.query(`select * from costumer
+				  order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
@@ -262,7 +300,16 @@ app.get('/costumer/getAll', (req, res)=>{
 
 app.post('/costumer/insert', (req, res)=>{
 	const costumer = req.body;
-	client.query(`insert into costumer(name, datebirth, adress, idgender, idcity)values('${costumer.name}','${costumer.datebirth}','${costumer.adress}','${costumer.gender}','${costumer.city}')`,(err, result)=>{
+	client.query(`insert into costumer(name, 
+									   datebirth, 
+									   adress, 
+									   idgender, 
+									   idcity)
+							  values('${costumer.name}',
+							   		 '${costumer.datebirth}',
+							   		 '${costumer.adress}',
+							   		 '${costumer.idgender}',
+							   		 '${costumer.idcity}')`,(err, result)=>{
 		if(!err){
 			res.send('Insertion was successful')
 		}
@@ -273,7 +320,8 @@ app.post('/costumer/insert', (req, res)=>{
 
 
 app.delete('/costumer/delete/:id',(req, res)=>{
-	client.query(`delete from costumer where id=${req.params.id}`, (err, result)=>{
+	client.query(`delete from costumer
+				  where id=${req.params.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Deletion was successful`);
 		}
@@ -283,14 +331,14 @@ app.delete('/costumer/delete/:id',(req, res)=>{
 });
 
 app.put('/costumer/edit/:id',(req, res)=>{
-	let costumer = req.body;
+	const costumer = req.body;
 	client.query(`update costumer 
-				 set name = '${costumer.name}', 
-				 datebirth = '${costumer.datebirth}',
-				 adress = '${costumer.adress}',
-				 idgender = '${costumer.idgender}',
-				 idcity = '${costumer.idcity}'
-				 where id = ${costumer.id}`, (err, result)=>{
+				  set name = '${costumer.name}', 
+				  	  datebirth = '${costumer.datebirth}',
+				 	  adress = '${costumer.adress}',
+				 	  idgender = '${costumer.idgender}',
+				 	  idcity = '${costumer.idcity}'
+				  where id = ${costumer.id}`, (err, result)=>{
 		if(!err){
 			res.send(`Edition was successful`);
 		}

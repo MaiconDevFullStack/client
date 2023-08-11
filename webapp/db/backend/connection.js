@@ -45,6 +45,7 @@ Gender.sync().then((data)=>{
 });
 
 
+
 //////////////////////////////////////
 //CREATE TABLE STATE
 /////////////////////////////////////
@@ -86,10 +87,11 @@ const City = sequelize.define('city', {
 ////////////////
 ///RELATIONS
 ////////////////
-State.hasMany(City,{
+City.belongsTo(State,{
 	constraint: true,
 	foreignKey: 'idstate'
 });
+
 
 City.sync().then((data)=>{
 	console.log('table and model sync successful');
@@ -124,6 +126,18 @@ SysUser.sync().then((data)=>{
 }).catch((err)=>{
 	console.log(err);
 });
+
+/*
+const users = SysUser.findAll();
+
+if(users){
+	SysUser.create({
+		name: 'System',
+		login: 'sys',
+		pass: '123'
+	});
+}
+*/
 
 
 
