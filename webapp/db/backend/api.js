@@ -86,7 +86,8 @@ app.put('/state/edit/:id',(req, res)=>{
 //CITY METHODS
 /////////////////////////////////////
 
-/*
+
+
 app.get('/city/getAll', (req, res)=>{
 	client.query(`select * from city
 				  order by 1 desc`, (err, result)=>{
@@ -95,27 +96,21 @@ app.get('/city/getAll', (req, res)=>{
 		}	
 	});
 });
-*/
-app.get('/city/getAll', (req, res)=>{
-	 City.findAll({
-	  	where: {
-	  		include: [{ model: Picture }]
-	 	}
-	 })
-})
 
-app.get('/city/getAllForPrincipalTable', (req, res)=>{
-	client.query(`select c.id as id, 
-					   	 c.name as name, 
-					   	 s.sail as sail 
+
+app.get('/city/getAllForPrincipalTable', async (req, res)=>{
+	client.query(`select c.id
+						,c.name
+						,s.sail 
 				  from city c 
-				  left join state s on s.id = c.idstate
+				  left outer join state s on s.id = c.idstate
 				  order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
 	});
 });
+
 
 app.get('/city/getById/:id', (req, res)=>{
 	client.query(`select * from city c

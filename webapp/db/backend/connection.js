@@ -84,6 +84,7 @@ const City = sequelize.define('city', {
 	timestamps: false		
 });
 
+
 ////////////////
 ///RELATIONS
 ////////////////
@@ -184,6 +185,7 @@ Costumer.sync().then((data)=>{
 //EXPORT MODULE TO ALL APPLICATION
 /////////////////////////////////////
 module.exports = client;
+
 
 
 

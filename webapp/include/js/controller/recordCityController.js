@@ -14,7 +14,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		
 		stateAPI.get().then(function(response){
 			$scope.states = response.data;
-			cityAPI.get().then(function(response){
+			cityAPI.getForPrincipal().then(function(response){
 				$scope.cities = response.data;
 			
 				$scope.modalMessage = null;

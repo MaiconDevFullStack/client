@@ -1,16 +1,16 @@
 angular.module("recordCity").service("cityAPI", function($http){
 	
-	this.get = function(){
-		return $http.get("http://localhost:3300/city/getAll");
-	};
+	//this.get = function(){
+		//return $http.get("http://localhost:3300/city/getAll");
+	//};
 	
 	this.getForPrincipal = function(){
 		return $http.get("http://localhost:3300/city/getAllForPrincipalTable");
 	};
 	
-	this.getById = function(parameter){
-		return $http.get("http://localhost:3300/city/getById/"+parameter);
-	};
+	//this.getById = function(parameter){
+		//return $http.get("http://localhost:3300/city/getById/"+parameter);
+	//};
 	
 	this.post = function(city){
 		return $http.post("http://localhost:3300/city/insert", city);
