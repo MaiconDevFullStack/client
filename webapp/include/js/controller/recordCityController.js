@@ -11,10 +11,11 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	refresh();
 	
 	function refresh(){
-		cityAPI.get().then(function(response){
-			$scope.cities = response.data;
-			stateAPI.get().then(function(response){
-				$scope.states = response.data;
+		
+		stateAPI.get().then(function(response){
+			$scope.states = response.data;
+			cityAPI.getForPrincipal().then(function(response){
+				$scope.cities = response.data;
 			
 				$scope.modalMessage = null;
 				$scope.error = false;
@@ -88,29 +89,18 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		});
 	}
 	
-	/*
+	
 	$scope.edit = function(city){
 		$scope.city = angular.copy(city);
 		$scope.modalTitle = 'Edit City';
 		$(document).ready(function() {
 			$('#editModal').modal();
 		});
-		console.log($scope.city.sail);
+		
+		console.log($scope.city);
+		
 	}
-	*/
 	
-	$scope.edit = function(){
-		var parameter = $scope.selectedObject.id; 
-		cityAPI.getById(parameter).then(function(response){
-			$scope.city = response.data;	
-			
-			$scope.modalTitle = 'Edit City';
-			$(document).ready(function() {
-				$('#editModal').modal();
-			});
-				
-		});
-	}
 	
 	
 	$scope.confirmEdit = function(){

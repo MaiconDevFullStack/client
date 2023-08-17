@@ -88,6 +88,8 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	$scope.edit = function(costumer){
 		$scope.costumer = angular.copy(costumer);
 		
+		console.log($scope.costumer);
+		
 		if($scope.costumer.datebirth){
 			$scope.costumer.datebirth = new Date($scope.costumer.datebirth);
 		}
