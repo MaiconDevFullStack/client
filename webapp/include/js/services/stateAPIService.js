@@ -4,6 +4,10 @@ angular.module("recordState").service("stateAPI", function($http){
 		return $http.get("http://localhost:3300/state/getAll");
 	};
 	
+	this.getById = function(parameter){
+		return $http.get("http://localhost:3300/state/getById/"+parameter);
+	};
+	
 	this.post = function(state){
 		return $http.post("http://localhost:3300/state/insert", state);
 	};

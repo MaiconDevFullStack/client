@@ -1,8 +1,9 @@
 const client = require('./connection.js')
 const express = require('express');
-
 const app = express();
 const cors = require('cors');
+
+//const {City, State} = require('./connection.js')
 
 
 app.listen(3300, ()=>{
@@ -23,14 +24,22 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
 
-
-
 //////////////////////////////////////
 //STATE METHODS
 /////////////////////////////////////
 
 app.get('/state/getAll', (req, res)=>{
 	client.query(`select * from state 
+				  order by 1 desc`, (err, result)=>{
+		if(!err){
+			res.send(result.rows);
+		}	
+	});
+});
+
+app.get('/state/getById/:id', (req, res)=>{
+	client.query(`select * from state s
+				  where s.id = ${req.params.id} 
 				  order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
@@ -86,9 +95,8 @@ app.put('/state/edit/:id',(req, res)=>{
 //CITY METHODS
 /////////////////////////////////////
 
-
-
 app.get('/city/getAll', (req, res)=>{
+	
 	client.query(`select * from city
 				  order by 1 desc`, (err, result)=>{
 		if(!err){
@@ -99,12 +107,31 @@ app.get('/city/getAll', (req, res)=>{
 
 
 app.get('/city/getAllForPrincipalTable', async (req, res)=>{
-	client.query(`select c.id
-						,c.name
-						,s.sail 
-				  from city c 
-				  left outer join state s on s.id = c.idstate
-				  order by 1 desc`, (err, result)=>{
+	
+	/*
+	///////IN CASE OF [{}] LIST OF OBJECTS
+	
+	SELECT c.id AS cityId, c.name AS cityName,
+	         json_agg(
+	           json_build_object(
+	             'id', s.id,
+	             'name', s.name
+	           )
+	         ) AS states
+	  FROM City c
+	  LEFT JOIN State s ON s.id = c.idstate 
+	  GROUP BY c.id
+	
+	*/
+	client.query(`SELECT c.id, c.name,
+				       json_build_object(
+				         'id', s.id,
+				         'name', s.name,
+				         'sail', s.sail
+				       )AS idstate
+				  FROM City c
+				  LEFT JOIN State s ON s.id = c.idstate 
+				  GROUP BY c.id, s.id`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
@@ -169,6 +196,7 @@ app.put('/city/edit/:id',(req, res)=>{
 //////////////////////////////////////
 //SYSUSER METHODS
 /////////////////////////////////////
+
 app.get('/sysuser/getAll', (req, res)=>{
 	client.query(`select * from sysuser
 				  order by 1 desc`, (err, result)=>{
@@ -228,6 +256,7 @@ app.put('/sysuser/edit/:id',(req, res)=>{
 //////////////////////////////////////
 //GENDER METHODS
 /////////////////////////////////////
+
 app.get('/gender/getAll', (req, res)=>{
 	client.query(`select * from gender 
 				  order by 1 desc`, (err, result)=>{
@@ -284,6 +313,7 @@ app.put('/gender/edit/:id',(req, res)=>{
 //////////////////////////////////////
 //COSTUMER METHODS
 /////////////////////////////////////
+
 app.get('/costumer/getAll', (req, res)=>{
 	client.query(`select * from costumer
 				  order by 1 desc`, (err, result)=>{

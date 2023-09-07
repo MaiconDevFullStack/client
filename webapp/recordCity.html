@@ -26,7 +26,7 @@
 				    <tr ng-repeat="n in cities" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
 				      	<td>{{n.id}}</td>
 				      	<td>{{n.name}}</td>
-				      	<td>{{n.sail}}</td>
+				      	<td>{{n.idstate.sail}}</td>
 				    </tr> 
 				  </tbody>
 				</table>
@@ -95,7 +95,7 @@
 						<br><br>
 						<div class="col-md-12">
 	                        <div class="input-group-prepend">
-	                            <select ng-model = "city.idstate" class = "form-control form-select" ng-options="state.id as state.sail for state in states track by state.id">
+	                            <select ng-model = "city.idstate" class = "form-control form-select" ng-options="state.id as state.name for state in states track by state.id">
 								 	<option value=''>Select State/Province</option>
 								</select>
 	                        </div>
@@ -131,7 +131,7 @@
 				  		  </div>
 				  		  <input id="iName" type="text" class="form-control" placeholder="Type Name" ng-model="city.name">
 						</div>
-						<!-- CAMPO BANCO DE DADOS -->
+						
 						<br><br>
 	                    <div class="col-md-12">
 	                        <div class="input-group-prepend">
