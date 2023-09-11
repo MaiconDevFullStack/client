@@ -1,78 +1,76 @@
 <!DOCTYPE html>
-<html  ng-app='root' ng-controller="rootController">
-	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Close">&times;</button>
-	<!-- LIBRARIES AND ARCHIEVES -->
-	<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="include/css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-	<script src="include/lib/angular-1.6.9/angular.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
-	<!-- CONTROLLERS -->
-	<script type="text/javascript" src="include/js/controller/rootController.js"></script>
-	<script type="text/javascript" src="include/js/controller/recordCityController.js"></script>
-	<script type="text/javascript" src="include/js/controller/recordUserController.js"></script>
-	<script type="text/javascript" src="include/js/controller/recordStateController.js"></script>
-	<script type="text/javascript" src="include/js/controller/recordProductController.js"></script>
-	<script type="text/javascript" src="include/js/controller/recordServiceController.js"></script>
-	<script type="text/javascript" src="include/js/controller/cashController.js"></script>
-	<script type="text/javascript" src="include/js/controller/constructDataBaseController.js"></script>
-	<script type="text/javascript" src="include/js/controller/recordCostumerController.js"></script>
-	<script type="text/javascript" src="include/js/controller/recordGenderController.js"></script>
-	
-	
-	<!-- SERVICES -->
-	<script type="text/javascript" src="include/js/services/cityAPIService.js"></script>
-	<script type="text/javascript" src="include/js/services/userAPIService.js"></script>
-	<script type="text/javascript" src="include/js/services/stateAPIService.js"></script>
-	<script type="text/javascript" src="include/js/services/productAPIService.js"></script>
-	<script type="text/javascript" src="include/js/services/serviceAPIService.js"></script>
-	<script type="text/javascript" src="include/js/services/cashAPIService.js"></script>
-	<script type="text/javascript" src="include/js/services/costumerAPIService.js"></script>
-	<script type="text/javascript" src="include/js/services/genderAPIService.js"></script>
-	<script type="text/javascript" src="include/js/services/constructDataBaseAPIService.js"></script>
-	
-	
+<html  ng-app='root' ng-controller="rootController" lang="pt-br">
+	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Fechar">&times;</button>
 	<head>
-		<meta charset="UTF-8">
 		<title>client</title>
+		<!-- LIBRARIES AND ARCHIEVES -->
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="include/css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script src="include/lib/angular-1.6.9/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		
+		<!-- CONTROLLERS -->
+		<script type="text/javascript" src="include/js/controller/rootController.js"></script>
+		<script type="text/javascript" src="include/js/controller/recordCityController.js"></script>
+		<script type="text/javascript" src="include/js/controller/recordUserController.js"></script>
+		<script type="text/javascript" src="include/js/controller/recordStateController.js"></script>
+		<script type="text/javascript" src="include/js/controller/recordProductController.js"></script>
+		<script type="text/javascript" src="include/js/controller/recordServiceController.js"></script>
+		<script type="text/javascript" src="include/js/controller/cashController.js"></script>
+		<script type="text/javascript" src="include/js/controller/constructDataBaseController.js"></script>
+		<script type="text/javascript" src="include/js/controller/recordCostumerController.js"></script>
+		<script type="text/javascript" src="include/js/controller/recordGenderController.js"></script>
+		
+		
+		<!-- SERVICES -->
+		<script type="text/javascript" src="include/js/services/cityAPIService.js"></script>
+		<script type="text/javascript" src="include/js/services/userAPIService.js"></script>
+		<script type="text/javascript" src="include/js/services/stateAPIService.js"></script>
+		<script type="text/javascript" src="include/js/services/productAPIService.js"></script>
+		<script type="text/javascript" src="include/js/services/serviceAPIService.js"></script>
+		<script type="text/javascript" src="include/js/services/cashAPIService.js"></script>
+		<script type="text/javascript" src="include/js/services/costumerAPIService.js"></script>
+		<script type="text/javascript" src="include/js/services/genderAPIService.js"></script>
+		<script type="text/javascript" src="include/js/services/constructDataBaseAPIService.js"></script>
 	</head>
 	<body>
 		<div class="col-md-12 jumbotron" >
 			<!-- Example single danger button -->
 			<div class="btn-group col-md-2" role="group">
 			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			      Records
+			      Registros
 			     <span class="caret"></span>
 			   </button>
 			   <ul class="dropdown-menu">
-			     <li><a href="recordCity.html">Record City</a></li>
-			     <li><a href="recordUser.html">Record User</a></li>
-			     <li><a href="recordState.html">Record State</a></li>
-			     <li><a href="recordProduct.html">Record Product</a></li>
-			     <li><a href="recordService.html">Record Service</a></li>
-			     <li><a href="recordCostumer.html">Record Costumer</a></li>
-			     <li><a href="recordGender.html">Record Gender</a></li>
+			     <li><a href="recordCity.html">Cidades</a></li>
+			     <li><a href="recordUser.html">Usuários</a></li>
+			     <li><a href="recordState.html">Estados</a></li>
+			     <li><a href="recordProduct.html">Produtos</a></li>
+			     <li><a href="recordService.html">Serviços</a></li>
+			     <li><a href="recordCostumer.html">Clientes</a></li>
+			     <li><a href="recordGender.html">Gênero</a></li>
 			   </ul>
 			</div>
 			
 			<!-- Example single danger button -->
 			<div class="btn-group col-md-2" role="group">
 			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			      Utilities
+			      Utilidades
 			     <span class="caret"></span>
 			   </button>
 			   <ul class="dropdown-menu">
-			     <li><a href="cash.html">Cash</a></li>
-			     <li><a href="constructDataBase.html">Construct Data Base</a></li>
+			     <li><a href="cash.html">Caixa</a></li>
+			     <li><a href="constructDataBase.html">Construir Base de dados</a></li>
 			   </ul>
 			</div>
 			
 			<!-- Example single danger button -->
 			<div class="btn-group col-md-2" role="group">
 			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			      Administration
+			      Administração
 			     <span class="caret"></span>
 			   </button>
 			   <ul class="dropdown-menu">
@@ -97,7 +95,7 @@
 			<!-- Example single danger button -->
 			<div class="btn-group col-md-2" role="group">
 			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			      Suport
+			      Suporte
 			     <span class="caret"></span>
 			   </button>
 			   <ul class="dropdown-menu">

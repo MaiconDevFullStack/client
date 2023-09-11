@@ -2,6 +2,7 @@
 	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Close">&times;</button>
 	<div>
 		<head>
+			<meta charset="utf-8"/>
 			<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 			<script src="include/lib/angular-1.6.9/angular.js"></script>
@@ -22,9 +23,9 @@
 				  <thead class="thead-dark">
 				    <tr>
 				      <th scope="col" class="col-md-1">Code</th>
-				      <th scope="col">Name</th>
-				      <th scope="col">Description</th>
-				      <th scope="col">Price</th>
+				      <th scope="col">Nome</th>
+				      <th scope="col">Descrição</th>
+				      <th scope="col">Preço</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -68,10 +69,10 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Insert</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Inserir</button>
 				</div>
 				<div class="col-md-6">
-					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Delete</button>
+					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Deletar</button>
 				</div>
 			</div>
 			
@@ -118,8 +119,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			         <button type="button" class="btn btn-primary" ng-click="confirmEdit()">Save changes</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			         <button type="button" class="btn btn-primary" ng-click="confirmEdit()">Salvar</button>
 			      </div>
 			    </div>
 			  </div>
@@ -167,8 +168,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			         <button type="button" class="btn btn-primary" ng-click="insertService(service)">Save changes</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			         <button type="button" class="btn btn-primary" ng-click="insertService(service)">Salvar</button>
 			      </div>
 			    </div>
 			  </div>
@@ -194,8 +195,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="deleteService(selectedObject)">Confirm</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			        <button type="button" class="btn btn-primary" ng-click="deleteService(selectedObject)">Confirmar</button>
 			      </div>
 			    </div>
 			  </div>

@@ -2,6 +2,7 @@
 	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Close">&times;</button>
 	<div>
 		<head>
+			<meta charset="utf-8"/>
 			<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 			<script src="include/lib/angular-1.6.9/angular.js"></script>
@@ -19,11 +20,11 @@
 				<table id="tableProduct" class="table table-bordered table-striped">
 				  <thead class="thead-dark">
 				    <tr>
-				      <th scope="col" class="col-md-1">Code</th>
-				      <th scope="col" class="col-md-3">Name</th>
-				      <th scope="col" class="col-md-2">Cost Sale</th>
-				      <th scope="col" class="col-md-2">Expiration Date</th>
-				      <th scope="col" class="col-md-4">Bar Code</th>
+				      <th scope="col" class="col-md-1">Código</th>
+				      <th scope="col" class="col-md-3">Nome</th>
+				      <th scope="col" class="col-md-2">Custo de Venda</th>
+				      <th scope="col" class="col-md-2">Data de Validade</th>
+				      <th scope="col" class="col-md-4">Código de Barras</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -68,10 +69,10 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Insert</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Inserir</button>
 				</div>
 				<div class="col-md-6">
-					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Delete</button>
+					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Deletar</button>
 				</div>
 			</div>
 			
@@ -130,8 +131,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			         <button type="button" class="btn btn-primary" ng-click="confirmEdit()">Save changes</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			         <button type="button" class="btn btn-primary" ng-click="confirmEdit()">Salvar</button>
 			      </div>
 			    </div>
 			  </div>
@@ -191,8 +192,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="insertProduct(product)">Save</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			        <button type="button" class="btn btn-primary" ng-click="insertProduct(product)">Salvar</button>
 			      </div>
 			    </div>
 			  </div>
@@ -218,8 +219,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="deleteProduct(selectedObject)">Confirm</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			        <button type="button" class="btn btn-primary" ng-click="deleteProduct(selectedObject)">Confirmar</button>
 			      </div>
 			    </div>
 			  </div>

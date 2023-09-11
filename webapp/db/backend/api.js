@@ -315,7 +315,26 @@ app.put('/gender/edit/:id',(req, res)=>{
 /////////////////////////////////////
 
 app.get('/costumer/getAll', (req, res)=>{
-	client.query(`select * from costumer
+	client.query(`select c.id, 
+						 c."name", 
+						 c.datebirth, 
+						 c.adress, 
+						 json_build_object('id', g.id, 
+						   				   'name', g."name", 
+						   				   'sail', g.sail
+						   				  ) as idgender,
+						 json_build_object('id', c2.id, 
+						   				   'name', c2."name", 
+						   				   'state', json_build_object('id', s.id, 
+						   					 						  'name', s."name", 
+						   					 					      'sail', s.sail
+						   					 						 )
+						   				   ) as idcity
+				  from costumer c 
+				  left join gender g on g.id = c.idgender 
+				  left join city c2 on c2.id = c.idcity
+				  left join state s on s.id = c2.idstate 
+				  group by c.id, g.id, c2.id, s.id
 				  order by 1 desc`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);

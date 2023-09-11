@@ -14,7 +14,7 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	function refresh(){
 		genderAPI.get().then(function(response){
 			$scope.genders = response.data;
-			cityAPI.get().then(function(response){
+			cityAPI.getForPrincipal().then(function(response){
 				$scope.cities = response.data;
 				costumerAPI.get().then(function(response){
 					$scope.costumers = response.data;

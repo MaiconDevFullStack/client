@@ -3,6 +3,7 @@
 	<button type="button" class="close x_close" data-dismiss="modal" ng-click="toggleFullScreen()" aria-hidden="true" title={{message}}>&EmptySmallSquare;</button>
 	<div>
 		<head>
+			<meta charset="utf-8"/>
 			<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 			<script src="include/lib/angular-1.6.9/angular.js"></script>
@@ -29,10 +30,10 @@
 				  <thead class="thead-dark">
 				    <tr>
 				      <th scope="col" class="col-md-1"><h2>Code</h2></th>
-				      <th scope="col"><h2>Name</h2></th>
-				      <th scope="col"><h2>Bar Code</h2></th>
-				      <th scope="col"><h2>Quantity</h2></th>
-				      <th scope="col"><h2>Price</h2></th>
+				      <th scope="col"><h2>Nome</h2></th>
+				      <th scope="col"><h2>Código de Barras</h2></th>
+				      <th scope="col"><h2>Quantidade</h2></th>
+				      <th scope="col"><h2>Preço</h2></th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -51,10 +52,10 @@
 			<div class="col-md-12">
 				
 				<div class="col-md-4">
-					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Add Item</button>
+					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnInsert(codeBar)">Adicionar Item</button>
 				</div>
 				<div class="col-md-4">
-					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnFinishSale()">Finish Sale</button>
+					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnFinishSale()">Finalizar Venda</button>
 				</div>
 				<div class="col-md-4 textOrientation">
 					<h1>Total: {{sale.totalSale}}</h1>
@@ -87,8 +88,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="finishSale()">Confirm</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			        <button type="button" class="btn btn-primary" ng-click="finishSale()">Confirmar</button>
 			      </div>
 			    </div>
 			  </div>

@@ -2,6 +2,7 @@
 	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Close">&times;</button>
 	<div>
 		<head>
+			<meta charset="utf-8"/>
 			<link rel="stylesheet" type="text/css" href="include/lib/bootstrap-3.4.1/dist/css/bootstrap.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 			<script src="include/lib/angular-1.6.9/angular.js"></script>
@@ -15,9 +16,9 @@
 				<table id="tableCity" class="table table-bordered table-striped">
 				  <thead class="thead-dark">
 				    <tr>
-				      <th scope="col" class="col-md-1">Code</th>
-				      <th scope="col">Gender</th>
-				      <th scope="col">Sail</th>
+				      <th scope="col" class="col-md-1">Código</th>
+				      <th scope="col">Gênero</th>
+				      <th scope="col">Sigla</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -60,10 +61,10 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Insert</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Inserir</button>
 				</div>
 				<div class="col-md-6">
-					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Delete</button>
+					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Deletar</button>
 				</div>
 			</div>
 			
@@ -72,7 +73,7 @@
 			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="editModalLabel">Edit Gender</h5>
+			        <h5 class="modal-title" id="editModalLabel">Editar Gênero</h5>
 			      </div>
 			      <div class="modal-body position1">
 			      	<div>
@@ -97,8 +98,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			         <button type="button" class="btn btn-primary" ng-click="confirmEdit()">Save changes</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			         <button type="button" class="btn btn-primary" ng-click="confirmEdit()">Salvar</button>
 			      </div>
 			    </div>
 			  </div>
@@ -134,8 +135,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="insertGender(gender)">Save</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			        <button type="button" class="btn btn-primary" ng-click="insertGender(gender)">Salvar</button>
 			      </div>
 			    </div>
 			  </div>
@@ -161,8 +162,8 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" ng-click="deleteGender(selectedObject)">Confirm</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			        <button type="button" class="btn btn-primary" ng-click="deleteGender(selectedObject)">Confirmar</button>
 			      </div>
 			    </div>
 			  </div>
