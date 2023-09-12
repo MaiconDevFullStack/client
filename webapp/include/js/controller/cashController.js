@@ -6,7 +6,7 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 	$scope.modalTitle = null;
 	$scope.modalMessage = null;
 	$scope.modalObject = null;
-	$scope.message = 'Full Screen';
+	$scope.message = 'Tela Inteira';
 	
 	retrieve();
 	
@@ -43,9 +43,9 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 	
 	
 	$scope.btnFinishSale = function(){
-		$scope.modalMessage = 'Do You Really Want Finish This Sale?';
+		$scope.modalMessage = 'Deseja Realmente Finalizar a Venda?';
 		$scope.modalObject = 'Total'
-		$scope.modalTitle = 'Finish Sale';
+		$scope.modalTitle = 'Finalizar Venda';
 		$(document).ready(function() {
 			$('#finishModal').modal();
 		});
@@ -76,25 +76,25 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 			(!document.mozFullScreen && !document.webkitIsFullScreen)) {
 			if (document.documentElement.requestFullScreen) {
 				document.documentElement.requestFullScreen();
-				$scope.message = 'Restore Screen';
+				$scope.message = 'Restaurar Tela';
 			} else if (document.documentElement.mozRequestFullScreen) {
 				document.documentElement.mozRequestFullScreen();
-				$scope.message = 'Restore Screen';
+				$scope.message = 'Restaurar Tela';
 			} else if (document.documentElement.webkitRequestFullScreen) {
 				document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-				$scope.message = 'Restore Screen';
+				$scope.message = 'Restaurar Tela';
 			}
 			$scope.maximize = true
 		} else {
 			if (document.cancelFullScreen) {
 				document.cancelFullScreen();
-				$scope.message = 'Full Screen';
+				$scope.message = 'Tela Inteira';
 			} else if (document.mozCancelFullScreen) {
 				document.mozCancelFullScreen();
-				$scope.message = 'Full Screen';
+				$scope.message = 'Tela Inteira';
 			} else if (document.webkitCancelFullScreen) {
 				document.webkitCancelFullScreen();
-				$scope.message = 'Full Screen';
+				$scope.message = 'Tela Inteira';
 			}
 			$scope.maximize = false
 		}

@@ -31,7 +31,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		$scope.modalMessage = null;
 		$scope.error = false;
 		$scope.selectedObject = null;
-		$scope.modalTitle = 'Insert City';
+		$scope.modalTitle = 'Inserir Cidade';
 		$(document).ready(function() {
 			$('#insertModal').modal();
 		});
@@ -40,13 +40,13 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	$scope.insertCity = function(city){
 		if(!city.name){
 			$scope.error = true;
-			$scope.modalMessage = 'Please Insert the Name!';
+			$scope.modalMessage = 'Favor Inserir o Nome!';
 			document.getElementById("iName").focus();
 			return;
 		}
 		else if(!city.idstate){
 			$scope.error = true;
-			$scope.modalMessage = 'Please Select the State/Provincy!';
+			$scope.modalMessage = 'Favor Inserir o Estado!';
 			document.getElementById("idstate").focus();
 			return;
 		}
