@@ -1,8 +1,14 @@
 angular.module("recordCostumer").service("costumerAPI", function($http){
 	
-	this.get = function(){
-		return $http.get("http://localhost:3300/costumer/getAll");
+	this.get = function(parameter){
+		return $http.get("http://localhost:3300/costumer/getAll", parameter);
 	};
+	
+	/*
+	this.getWithPagination = function(){
+		return $http.get("http://localhost:3300/costumer/getWithPagination");
+	};
+	*/
 	
 	this.post = function(costumer){
 		return $http.post("http://localhost:3300/costumer/insert", costumer);

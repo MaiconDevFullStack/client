@@ -12,18 +12,34 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	refresh();
 	
 	function refresh(){
+		var parameter = 1;
+		
 		genderAPI.get().then(function(response){
 			$scope.genders = response.data;
 			cityAPI.getForPrincipal().then(function(response){
 				$scope.cities = response.data;
-				costumerAPI.get().then(function(response){
+				costumerAPI.get(parameter).then(function(response){
 					$scope.costumers = response.data;
 					$scope.modalMessage = null;
 					$scope.error = false;
 					$scope.lengthCostumer = $scope.costumers.length;
-					$scope.itensPerPage = $scope.lengthCity/5;
+					$scope.itensPerPage = $scope.lengthCostumer;
+					console.log($scope.itensPerPage);
 				});
 			});
+		});
+	}
+	
+	
+	$scope.previous = function(){
+		
+	}
+	
+	$scope.next = function(){
+		costumerAPI.get().then(function(response){
+			$scope.costumers = response.data;
+			$scope.modalMessage = null;
+			$scope.error = false;
 		});
 	}
 	
