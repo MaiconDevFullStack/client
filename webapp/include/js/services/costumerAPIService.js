@@ -1,7 +1,7 @@
 angular.module("recordCostumer").service("costumerAPI", function($http){
 	
 	this.get = function(parameter){
-		return $http.get("http://localhost:3300/costumer/getAll", parameter);
+		return $http.get("http://localhost:3300/costumer/getAll/"+parameter);
 	};
 	
 	/*

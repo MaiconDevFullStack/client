@@ -12,7 +12,7 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	refresh();
 	
 	function refresh(){
-		var parameter = 1;
+		var parameter = 0;
 		
 		genderAPI.get().then(function(response){
 			$scope.genders = response.data;
@@ -36,10 +36,15 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	}
 	
 	$scope.next = function(){
-		costumerAPI.get().then(function(response){
+		
+		var parameter = $scope.itensPerPage*1;
+		
+		costumerAPI.get(parameter).then(function(response){
 			$scope.costumers = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
+			$scope.lengthCostumer = $scope.costumers.length;
+			$scope.itensPerPage = $scope.lengthCostumer;
 		});
 	}
 	

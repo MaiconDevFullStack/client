@@ -343,11 +343,11 @@ app.get('/costumer/getAll', (req, res)=>{
 });
 */
 
-app.get('/costumer/getAll', (req, res)=>{
+app.get('/costumer/getAll/:parameter', (req, res)=>{
 	
-	const constumer = req.params;
+	var parameter = req.params.parameter;
 	
-	console.log(constumer.parameter);
+	console.log(parameter);
 	client.query(`select c.id, 
 						 c."name", 
 						 c.datebirth, 
@@ -369,8 +369,8 @@ app.get('/costumer/getAll', (req, res)=>{
 				  left join state s on s.id = c2.idstate 
 				  group by c.id, g.id, c2.id, s.id
 				  order by 1 desc
-				  limit 13
-				  offset '${constumer.parameter}'`, (err, result)=>{
+				  limit 5
+				  offset '${JSON.parse(parameter)}'`, (err, result)=>{
 		if(!err){
 			res.send(result.rows);
 		}	
