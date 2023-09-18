@@ -14,7 +14,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		
 		stateAPI.get().then(function(response){
 			$scope.states = response.data;
-			cityAPI.getForPrincipal().then(function(response){
+			cityAPI.get().then(function(response){
 				$scope.cities = response.data;
 				
 				$scope.modalMessage = null;
@@ -93,6 +93,8 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	$scope.edit = function(city){
 		
 		$scope.city = angular.copy(city);
+		
+		console.log($scope.city);
 		
 		$scope.modalTitle = 'Edit City';
 		$(document).ready(function() {
