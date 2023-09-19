@@ -1,29 +1,46 @@
+//variable 'express' receiving framework 'express'
 const express = require('express');
+
+//variable 'cors' receiving dependency of 'cors'
 const cors = require('cors');
 
+//variable 'app' receiving function 'express'
 const app = express();
 
+//variable 'app' calling function 'listen'
 app.listen(3300, ()=>{
 	console.log("server is now at port 3300");
 });
 
+//variable 'app' calling function 'use' with parameter 'origin'
 app.use(cors({
 	origin: '*'
 }));
 
+//variable 'app' calling function 'use' cors parameters 'methods'
 app.use(cors({
     methods: ['GET','POST','DELETE','UPDATE','PUT']
 }));
 
-
+//variable 'bodyParser' receiving dependency 'body-parser'
 const bodyParser = require("body-parser");
+
+//variable 'app' calling function 'use' bodyParser function
 app.use(bodyParser.json());
 
 
+const db = require("../app/models");
+
+db.sequelize.sync({ force: true }).then(() => {
+  	console.log("Drop and re-sync db.");
+  })
+  .catch((err) => {
+    console.log("Failed to sync db: " + err.message);
+  });
 
 
 
-
+/*
 const client = require('./connection.js');
 
 client.connect();
@@ -108,9 +125,8 @@ app.get('/city/getAll', (req, res)=>{
 	});
 });
 
-
 app.get('/city/getAllForPrincipalTable', async (req, res) =>{
-	
+*/	
 	
 	///////IN CASE OF [{}] LIST OF OBJECTS
 	/*
@@ -125,7 +141,7 @@ app.get('/city/getAllForPrincipalTable', async (req, res) =>{
 	  LEFT JOIN State s ON s.id = c.idstate 
 	  GROUP BY c.id
 	*/
-	
+	/*
 	client.query(`SELECT c.id, c.name,
 				       json_build_object(
 				         'id', s.id,
@@ -440,4 +456,4 @@ app.put('/costumer/edit/:id',(req, res)=>{
 	});
 	client.end;
 });
-
+*/
