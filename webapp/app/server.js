@@ -28,11 +28,21 @@ const bodyParser = require("body-parser");
 //variable 'app' calling function 'use' bodyParser function
 app.use(bodyParser.json());
 
+//IMPORT THE ROUTES TO USE IN ENTIRE APPLICATION
+require("../app/routes/gender.routes.js")(app);
+require("../app/routes/state.routes.js")(app);
+require("../app/routes/sysUser.routes.js")(app);
+
+// set port, listen for requests
+const PORT = process.env.PORT || 8081;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
 
 const db = require("../app/models");
 
-db.sequelize.sync({ force: true }).then(() => {
-  	console.log("Drop and re-sync db.");
+db.sequelize.sync().then(() => {
+  	console.log("Sync db");
   })
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
@@ -41,75 +51,6 @@ db.sequelize.sync({ force: true }).then(() => {
 
 
 /*
-const client = require('./connection.js');
-
-client.connect();
-
-//////////////////////////////////////
-//STATE METHODS
-/////////////////////////////////////
-app.get('/state/getAll', (req, res)=>{
-	client.query(`select * from state 
-				  order by 1 desc`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-	
-});
-
-app.get('/state/getById/:id', (req, res)=>{
-	client.query(`select * from state s
-				  where s.id = ${req.params.id} 
-				  order by 1 desc`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-});
-
-app.post('/state/insert', (req, res)=>{
-	const state = req.body;
-	client.query(`insert into state(name,
-								    sail)
-							  values('${state.name}',
-							  		 '${state.sail}')`,(err, result)=>{
-		if(!err){
-			res.send('Insertion was successful')
-		}
-		else {console.log(err.message)}
-	});
-	client.end;
-});
-
-
-app.delete('/state/delete/:id',(req, res)=>{
-	client.query(`delete from state
-				  where id=${req.params.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Deletion was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-
-app.put('/state/edit/:id',(req, res)=>{
-	let state = req.body;
-	client.query(`update state 
-				  set name = '${state.name}', 
-				  	  sail = '${state.sail}' 
-				  where id = ${state.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Edition was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-
-
-
 
 
 //////////////////////////////////////
@@ -219,126 +160,6 @@ app.put('/city/edit/:id',(req, res)=>{
 	});
 	client.end;
 });
-
-
-
-
-
-//////////////////////////////////////
-//SYSUSER METHODS
-/////////////////////////////////////
-
-app.get('/sysuser/getAll', (req, res)=>{
-	client.query(`select * from sysuser
-				  order by 1 desc`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-});
-
-app.post('/sysuser/insert', (req, res)=>{
-	const user = req.body;
-	client.query(`insert into sysuser(name,
-									  login, 
-									  pass)
-							  values('${user.name}',
-							  		 '${user.login}',
-							  		 '${user.pass}')`,(err, result)=>{
-		if(!err){
-			res.send('Insertion was successful')
-		}
-		else {console.log(err.message)}
-	});
-	client.end;
-});
-
-
-app.delete('/sysuser/delete/:id',(req, res)=>{
-	client.query(`delete from sysuser
-				  where id=${req.params.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Deletion was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-
-app.put('/sysuser/edit/:id',(req, res)=>{
-	let user = req.body;
-	client.query(`update sysuser 
-				  set name = '${user.name}', 
-				  	  login = '${user.login}',
-				  	  pass =  '${user.pass}'
-				  where id = ${user.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Edition was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-
-
-
-
-
-//////////////////////////////////////
-//GENDER METHODS
-/////////////////////////////////////
-
-app.get('/gender/getAll', (req, res)=>{
-	client.query(`select * from gender 
-				  order by 1 desc`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-});
-
-app.post('/gender/insert', (req, res)=>{
-	const gender = req.body;
-	client.query(`insert into gender(name, 
-									 sail)
-							  values('${gender.name}',
-							  		 '${gender.sail}')`,(err, result)=>{
-		if(!err){
-			res.send('Insertion was successful')
-		}
-		else {console.log(err.message)}
-	});
-	client.end;
-});
-
-
-app.delete('/gender/delete/:id',(req, res)=>{
-	client.query(`delete from gender
-				  where id=${req.params.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Deletion was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-
-app.put('/gender/edit/:id',(req, res)=>{
-	const gender = req.body;
-	client.query(`update gender 
-				  set name = '${gender.name}', 
-				 	  sail = '${gender.sail}'
-				  where id = ${gender.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Edition was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-
-
-
 
 
 //////////////////////////////////////

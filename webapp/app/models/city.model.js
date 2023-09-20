@@ -1,7 +1,4 @@
 module.exports = (sequelize, Sequelize) => {
-//////////////////////////////////////
-//CREATE TABLE CITY
-/////////////////////////////////////
 const City = sequelize.define('city', {
 	
 		name : {

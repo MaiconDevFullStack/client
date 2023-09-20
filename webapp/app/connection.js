@@ -1,26 +1,3 @@
-const { Sequelize } = require('sequelize');
-const { Client } = require('pg');
-
-const sequelize = new Sequelize('client', 'postgres', 'mfc', {
-  	host: 'localhost',
-  	dialect: 'postgres'
-});
-
-const client = new Client({
-	host: "localhost",
-	port: 5432,
-	user: "postgres",
-	password: "mfc",
-	database: "client"
-});
-
-async function myFunction(){
-	await sequelize.authenticate();
-	console.log("connection successful");
-}
-
-
-myFunction();
 
 //////////////////////////////////////
 //CREATE TABLE GENDER
@@ -180,11 +157,6 @@ Costumer.sync().then((data)=>{
 }).catch((err)=>{
 	console.log(err);
 });
-
-//////////////////////////////////////
-//EXPORT MODULE TO ALL APPLICATION
-/////////////////////////////////////
-module.exports = client;
 
 
 
