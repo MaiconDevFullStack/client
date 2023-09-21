@@ -25,4 +25,11 @@ db.sysUsers = require("./sysUser.model.js")(sequelize, Sequelize);
 db.cities = require("./city.model.js")(sequelize, Sequelize);
 
 
+//RELATIONS BETWEEN MODELS
+db.states.hasMany(db.cities, { as: "cities" });
+db.cities.belongsTo(db.states, {
+  constraint: true,
+  as: "state",
+});
+
 module.exports = db;

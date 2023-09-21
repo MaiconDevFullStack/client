@@ -1,5 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-const City = sequelize.define('city', {
+	
+ const City = sequelize.define('city', {
 	
 		name : {
 			type: Sequelize.DataTypes.STRING, allowNull : false
@@ -8,8 +9,8 @@ const City = sequelize.define('city', {
 	{
 		freezeTableName: true, 
 		timestamps: false		
-	});
-	
-  return City;
-  
-};
+	}
+ );
+
+	return City;
+}

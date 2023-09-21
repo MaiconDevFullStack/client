@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 require("../app/routes/gender.routes.js")(app);
 require("../app/routes/state.routes.js")(app);
 require("../app/routes/sysUser.routes.js")(app);
+require("../app/routes/city.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
@@ -41,14 +42,13 @@ app.listen(PORT, () => {
 
 const db = require("../app/models");
 
+
 db.sequelize.sync().then(() => {
   	console.log("Sync db");
   })
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
-
-
 
 /*
 

@@ -44,7 +44,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 			document.getElementById("iName").focus();
 			return;
 		}
-		else if(!city.idstate){
+		else if(!city.state){
 			$scope.error = true;
 			$scope.modalMessage = 'Favor Inserir o Estado!';
 			document.getElementById("idstate").focus();
@@ -113,7 +113,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 			document.getElementById("eName").focus();
 			return;
 		}
-		else if(!parameter2.idstate){
+		else if(!parameter2.state){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the State!';
 			document.getElementById("eState").focus();

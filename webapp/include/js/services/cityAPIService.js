@@ -1,7 +1,7 @@
 angular.module("recordCity").service("cityAPI", function($http){
 	
 	this.get = function(){
-		return $http.get("http://localhost:3300/city/getAll");
+		return $http.get("http://localhost:8081/city/getAll");
 	};
 	
 	//this.getForPrincipal = function(){
@@ -13,16 +13,16 @@ angular.module("recordCity").service("cityAPI", function($http){
 	//};
 	
 	this.post = function(city){
-		return $http.post("http://localhost:3300/city/insert", city);
+		return $http.post("http://localhost:8081/city/insert", city);
 	};
 	
 	this.delete = function(parameter){
-		return $http.delete("http://localhost:3300/city/delete/"+parameter);
+		return $http.delete("http://localhost:8081/city/delete/"+parameter);
 	};
 	
 
 	this.put = function(parameter, parameter2){
-		return $http.put("http://localhost:3300/city/edit/"+parameter, parameter2);
+		return $http.put("http://localhost:8081/city/edit/"+parameter, parameter2);
 	};
 	
 });

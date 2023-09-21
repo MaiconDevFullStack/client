@@ -1,4 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
+
   const State = sequelize.define('state', {
 	
 		name : {
@@ -11,7 +12,8 @@ module.exports = (sequelize, Sequelize) => {
 	{
 		freezeTableName: true, 
 		timestamps: false		
-	});
+	}
+ );
 
   return State;
   

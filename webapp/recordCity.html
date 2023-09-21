@@ -27,7 +27,7 @@
 				    <tr ng-repeat="n in cities" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
 				      	<td>{{n.id}}</td>
 				      	<td>{{n.name}}</td>
-				      	<td>{{n.idstate}}</td>
+				      	<td>{{n.state.sail}}</td>
 				    </tr> 
 				  </tbody>
 				</table>
@@ -96,7 +96,7 @@
 						<br><br>
 						<div class="col-md-12">
 	                        <div class="input-group-prepend">
-	                            <select ng-model = "city.idstate" class = "form-control form-select" ng-options="state.id as state.sail for state in states track by state.id">
+	                            <select ng-model = "city.state" class = "form-control form-select" ng-options="state.id as state.sail for state in states track by state.id">
 								 	<option value=''>Selecione o Estado</option>
 								</select>
 	                        </div>
