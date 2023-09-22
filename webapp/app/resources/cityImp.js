@@ -1,6 +1,5 @@
 const db = require("../models");
 const City = db.cities;
-const State = db.states;
 const Op = db.Sequelize.Op;
 
 
@@ -17,7 +16,8 @@ exports.create = (req, res) => {
   // Create
   const city = {
     name: req.body.name,
-    stateId: req.body.state
+    state: req.body.state,
+    stateId: req.body.state.id,
   };
 
   // Save in the database

@@ -33,6 +33,7 @@ require("../app/routes/gender.routes.js")(app);
 require("../app/routes/state.routes.js")(app);
 require("../app/routes/sysUser.routes.js")(app);
 require("../app/routes/city.routes.js")(app);
+require("../app/routes/costumer.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;

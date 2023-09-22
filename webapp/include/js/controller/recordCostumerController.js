@@ -12,13 +12,11 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	refresh();
 	
 	function refresh(){
-		var parameter = 0;
-		
 		genderAPI.get().then(function(response){
 			$scope.genders = response.data;
-			cityAPI.getForPrincipal().then(function(response){
+			cityAPI.get().then(function(response){
 				$scope.cities = response.data;
-				costumerAPI.get(parameter).then(function(response){
+				costumerAPI.get().then(function(response){
 					$scope.costumers = response.data;
 					$scope.modalMessage = null;
 					$scope.error = false;
@@ -109,8 +107,6 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	$scope.edit = function(costumer){
 		$scope.costumer = angular.copy(costumer);
 		
-		console.log($scope.costumer);
-		
 		if($scope.costumer.datebirth){
 			$scope.costumer.datebirth = new Date($scope.costumer.datebirth);
 		}
@@ -124,6 +120,10 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
 		var parameter2 = $scope.costumer;
+		
+		parameter2.genderId = $scope.costumer.gender.id;
+		parameter2.cityId = $scope.costumer.city.id;
+		
 		if(!parameter2.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';

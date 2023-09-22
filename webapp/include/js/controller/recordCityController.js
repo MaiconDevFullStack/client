@@ -90,11 +90,11 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	}
 	
 	
-	$scope.edit = function(city){
+	$scope.edit = function(){
+		
+		city = $scope.selectedObject;
 		
 		$scope.city = angular.copy(city);
-		
-		console.log($scope.city);
 		
 		$scope.modalTitle = 'Edit City';
 		$(document).ready(function() {
@@ -102,11 +102,11 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 		});
 	}
 	
-	
-	
 	$scope.confirmEdit = function(){
 		var parameter = $scope.selectedObject.id;
 		var parameter2 = $scope.city;
+		parameter2.stateId = $scope.city.state.id;
+		
 		if(!parameter2.name){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Insert the Name!';
