@@ -132,7 +132,7 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 			return;
 		}
 		else {
-			serviceAPI.patch(parameter, parameter2).then(function(){
+			serviceAPI.put(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;

@@ -1,9 +1,9 @@
 const db = require("../models");
-const State = db.states;
+const Sale = db.sales;
 const Op = db.Sequelize.Op;
 
 
-// Create and Save a new Tutorial
+// Create and Save new
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.name) {
@@ -13,14 +13,20 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a Tutorial
-  const state = {
-    name: req.body.name,
-    sail: req.body.sail
+  // Create
+  const sale = {
+    value: req.body.value,
+    saleDate: req.body.saleDate,
+    service: req.body.service,
+    product: req.body.product,
+    costumer: req.body.costumer,
+    serviceId: req.body.service.id,
+    productId: req.body.product.id,
+    costumerId: req.body.costumer.id
   };
 
-  // Save Tutorial in the database
-  State.create(state).then(data => {
+  // Save in the database
+  Sale.create(sale).then(data => {
       res.send(data);
   }).catch(err => {
 	  res.status(500).send({
@@ -29,17 +35,11 @@ exports.create = (req, res) => {
   	});
 };
 
-// Retrieve all Tutorials from the database.
+// Retrieve all from the database.
 exports.findAll = (req, res) => {
-  let limit = 5;
-  let offset = 5;
-  
-  console.log(offset);	
-  State.findAll({
-			  	 offset: offset,
-		  		 limit: limit
-  				})
-    .then(data => {
+  Sale.findAll({
+	  include: ['product', 'service']
+  }).then(data => {
       res.send(data);
     })
     .catch(err => {
@@ -50,11 +50,11 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Update a Tutorial by the id in the request
+// Update by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  State.update(req.body, {
+  Sale.update(req.body, {
     where: { id: id }
   })
     .then(num => {
@@ -75,11 +75,11 @@ exports.update = (req, res) => {
     });
 };
 
-// Delete a Tutorial with the specified id in the request
+// Delete  with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  State.destroy({
+  Sale.destroy({
     where: { id: id }
   })
     .then(num => {
@@ -105,12 +105,12 @@ exports.deleteAll = (req, res) => {
   
 };
 
-// Find all published Tutorials
+// Find all for parameter
 exports.findAllPublished = (req, res) => {
   
 };
 
-// Find a single Tutorial with an id
+// Find a single with an id
 exports.findOne = (req, res) => {
   
 };

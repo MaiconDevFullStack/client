@@ -11,8 +11,17 @@
 			<script type="text/javascript" src="include/js/services/stateAPIService.js"></script>
 			<link rel="stylesheet" href="include/css/style.css">
 		</head>
-		<div class="col-md-12 jumbotron" >	
-			<div>
+		<div class="col-md-12 jumbotron" >
+			
+			<div ng-show='loadScreen == true'>
+				<div class="progress">
+				  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+				    <span class="sr-only">45% Complete</span>
+				  </div>
+				</div>
+			</div>
+			
+			<div ng-show='loadScreen == false'>
 				<table id="tableCity" class="table table-bordered table-striped">
 				  <thead class="thead-dark">
 				    <tr>
@@ -30,33 +39,14 @@
 				  </tbody>
 				</table>
 			</div>
-	
 			
-			<!--  
-			<nav aria-label="Page navigation example" class="text-center">
-			  <ul class="pagination">
-			    <li class="page-item">
-			      <a class="page-link" href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			        <span class="sr-only">Previous</span>
-			      </a>
-			    </li>
-			    <li class="page-item" ng-repeat="l in cities">
-			   		{{l.length}}
-			      <a class="page-link" href="#" aria-label="Next">
-			        <span aria-hidden="true">&laquo;</span>
-			        <span class="sr-only"></span>
-			      </a>
-			    </li>
-			    <li class="page-item">
-			      <a class="page-link" href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			        <span class="sr-only">Next</span>
-			      </a>
-			    </li>
+			<nav aria-label="...">
+			  <ul class="pager">
+			    <li><a ng-click="previous()">Anterior</a></li>
+			    <li><a ng-click="next()">Próximo</a></li>
 			  </ul>
 			</nav>
-			-->
+			
 			
 			<br>
 			<div class="col-md-12">

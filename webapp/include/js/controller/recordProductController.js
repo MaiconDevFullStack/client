@@ -162,7 +162,7 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 			return;
 		}
 		else {
-			productAPI.patch(parameter, parameter2).then(function(){
+			productAPI.put(parameter, parameter2).then(function(){
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
 				$scope.error = false;

@@ -24,29 +24,18 @@ db.states = require("./state.model.js")(sequelize, Sequelize);
 db.sysUsers = require("./sysUser.model.js")(sequelize, Sequelize);
 db.cities = require("./city.model.js")(sequelize, Sequelize);
 db.costumers = require("./costumer.model.js")(sequelize, Sequelize);
+db.products = require("./product.model.js")(sequelize, Sequelize);
+db.services = require("./service.model.js")(sequelize, Sequelize);
+db.sales = require("./sale.model.js")(sequelize, Sequelize);
 
 
-//RELATIONS BETWEEN MODELS STATE AND CITY
-db.states.hasMany(db.cities, {
-  foreignKey: 'stateId', 
-  as: "city" 
-});
+//RELATIONS BETWEEN MODELS
 db.cities.belongsTo(db.states, {
   foreignKey: 'stateId',
   as: "state",
 });
 
-//RELATIONS BETWEEN MODELS COSTUMER AND CITY AND GENDER
-db.cities.hasMany(db.costumers, {
-  foreignKey: 'cityId', 
-  as: "costumer" 
-});
-
-db.genders.hasMany(db.costumers, {
-  foreignKey: 'genderId', 
-  as: "costumer" 
-});
-
+//RELATIONS BETWEEN MODELS
 db.costumers.belongsTo(db.cities, {
   foreignKey: 'cityId',
   as: "city",
@@ -57,4 +46,28 @@ db.costumers.belongsTo(db.genders, {
   as: "gender",
 });
 
+
+//RELATIONS BETWEEN MODELS
+/*
+db.products.belongsToMany(db.sales, {
+  through: 'saleProduct',
+  foreignKey: 'productId'
+});
+
+db.services.belongsToMany(db.sales, {
+  through: 'saleProduct',
+  foreignKey: 'serviceId'
+});
+
+db.costumers.belongsToMany(db.sales, {
+  through: 'saleProduct',
+  foreignKey: 'costumerId'
+});
+
+
+db.costumers.belongsTo(db.sales, {
+  foreignKey: 'costumerId',
+  as: "costumer",
+});
+*/
 module.exports = db;

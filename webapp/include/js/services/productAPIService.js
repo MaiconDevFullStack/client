@@ -1,20 +1,20 @@
 angular.module("recordProduct").service("productAPI", function($http){
 	
 	this.get = function(){
-		return $http.get("http://localhost:3001/product");
+		return $http.get("http://localhost:8081/product/getAll");
 	};
 	
-	this.post = function(city){
-		return $http.post("http://localhost:3001/product", city);
+	this.post = function(product){
+		return $http.post("http://localhost:8081/product/insert", product);
 	};
 	
 	this.delete = function(parameter){
-		return $http.delete("http://localhost:3001/product/"+parameter);
+		return $http.delete("http://localhost:8081/product/delete/"+parameter);
 	};
 	
 
-	this.patch = function(parameter, parameter2){
-		return $http.patch("http://localhost:3001/product/"+parameter, parameter2);
+	this.put = function(parameter, parameter2){
+		return $http.put("http://localhost:8081/product/edit/"+parameter, parameter2);
 	};
 	
 });

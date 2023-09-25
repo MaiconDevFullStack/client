@@ -1,5 +1,5 @@
 const db = require("../models");
-const State = db.states;
+const Service = db.services;
 const Op = db.Sequelize.Op;
 
 
@@ -14,13 +14,15 @@ exports.create = (req, res) => {
   }
 
   // Create a Tutorial
-  const state = {
+  const service = {
     name: req.body.name,
-    sail: req.body.sail
+    codeBar: req.body.codeBar,
+    description: req.body.description,
+    costSale: req.body.costSale
   };
 
   // Save Tutorial in the database
-  State.create(state).then(data => {
+  Service.create(service).then(data => {
       res.send(data);
   }).catch(err => {
 	  res.status(500).send({
@@ -31,14 +33,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-  let limit = 5;
-  let offset = 5;
-  
-  console.log(offset);	
-  State.findAll({
-			  	 offset: offset,
-		  		 limit: limit
-  				})
+  Service.findAll()
     .then(data => {
       res.send(data);
     })
@@ -54,7 +49,7 @@ exports.findAll = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  State.update(req.body, {
+  Service.update(req.body, {
     where: { id: id }
   })
     .then(num => {
@@ -79,7 +74,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  State.destroy({
+  Service.destroy({
     where: { id: id }
   })
     .then(num => {

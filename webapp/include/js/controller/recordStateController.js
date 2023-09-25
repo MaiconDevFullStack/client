@@ -5,13 +5,33 @@ var app = angular.module("recordState",[]).controller("recordStateController", [
 	$scope.error = false;
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
+	$scope.loadScreen = true;
 	
 	
 	refresh();
 	
 	function refresh(){
-		stateAPI.get().then(function(response){
+		
+		var parameter = 5;
+		
+		stateAPI.get(parameter).then(function(response){
 			$scope.states = response.data;
+			$scope.loadScreen = false;
+			$scope.modalMessage = null;
+			$scope.error = false;
+			$scope.lengthState = $scope.states.length;
+		});
+	}
+	
+	$scope.next = function(){
+		
+		$scope.loadScreen = true;
+		
+		var parameter = 5;
+		
+		stateAPI.get(parameter).then(function(response){
+			$scope.states = response.data;
+			$scope.loadScreen = false;
 			$scope.modalMessage = null;
 			$scope.error = false;
 			$scope.lengthCity = $scope.states.length;

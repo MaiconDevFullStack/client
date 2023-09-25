@@ -1,19 +1,19 @@
 angular.module("recordService").service("serviceAPI", function($http){
 	
 	this.get = function(){
-		return $http.get("http://localhost:3001/service");
+		return $http.get("http://localhost:8081/service/getAll");
 	};
 	
 	
 	this.post = function(service){
-		return $http.post("http://localhost:3001/service", service);
+		return $http.post("http://localhost:8081/service/insert", service);
 	};
 	
 	this.delete = function(parameter){
-		return $http.delete("http://localhost:3001/service/"+parameter);
+		return $http.delete("http://localhost:8081/service/delete/"+parameter);
 	};
 	
-	this.patch = function(parameter, parameter2){
-		return $http.patch("http://localhost:3001/service/"+parameter, parameter2);
+	this.put = function(parameter, parameter2){
+		return $http.put("http://localhost:8081/service/edit/"+parameter, parameter2);
 	};
 });
