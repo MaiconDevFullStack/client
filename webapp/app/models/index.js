@@ -48,26 +48,11 @@ db.costumers.belongsTo(db.genders, {
 
 
 //RELATIONS BETWEEN MODELS
-/*
-db.products.belongsToMany(db.sales, {
-  through: 'saleProduct',
-  foreignKey: 'productId'
-});
+db.products.belongsToMany(db.sales, { through: 'sale_product' });
+db.sales.belongsToMany(db.products, { through: 'sale_product' });
 
-db.services.belongsToMany(db.sales, {
-  through: 'saleProduct',
-  foreignKey: 'serviceId'
-});
-
-db.costumers.belongsToMany(db.sales, {
-  through: 'saleProduct',
-  foreignKey: 'costumerId'
-});
+db.services.belongsToMany(db.sales, { through: 'sale_service' });
+db.sales.belongsToMany(db.services, { through: 'sale_service' });
 
 
-db.costumers.belongsTo(db.sales, {
-  foreignKey: 'costumerId',
-  as: "costumer",
-});
-*/
 module.exports = db;
