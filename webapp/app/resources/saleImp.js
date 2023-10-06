@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 // Create and Save new
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.name) {
+  if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -17,12 +17,12 @@ exports.create = (req, res) => {
   const sale = {
     value: req.body.value,
     saleDate: req.body.saleDate,
-    service: req.body.service,
     product: req.body.product,
-    costumer: req.body.costumer,
-    serviceId: req.body.service.id,
     productId: req.body.product.id,
-    costumerId: req.body.costumer.id
+    service: req.body.service,
+    serviceId: req.body.service.id
+    //costumer: req.body.costumer,
+    //costumerId: req.body.costumer.id
   };
 
   // Save in the database

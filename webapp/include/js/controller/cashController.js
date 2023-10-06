@@ -25,7 +25,7 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 	//IMPLEMENTNG SALE
 	$scope.btnInsert = function(codeBar){
 		
-		$scope.sale.totalSale = 0;
+		$scope.sale.value = 0;
 		
 		for(a in $scope.products){
 			if(codeBar == $scope.products[a].codeBar){
@@ -35,7 +35,7 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 		
 		
 		for(b in $scope.sale.product){
-			$scope.sale.totalSale = $scope.sale.totalSale + $scope.sale.product[b].costSale; 
+			$scope.sale.value = $scope.sale.value + $scope.sale.product[b].costSale; 
 		}
 		
 		$scope.codeBar = null;

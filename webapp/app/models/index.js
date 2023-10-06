@@ -46,6 +46,11 @@ db.costumers.belongsTo(db.genders, {
   as: "gender",
 });
 
+db.sales.belongsTo(db.costumers, {
+	foreignKey: 'costumerId',
+  	as: "costumer",
+});
+
 
 //RELATIONS BETWEEN MODELS
 db.products.belongsToMany(db.sales, { through: 'sale_product' });
