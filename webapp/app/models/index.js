@@ -27,6 +27,7 @@ db.costumers = require("./costumer.model.js")(sequelize, Sequelize);
 db.products = require("./product.model.js")(sequelize, Sequelize);
 db.services = require("./service.model.js")(sequelize, Sequelize);
 db.sales = require("./sale.model.js")(sequelize, Sequelize);
+db.dashBoards = require("./dashBoard.model.js")(sequelize, Sequelize);
 
 
 //RELATIONS BETWEEN MODELS
