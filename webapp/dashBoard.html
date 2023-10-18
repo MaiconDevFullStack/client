@@ -1,6 +1,5 @@
 <form ng-app="dashBoard" ng-controller='dashBoardController'>
 	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Fechar">&times;</button>
-	<button type="button" class="close x_close" data-dismiss="modal" ng-click="toggleFullScreen()" aria-hidden="true" title={{message}}>&EmptySmallSquare;</button>
 	<div>
 		<head>
 			<meta charset="utf-8"/>
@@ -184,8 +183,10 @@
 				      	<div>
 					      	<div class="col-md-12 ">
 					  		  <div class="input-group-prepend"></div>
-					  		  
-					  		  	<input id="iName" type="file" class="form-control" placeholder="Selecione o Arquivo" accept="*"multiple/>
+					  		  	
+					  		  	<!--<input id="cAnexo1" class="form-control" type="file" ng-model="interacaoCad.anexo64" accept="*"multiple/>-->
+					  		  	
+					  		  	  <input id="myFiles" type="file" class="form-control" placeholder="Selecione o Arquivo"  accept="*" single app-filereader/>
 							  
 							</div>
 							<br><br>
@@ -200,7 +201,7 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-				        <button type="button" class="btn btn-primary" ng-click="inserirArquivo()">Submit</button>
+				        <button type="submit" class="btn btn-primary">Submit</button>
 				      </div>
 				    </div>
 			    </form>

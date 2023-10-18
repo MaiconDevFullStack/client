@@ -5,6 +5,7 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 	$scope.error = false;
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
+	$scope.dashBoard = {};
 	
 	
 	refresh();
@@ -28,38 +29,67 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 		});
 	}
 	
-	$scope.toggleFullScreen = function() {
+	const form = document.getElementById('uploadForm')
+    	
+	const sendFiles = async()=>{
+		const myFiles = document.getElementById('myFiles').files
 		
-		if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-			(!document.mozFullScreen && !document.webkitIsFullScreen)) {
-			if (document.documentElement.requestFullScreen) {
-				document.documentElement.requestFullScreen();
-				$scope.message = 'Restaurar Tela';
-			} else if (document.documentElement.mozRequestFullScreen) {
-				document.documentElement.mozRequestFullScreen();
-				$scope.message = 'Restaurar Tela';
-			} else if (document.documentElement.webkitRequestFullScreen) {
-				document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-				$scope.message = 'Restaurar Tela';
-			}
-			$scope.maximize = true
-		} else {
-			if (document.cancelFullScreen) {
-				document.cancelFullScreen();
-				$scope.message = 'Tela Inteira';
-			} else if (document.mozCancelFullScreen) {
-				document.mozCancelFullScreen();
-				$scope.message = 'Tela Inteira';
-			} else if (document.webkitCancelFullScreen) {
-				document.webkitCancelFullScreen();
-				$scope.message = 'Tela Inteira';
-			}
-			$scope.maximize = false
-		}
+		const formData = new FormData()
+		
+		Object.keys(myFiles).forEach(key => {
+			formData.append(myFiles.item(key).name, myFiles.item(key))
+		})
+		
+		
+		const response = await fetch('http://localhost:8081/dashBoard/insert',{
+			method: 'POST',
+			body: formData
+		})
+		
+		
+		const json = await response.json()
+		
+		const h2 = document.querySelector('h2')
+		h2.textContent = `Status: ${json?.status}`
+		
+		const h3 = document.querySelector('h3')
+		h3.textContent = json?.message
+		
+		console.log(json)
+	
 	}
 	
-	$scope.inserirArquivo = function(){	
-		var dashBoard = document.getElementById("iName").files;
+	form.addEventListener('submit', (e) => {
+		console.log('ENTROU')
+		e.preventDefault()
+		sendFiles()
+	})
+	
+	
+	
+	/*
+	var cAnexo1 = document.getElementById("cAnexo1");
+	
+	cAnexo1.addEventListener("change", function() {
+	    var name = null;
+	    
+	    if(cAnexo1.files.length > 0) {
+	    	name = cAnexo1.files[0].name;
+	    } 
+	    
+	    $scope.dashBoard.name = name.replace(" ", "_");
+	    $scope.dashBoard.file = document.getElementById("cAnexo1").files;
+	    console.log($scope.dashBoard.file);
+	});
+	
+	
+	$scope.inserirArquivo = function(){
+		
+		var param = $scope.dashBoard;
+		
+		//var dashBoard = document.getElementById("iName").files;
+		
+		//console.log(dashBoard);
 		/*
 		if(!$scope.dashBoard){
 			$scope.error = true;
@@ -67,9 +97,9 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 			document.getElementById("iName").focus();
 			return;
 		}
-		*/
+		
 		//else {
-			dashBoardAPI.post(dashBoard).then(function(){
+			dashBoardAPI.post(param).then(function(){
 				delete $scope.dashBoard;
 				$scope.selectedObject = null;
 				$scope.modalTitle = null;
@@ -78,6 +108,7 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 			});
 		//}
 	}
+	*/
 	
 	$scope.btnDelete = function(){
 		$scope.modalMessage = 'Do You Really Want Remove The Record?';
@@ -141,12 +172,6 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 		$scope.selectedObject = obj;
 	}
 	
-	
-	/*
-    /////////////////////////////////////////////////////////////////
-	// 					DADOS GRAFICO USUARIO
-    /////////////////////////////////////////////////////////////////
-    */
   
     function atualizarDadosUsuario(){
 			
@@ -160,6 +185,9 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 			$scope.valoresUsuario.push(($scope.dashBoards.length*100).toFixed(1));
 		}
 	};
+	
+	
+	
 	
 	
 }])

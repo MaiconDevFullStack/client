@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const upload = require('express-fileupload');
 
+
+app.use(upload());
 
 app.listen(3300, ()=>{
 	console.log("server is now at port 3300");

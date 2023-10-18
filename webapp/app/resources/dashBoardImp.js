@@ -2,9 +2,6 @@ const db = require("../models");
 const DashBoard = db.dashBoards;
 const Op = db.Sequelize.Op;
 
-
-
-
 /*
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -47,18 +44,33 @@ exports.create = (req, res) => {
     });
     return;
   }
-
-  // Create a Tutorial
-  const files = req.files
+  else{
+	  // Create a Tutorial
+	  const dashBoard = req.files;
+	  				/*
+	  				{
+		  				name: req.files.name, 
+		  				file: req.files.data
+		  			}  
+					*/
+	  console.log(dashBoard);
+	  
+	  res.status(200).send({
+	  	message: 'success' 
+	  });	  
+  
+  }
 
   // Save Tutorial in the database
-  DashBoard.create(files).then(data => {
+  /*
+  DashBoard.create(dashBoard).then(data => {
       res.send(data);
   }).catch(err => {
 	  res.status(500).send({
 	    message: err.message || "Some error occurred while creating the DashBoard."
 	  });
   	});
+  	*/
 };
 
 
