@@ -1,5 +1,6 @@
 <form ng-app="dashBoard" ng-controller='dashBoardController'>
 	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Fechar">&times;</button>
+	<button type="button" class="close x_close" data-dismiss="modal" ng-click="toggleFullScreen()" aria-hidden="true" title={{message}}>&EmptySmallSquare;</button>
 	<div>
 		<head>
 			<meta charset="utf-8"/>
@@ -15,38 +16,114 @@
 			<div>
 			
 				<!-- GRAFICO COM OS DADOS -->
-				<div class="panel panel-default">
+				<div class="panel panel-default col-md-3">
 	                <div class="panel-body">
-				        <div class="col-md-12">
+				        <div>
 				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
 				        </div>
 	                </div>
 				</div>
 				
-				<table id="tableCity" class="table table-bordered table-striped">
-				  <thead class="thead-dark">
-				    <tr>
-				      <th scope="col" class="col-md-1">Código</th>
-				      <th scope="col">Gênero</th>
-				      <th scope="col">Sigla</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr ng-repeat="n in genders" ng-click="selectObject(n)" ng-dblclick="edit(n)" ng-class="{selectedLine: n == selectedObject}">
-				      	<td>{{n.id}}</td>
-				      	<td>{{n.name}}</td>
-				      	<td>{{n.sail}}</td>
-				    </tr>
-				  </tbody>
-				</table>
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
+				
+				<!-- GRAFICO COM OS DADOS -->
+				<div class="panel panel-default col-md-3">
+	                <div class="panel-body">
+				        <div>
+				        	<canvas id="graficoUsuario" class="chart-horizontal-bar" chart-labels="rotulosUsuario" chart-data="valoresUsuario"></canvas>									        	
+				        </div>
+	                </div>
+				</div>
 			</div>
 	
-			<nav aria-label="...">
-			  <ul class="pager">
-			    <li><a ng-click="previous()">Anterior</a></li>
-			    <li><a ng-click="next()">Próximo</a></li>
-			  </ul>
-			</nav>
 			
 			<br>
 			<div class="col-md-12">
@@ -123,7 +200,7 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-				        <button type="button" class="btn btn-primary">Submit</button>
+				        <button type="button" class="btn btn-primary" ng-click="inserirArquivo()">Submit</button>
 				      </div>
 				    </div>
 			    </form>
@@ -156,7 +233,6 @@
 			    </div>
 			  </div>
 			</div>
-			
 			<p class="mt-5 mb-1 text-muted positionTrade">&copy; 2023-2023</p>
 		</div>
 	</div>

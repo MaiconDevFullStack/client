@@ -4,8 +4,8 @@ angular.module("dashBoard").service("dashBoardAPI", function($http){
 		return $http.get("http://localhost:8081/dashBoard/getAll");
 	};
 	
-	this.post = function(gender){
-		return $http.post("http://localhost:8081/dashBoard/insert", gender);
+	this.post = function(dashBoard){
+		return $http.post("http://localhost:8081/dashBoard/insert", dashBoard);
 	};
 	
 	this.delete = function(parameter){

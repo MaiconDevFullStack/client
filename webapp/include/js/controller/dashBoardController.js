@@ -11,10 +11,10 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 	
 	function refresh(){
 		dashBoardAPI.get().then(function(response){
-			atualizarDadosUsuario();
 			$scope.dashBoards = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
+			atualizarDadosUsuario();
 		});
 	}
 	
@@ -28,17 +28,47 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 		});
 	}
 	
+	$scope.toggleFullScreen = function() {
+		
+		if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+			(!document.mozFullScreen && !document.webkitIsFullScreen)) {
+			if (document.documentElement.requestFullScreen) {
+				document.documentElement.requestFullScreen();
+				$scope.message = 'Restaurar Tela';
+			} else if (document.documentElement.mozRequestFullScreen) {
+				document.documentElement.mozRequestFullScreen();
+				$scope.message = 'Restaurar Tela';
+			} else if (document.documentElement.webkitRequestFullScreen) {
+				document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+				$scope.message = 'Restaurar Tela';
+			}
+			$scope.maximize = true
+		} else {
+			if (document.cancelFullScreen) {
+				document.cancelFullScreen();
+				$scope.message = 'Tela Inteira';
+			} else if (document.mozCancelFullScreen) {
+				document.mozCancelFullScreen();
+				$scope.message = 'Tela Inteira';
+			} else if (document.webkitCancelFullScreen) {
+				document.webkitCancelFullScreen();
+				$scope.message = 'Tela Inteira';
+			}
+			$scope.maximize = false
+		}
+	}
 	
-		
+	$scope.inserirArquivo = function(){	
 		var dashBoard = document.getElementById("iName").files;
-		
+		/*
 		if(!$scope.dashBoard){
 			$scope.error = true;
 			$scope.modalMessage = 'Por Favor Selecione os Arquivos!';
 			document.getElementById("iName").focus();
 			return;
 		}
-		else {
+		*/
+		//else {
 			dashBoardAPI.post(dashBoard).then(function(){
 				delete $scope.dashBoard;
 				$scope.selectedObject = null;
@@ -46,8 +76,8 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 				$('#insertModal').modal('hide');
 				refresh();
 			});
-		}
-	
+		//}
+	}
 	
 	$scope.btnDelete = function(){
 		$scope.modalMessage = 'Do You Really Want Remove The Record?';
@@ -124,38 +154,12 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 		$scope.valoresUsuario = [];
 		
 		for(var a = 0; a < $scope.dashBoards.length; a++){
-			$scope.rotulosUsuario.push('Critério: '+$scope.dashBoards[a].name +' | Média: '+$scope.dashBoards[a].name.toFixed(1));
-			$scope.valoresUsuario.push($scope.dashBoards.legth);
+			console.log($scope.dashBoards[a].name);
+			$scope.rotulosUsuario.push('Critério: '+$scope.dashBoards[a].name +' | Média: '+($scope.dashBoards.length*100).toFixed(1));
+			console.log(($scope.dashBoards.length*100).toFixed(1));
+			$scope.valoresUsuario.push(($scope.dashBoards.length*100).toFixed(1));
 		}
 	};
-	
-	
-	const form = document.getElementById('uploadForm')
-    	
-	const sendFiles = async()=>{
-		const myFiles = document.getElementById('iName').files
-		
-		const formData = new FormData()
-		
-		Object.keys(myFiles).forEach(key => {
-			formData.append(myFiles.item(key).name, myFiles.item(key))
-		})
-		
-		const response = await fetch('http://localhost:8081/dashBoard/insert',{
-    			method: 'POST',
-    			body: formData
-    		})
-		
-		const json = await response.json()
-		
-		console.log(json)
-	}
-	
-	form.addEventListener('submit', (e) => {
-		console.log('ENTROU')
-		e.preventDefault()
-		sendFiles()
-	})
 	
 	
 }])
