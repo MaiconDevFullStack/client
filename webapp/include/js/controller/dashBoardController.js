@@ -6,16 +6,24 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
 	$scope.dashBoard = {};
-	
+	$scope.test2 = null;
 	
 	refresh();
+	
+	setInterval(refresh, 3000);
 	
 	function refresh(){
 		dashBoardAPI.get().then(function(response){
 			$scope.dashBoards = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
-			atualizarDadosUsuario();
+			
+			for(a in $scope.dashBoards)
+			if($scope.dashBoards[a].variable){
+				var test = Math.floor(Math.random() * 10);
+				$scope.dashBoards[a].test2 = ($scope.dashBoards[a].variable*test)
+				console.log($scope.dashBoards[a].test2);
+			}
 		});
 	}
 	
@@ -63,6 +71,7 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 		console.log('ENTROU')
 		e.preventDefault()
 		sendFiles()
+		$('#insertModal').modal('hide');
 	})
 	
 	
@@ -171,23 +180,5 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 	$scope.selectObject = function(obj){
 		$scope.selectedObject = obj;
 	}
-	
-  
-    function atualizarDadosUsuario(){
-			
-		$scope.rotulosUsuario = [];
-		$scope.valoresUsuario = [];
-		
-		for(var a = 0; a < $scope.dashBoards.length; a++){
-			console.log($scope.dashBoards[a].name);
-			$scope.rotulosUsuario.push('Critério: '+$scope.dashBoards[a].name +' | Média: '+($scope.dashBoards.length*100).toFixed(1));
-			console.log(($scope.dashBoards.length*100).toFixed(1));
-			$scope.valoresUsuario.push(($scope.dashBoards.length*100).toFixed(1));
-		}
-	};
-	
-	
-	
-	
 	
 }])

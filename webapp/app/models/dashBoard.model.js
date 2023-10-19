@@ -5,7 +5,10 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.DataTypes.STRING, allowNull : true
 		},
 		file : {
-			type: Sequelize.DataTypes.BLOB('long'), allowNull : false
+			type: Sequelize.DataTypes.BLOB('long'), allowNull : true
+		},
+		variable : {
+			type: Sequelize.DataTypes.FLOAT, allowNull : false
 		}
 	},
 	{
