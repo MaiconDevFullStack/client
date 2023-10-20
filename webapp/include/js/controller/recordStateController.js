@@ -19,7 +19,6 @@ var app = angular.module("recordState",[]).controller("recordStateController", [
 			$scope.loadScreen = false;
 			$scope.modalMessage = null;
 			$scope.error = false;
-			$scope.lengthState = $scope.states.length;
 		});
 	}
 	

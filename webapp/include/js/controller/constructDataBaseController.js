@@ -6,4 +6,8 @@ var app = angular.module('constructDataBase', []).controller('constructDataBaseC
 			
 		});
 	}
+	
+	$scope.location = function(){
+		location.href ="root.html";
+	}
 });

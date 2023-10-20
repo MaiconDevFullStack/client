@@ -30,15 +30,8 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
-  let limit = 5;
-  let offset = 5;
-  
-  console.log(offset);	
-  State.findAll({
-			  	 offset: offset,
-		  		 limit: limit
-  				})
+exports.findAll = (req, res) => {	
+  State.findAll()
     .then(data => {
       res.send(data);
     })
