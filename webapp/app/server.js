@@ -1,14 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const upload = require('express-fileupload');
-
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8082});
 
 app.use(upload());
-
-app.listen(3300, ()=>{
-	console.log("server is now at port 3300");
-});
 
 app.use(cors({
 	origin: '*'
@@ -47,114 +45,3 @@ db.sequelize.sync().then(() => {
     console.log("Failed to sync db: " + err.message);
   });
 
-/*
-
-
-//////////////////////////////////////
-//CITY METHODS  ///  EXEMPLES QUERIES
-/////////////////////////////////////
-
-app.get('/city/getAll', (req, res)=>{
-	client.query(`select * from city c
-				  order by 1 desc`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-});
-
-app.get('/city/getAllForPrincipalTable', async (req, res) =>{
-*/	
-	
-	///////IN CASE OF [{}] LIST OF OBJECTS
-	/*
-	SELECT c.id AS cityId, c.name AS cityName,
-	         json_agg(
-	           json_build_object(
-	             'id', s.id,
-	             'name', s.name
-	           )
-	         ) AS states
-	  FROM City c
-	  LEFT JOIN State s ON s.id = c.idstate 
-	  GROUP BY c.id
-	*/
-	/*
-	client.query(`SELECT c.id, c.name,
-				       json_build_object(
-				         'id', s.id,
-				         'name', s.name,
-				         'sail', s.sail
-				       )AS idstate
-				  FROM City c
-				  LEFT JOIN State s ON s.id = c.idstate 
-				  GROUP BY c.id, s.id`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-	
-
-	client.query(`SELECT *
-				  FROM City c
-				  LEFT JOIN State s ON s.id = c.idstate 
-				  GROUP BY c.id, s.id`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-	
-});
-
-
-
-app.get('/city/getById/:id', (req, res)=>{
-	client.query(`select * from city c
-				  where c.id = ${req.params.id} 
-				  order by 1 desc`, (err, result)=>{
-		if(!err){
-			res.send(result.rows);
-		}	
-	});
-});
-
-app.post('/city/insert', (req, res)=>{
-	var city = req.body;
-	client.query(`insert into city(name,
-							       idstate)
-							  values('${city.name}',
-							  		 '${city.idstate}')`,(err, result)=>{
-		if(!err){
-			res.send('Insertion was successful')
-		}
-		else {console.log(err.message)}
-	});
-	client.end;
-});
-
-
-app.delete('/city/delete/:id',(req, res)=>{
-	client.query(`delete from city
-				  where id=${req.params.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Deletion was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-
-app.put('/city/edit/:id',(req, res)=>{
-	let city = req.body;
-	client.query(`update city 
-				  set name = '${city.name}', 
-				  	  idstate = '${city.idstate}' 
-				  where id = ${city.id}`, (err, result)=>{
-		if(!err){
-			res.send(`Edition was successful`);
-		}
-		else{console.log(err.message)}
-	});
-	client.end;
-});
-*/

@@ -42,7 +42,7 @@
 				      	<td><h2>{{n.id}}</h2></td>
 				      	<td><h2>{{n.name}}</h2></td>
 				      	<td><h2>{{n.codeBar}}</h2></td>
-				      	<td><h2>{{n.qtdProduct}}</h2></td>
+				      	<td><h2><input id="eQtdProduct" type="number" ng-model="n.qtdProduct"/></h2></td>
 				      	<td><h2>{{n.costSale}}</h2></td>
 				    </tr>
 				  </tbody> 
@@ -59,7 +59,7 @@
 					<button type="button" class="btn btn-success btn-lg btn-block" ng-click="btnFinishSale()">Finalizar Venda</button>
 				</div>
 				<div class="col-md-4 textOrientation">
-					<h1>Total: {{sale.value}}</h1>
+					<h1>Total: R$ {{sale.value}}</h1>
 				</div>
 				
 				<!-- 

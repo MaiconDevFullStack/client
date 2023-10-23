@@ -8,6 +8,7 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 	$scope.modalObject = null;
 	$scope.message = 'Tela Inteira';
 	
+	
 	retrieve();
 	
 	function retrieve(){
@@ -29,11 +30,12 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 		for(a in $scope.products){
 			if(codeBar == $scope.products[a].codeBar){
 				$scope.sale.product.push($scope.products[a]);
-			}
-			
-			for(b in $scope.sale.product){
-				$scope.sale.value = $scope.sale.value + $scope.sale.product[b].costSale; 
+
 			}	
+		}
+		
+		for(b in $scope.sale.product){
+			$scope.sale.value = $scope.sale.value + $scope.sale.product[b].costSale; 
 		}
 		
 		$scope.codeBar = null;

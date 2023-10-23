@@ -23,6 +23,7 @@
     "express-fileupload": "^1.4.1",
     "fileupload": "^1.0.0",
     "json-server": "^0.17.3",
-    "sequelize": "^6.32.0"
+    "sequelize": "^6.32.0",
+    "ws": "^8.14.2"
   }
 }
