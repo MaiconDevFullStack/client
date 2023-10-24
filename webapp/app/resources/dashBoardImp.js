@@ -3,7 +3,6 @@ const DashBoard = db.dashBoards;
 const Op = db.Sequelize.Op;
 
 
-
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
@@ -41,10 +40,6 @@ exports.create = (req, res) => {
   	});
   	*/
 };
-
-
-
-
 
 
 // Retrieve all Tutorials from the database.

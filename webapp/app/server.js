@@ -1,10 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const app = express();
 const upload = require('express-fileupload');
-const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: 8082});
+const net = require('net');
 
 app.use(upload());
 
@@ -31,17 +29,33 @@ require("../app/routes/service.routes.js")(app);
 require("../app/routes/sale.routes.js")(app);
 require("../app/routes/dashBoard.routes")(app);
 
+
+const handleConnection = socket =>{
+	console.log('Connection Socket is Open');
+	socket.on('end', ()=>{
+		console.log('Connection Socket are closed')
+	});
+	socket.on('data', data=>{
+		console.log(data.toString());
+	});
+}
+
+const server = net.createServer(handleConnection);
+server.listen(8082, 'localhost');
+
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
+
 const db = require("../app/models");
 
 db.sequelize.sync().then(() => {
   	console.log("Sync db");
-  })
-  .catch((err) => {
+  }).catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
+  
+
 

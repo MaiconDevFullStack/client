@@ -10,7 +10,7 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 	
 	refresh();
 	
-	setInterval(refresh, 3000);
+	//setInterval(refresh, 3000);
 	
 	function refresh(){
 		dashBoardAPI.get().then(function(response){
