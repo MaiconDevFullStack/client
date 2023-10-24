@@ -29,11 +29,10 @@ require("../app/routes/service.routes.js")(app);
 require("../app/routes/sale.routes.js")(app);
 require("../app/routes/dashBoard.routes")(app);
 
-
 const handleConnection = socket =>{
-	console.log('Connection Socket is Open');
+	console.log('Device Connected');
 	socket.on('end', ()=>{
-		console.log('Connection Socket are closed')
+		console.log('Device Disconected')
 	});
 	socket.on('data', data=>{
 		console.log(data.toString());
@@ -41,11 +40,19 @@ const handleConnection = socket =>{
 }
 
 const server = net.createServer(handleConnection);
-server.listen(8082, 'localhost');
 
+
+//SET THE SOCKET SERVER CONFIGURATIONS
+const PORT2 = process.env.PORT || 8082;
+const IP = 'localhost';
+server.listen(PORT2, IP,() => {
+	console.log(`Server SOCKET is running in http://${IP}:${PORT2}`);
+})
+
+//SET THE SERVICE ENDPOINTS CONFIGURATIONS
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server ROUTES is running in http://${IP}:${PORT}`);
 });
 
 
