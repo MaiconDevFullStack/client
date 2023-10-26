@@ -2,26 +2,27 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const upload = require('express-fileupload');
-const net = require('net');
 const db = require("../app/models");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8081;
-const PORT2 = process.env.PORT || 8082;
+const PORT2 = 8082;
 const IP = 'localhost';
 
+var net = require('net');
 
+net.createServer(function(sock) {
+ console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
+  sock.on('data', function(data) {
+    console.log(sock.remoteAddress + ': ' + data);
+    sock.write(data);
+  });
+ sock.on('close', function(data) {
+   console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remotePort);
+ });
 
-const handleConnection = socket =>{
-	console.log('Device Connected');
-	socket.on('end', ()=>{
-		console.log('Device Disconected')
-	});
-	socket.on('data', data=>{
-		console.log(data.toString());
-	});
-}
+}).listen(PORT2, IP);
 
-const server = net.createServer(handleConnection);
+console.log('Server listening on ' + IP +':'+ PORT2);
 
 app.use(upload());
 
@@ -46,10 +47,6 @@ require("../app/routes/service.routes.js")(app);
 require("../app/routes/sale.routes.js")(app);
 require("../app/routes/dashBoard.routes")(app);
 
-//SET THE SOCKET SERVER CONFIGURATIONS
-server.listen(PORT2, IP,() => {
-	console.log(`Server SOCKET is running in http://${IP}:${PORT2}`);
-})
 
 //SET THE SERVICE ENDPOINTS CONFIGURATIONS
 app.listen(PORT, () => {
