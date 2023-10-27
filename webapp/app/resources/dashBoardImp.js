@@ -1,4 +1,5 @@
 const db = require("../models");
+const connections = require("../server.js");
 const DashBoard = db.dashBoards;
 const Op = db.Sequelize.Op;
 

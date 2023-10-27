@@ -6,20 +6,19 @@ const db = require("../app/models");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8081;
 const PORT2 = 8082;
-const IP = 'localhost';
+const IP = '192.168.0.134';
 
 var net = require('net');
 
 net.createServer(function(sock) {
- console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
+  console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
   sock.on('data', function(data) {
     console.log(sock.remoteAddress + ': ' + data);
     sock.write(data);
   });
- sock.on('close', function(data) {
-   console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remotePort);
- });
-
+  sock.on('close', function() {
+   	console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remotePort);
+  });
 }).listen(PORT2, IP);
 
 console.log('Server listening on ' + IP +':'+ PORT2);
