@@ -1,8 +1,9 @@
 const db = require("../models");
-const connections = require("../server.js");
 const DashBoard = db.dashBoards;
 const Op = db.Sequelize.Op;
+var conn = require('../server.js')
 
+conn.call(conn);
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -26,8 +27,7 @@ exports.create = (req, res) => {
 	  
 	  res.status(200).send({
 	  	message: 'success' 
-	  });	  
-  
+	  });
   }
 
   // Save Tutorial in the database

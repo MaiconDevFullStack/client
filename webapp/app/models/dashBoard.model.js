@@ -4,11 +4,11 @@ module.exports = (sequelize, Sequelize) => {
 		name : {
 			type: Sequelize.DataTypes.STRING, allowNull : true
 		},
-		/*
+		
 		file : {
 			type: Sequelize.DataTypes.BLOB('long'), allowNull : true
 		},
-		*/
+		
 		variable : {
 			type: Sequelize.DataTypes.FLOAT, allowNull : false
 		}
