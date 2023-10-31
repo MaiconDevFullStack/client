@@ -3,7 +3,9 @@ const DashBoard = db.dashBoards;
 const Op = db.Sequelize.Op;
 var conn = require('../server.js')
 
+
 conn.call(conn);
+	
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {

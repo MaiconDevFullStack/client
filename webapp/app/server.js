@@ -13,14 +13,21 @@ module.exports = conn => {
 	net.createServer(function(sock) {
 	  console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
 	  
-	  sock.on('data', function(data) {
-	    console.log(sock.remoteAddress + ': ' + data);
-	    sock.write(data);
-	  });
-	  
-	  sock.on('close', function() {
-	   	console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remotePort);
-	  });
+	  try{
+		  sock.on('data', function(data) {
+		    console.log(sock.remoteAddress + ': ' + data);
+		    sock.write(data);
+		  });
+	  } catch(err){
+		sock.on('error', (err) => {
+		    console.log("Caught flash policy server socket error: ")
+	    	console.log(err.stack)	
+		  });  
+	  } finally{
+		  sock.on('close', function() {
+		   	console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remotePort);
+		  });
+	  }
 	}).listen(PORT2, IP);
 	
 	console.log('Server listening on ' + IP +':'+ PORT2);
