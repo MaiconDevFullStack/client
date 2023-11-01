@@ -1,10 +1,7 @@
 const db = require("../models");
 const DashBoard = db.dashBoards;
 const Op = db.Sequelize.Op;
-var conn = require('../server.js')
-
-
-conn.call(conn);
+var conn = require('../server.js');
 	
 
 // Create and Save a new Tutorial

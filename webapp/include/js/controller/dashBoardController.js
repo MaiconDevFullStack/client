@@ -8,7 +8,7 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 	$scope.dashBoard = {};
 	$scope.space = ' ';
 	
-	refresh();
+	//refresh();
 	
 	//setInterval(refresh, 3000);
 	
