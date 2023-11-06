@@ -30,12 +30,17 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 		for(a in $scope.products){
 			if(codeBar == $scope.products[a].codeBar){
 				$scope.sale.product.push($scope.products[a]);
-
-			}	
+				//$scope.sale.product[a].qtdProduct = 1;
+				
+				for(b in $scope.sale.product){
+					console.log($scope.sale.product[b]);	
+				}
+			}
 		}
 		
 		for(b in $scope.sale.product){
-			$scope.sale.value = $scope.sale.value + $scope.sale.product[b].costSale; 
+			$scope.sale.value = $scope.sale.value + $scope.sale.product[b].costSale;
+			$scope.subTotal = $scope.sale.value.toFixed(2);
 		}
 		
 		$scope.codeBar = null;

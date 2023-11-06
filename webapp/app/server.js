@@ -38,8 +38,6 @@ app.listen(PORT, () => {
   console.log(`Server ROUTES is running in http://${IP}:${PORT}`);
 });
 
-
-
 net.createServer(function(sock) {
   console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
   
