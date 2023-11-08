@@ -6,6 +6,7 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 	$scope.error = false;
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
+	$scope.loadScreen = true;
 	
 	
 	refresh();
@@ -16,7 +17,7 @@ var app = angular.module("recordService",[]).controller("recordServiceController
 			$scope.services = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
-			$scope.lengthCity = $scope.services.length;
+			$scope.loadScreen = false;
 		});
 		
 	}

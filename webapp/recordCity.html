@@ -14,8 +14,15 @@
 			<link rel="stylesheet" href="include/css/style.css">
 			<link rel="shortcut icon" type="image/x-icon" href="include/images/tryforceLogo.ico">
 		</head>
-		<div class="col-md-12 jumbotron" >	
+		
+		<div class="col-md-12 jumbotron position4" ng-show='loadScreen == true'>
 			<div>
+			  	<img class="md-12" src="include/images/loading-11.gif">
+			</div>
+		</div>
+		
+		<div class="col-md-12 jumbotron" >	
+			<div ng-show='loadScreen == false'>
 				<table id="tableCity" class="table table-bordered table-striped">
 				  <thead class="thead-dark">
 				    <tr>

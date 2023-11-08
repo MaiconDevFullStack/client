@@ -8,6 +8,7 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 	$scope.modalTitle = null;
 	$scope.cities = [];
 	$scope.genders = [];
+	$scope.loadScreen = true;
 	
 	refresh();
 	
@@ -20,9 +21,7 @@ var app = angular.module("recordCostumer",['recordCity','recordGender']).control
 					$scope.costumers = response.data;
 					$scope.modalMessage = null;
 					$scope.error = false;
-					$scope.lengthCostumer = $scope.costumers.length;
-					$scope.itensPerPage = $scope.lengthCostumer;
-					console.log($scope.itensPerPage);
+					$scope.loadScreen = false;
 				});
 			});
 		});

@@ -5,6 +5,7 @@ var app = angular.module("recordGender",[]).controller("recordGenderController",
 	$scope.error = false;
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
+	$scope.loadScreen = true;
 	
 	
 	refresh();
@@ -14,7 +15,7 @@ var app = angular.module("recordGender",[]).controller("recordGenderController",
 			$scope.genders = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
-			$scope.lengthGender = $scope.genders.length;
+			$scope.loadScreen = false;
 		});
 	}
 	

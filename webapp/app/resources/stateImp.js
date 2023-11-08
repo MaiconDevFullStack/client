@@ -31,8 +31,9 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {	
+  
   State.findAll()
-    .then(data => {
+  	.then(data => {
       res.send(data);
     })
     .catch(err => {

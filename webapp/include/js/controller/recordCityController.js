@@ -7,6 +7,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
 	$scope.states = [];
+	$scope.loadScreen = true;
 	
 	refresh();
 	
@@ -19,8 +20,7 @@ var app = angular.module("recordCity",['recordState']).controller("recordCityCon
 				
 				$scope.modalMessage = null;
 				$scope.error = false;
-				$scope.lengthCity = $scope.cities.length;
-				$scope.itensPerPage = $scope.lengthCity/5;
+				$scope.loadScreen = false;
 			});
 		});
 	}

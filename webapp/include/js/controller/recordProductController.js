@@ -6,6 +6,7 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 	$scope.error = false;
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
+	$scope.loadScreen = true;
 	
 	
 	refresh();
@@ -16,7 +17,7 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 			$scope.products = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
-			$scope.lengthCity = $scope.products.length;
+			$scope.loadScreen = false;
 		});
 		
 	}

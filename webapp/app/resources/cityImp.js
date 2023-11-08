@@ -33,7 +33,7 @@ exports.create = (req, res) => {
 // Retrieve all from the database.
 exports.findAll = (req, res) => {
   City.findAll({
-	  include: ['state'],
+	  include: ['state']
   }).then(data => {
       res.send(data);
     })

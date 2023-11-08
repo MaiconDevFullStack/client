@@ -16,7 +16,6 @@ angular.module("recordState").service("stateAPI", function($http){
 		return $http.delete("http://localhost:8081/state/delete/"+parameter);
 	};
 	
-
 	this.put = function(parameter, parameter2){
 		return $http.put("http://localhost:8081/state/edit/"+parameter, parameter2);
 	};

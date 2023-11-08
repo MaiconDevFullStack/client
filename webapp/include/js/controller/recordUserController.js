@@ -5,6 +5,7 @@ var app = angular.module("recordUser",[]).controller("recordUserController",['$s
 	$scope.error = false;
 	$scope.modalMessageObject = null;
 	$scope.modalTitle = null;
+	$scope.loadScreen = true;
 	
 	
 	refresh();
@@ -14,7 +15,7 @@ var app = angular.module("recordUser",[]).controller("recordUserController",['$s
 			$scope.users = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
-			$scope.lengthCity = $scope.users.length;
+			$scope.loadScreen = false;
 		});
 	}
 	

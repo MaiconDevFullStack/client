@@ -33,7 +33,7 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 				//$scope.sale.product[a].qtdProduct = 1;
 				
 				for(b in $scope.sale.product){
-					console.log($scope.sale.product[b]);	
+					console.log($scope.sale.product[b].name.includes('Cerveja Heineken'));	
 				}
 			}
 		}

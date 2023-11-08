@@ -7,16 +7,18 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 	$scope.modalTitle = null;
 	$scope.dashBoard = {};
 	$scope.space = ' ';
+	$scope.loadScreen = true;
 	
-	//refresh();
+	refresh();
 	
-	//setInterval(refresh, 3000);
+	setInterval(refresh, 3000);
 	
 	function refresh(){
 		dashBoardAPI.get().then(function(response){
 			$scope.dashBoards = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
+			$scope.loadScreen = false;
 			
 			for(a in $scope.dashBoards)
 			if($scope.dashBoards[a].variable){

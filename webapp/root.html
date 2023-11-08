@@ -39,7 +39,13 @@
 	</head>
 	<body>
 		
-		<div class="col-md-12 jumbotron" >
+		<div class="col-md-12 jumbotron position4" ng-show='loadScreen == true'>
+			<div>
+			  	<img class="md-12" src="include/images/loading-11.gif">
+			</div>
+		</div>
+		
+		<div class="col-md-12 jumbotron" ng-show='loadScreen == false'>
 			<!-- Example single danger button -->
 			<div class="btn-group col-md-2" role="group">
 			   <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
