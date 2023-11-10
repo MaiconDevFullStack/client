@@ -18,22 +18,25 @@ var app = angular.module("dashBoard",[]).controller("dashBoardController", ['$sc
 			$scope.dashBoards = response.data;
 			$scope.modalMessage = null;
 			$scope.error = false;
-			$scope.loadScreen = false;
 			
-			for(a in $scope.dashBoards)
-			if($scope.dashBoards[a].variable){
-				var test = Math.floor(Math.random() * 10);
-				$scope.dashBoards[a].test2 = ($scope.dashBoards[a].variable*test);
-				if($scope.dashBoards[a].test2 >= 5){
-					$scope.dashBoards[a].condition = 'Ruim';
-				}
-				else if($scope.dashBoards[a].test2 == 5){
-					$scope.dashBoards[a].condition = 'Regular';
-				}
-				else if($scope.dashBoards[a].test2 < 5){
-					$scope.dashBoards[a].condition = 'Normal';
+			
+			for(a in $scope.dashBoards){
+				if($scope.dashBoards[a].variable){
+					var test = Math.floor(Math.random() * 10);
+					$scope.dashBoards[a].test2 = ($scope.dashBoards[a].variable*test);
+					if($scope.dashBoards[a].test2 >= 5){
+						$scope.dashBoards[a].condition = 'Ruim';
+					}
+					else if($scope.dashBoards[a].test2 == 5){
+						$scope.dashBoards[a].condition = 'Regular';
+					}
+					else if($scope.dashBoards[a].test2 < 5){
+						$scope.dashBoards[a].condition = 'Normal';
+					}
 				}
 			}
+			
+			$scope.loadScreen = false;
 		});
 	}
 	

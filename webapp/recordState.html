@@ -1,5 +1,4 @@
-<form ng-app="recordState" ng-controller='recordStateController'>
-	<button type="button" class="close x_close" data-dismiss="modal" ng-click="location()" aria-hidden="true" title="Fechar">&times;</button>
+<form>
 	<div>
 		<head>
 			<meta charset="utf-8"/>
@@ -49,11 +48,14 @@
 			
 			<br>
 			<div class="col-md-12">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="btnInsert()">Inserir</button>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<button type="button" class="btn btn-danger btn-lg btn-block" ng-click="btnDelete()" ng-disabled="!selectedObject">Deletar</button>
+				</div>
+				<div class="col-md-4">
+					<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="location()" ng-disabled="!selectedObject">Voltar</button>
 				</div>
 			</div>
 			
@@ -157,6 +159,7 @@
 			    </div>
 			  </div>
 			</div>
+			
 			<footer class="py-3 my-4">
 			    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
 			    </ul>

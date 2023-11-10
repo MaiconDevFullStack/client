@@ -16,9 +16,9 @@ var app = angular.module("recordState",[]).controller("recordStateController", [
 		
 		stateAPI.get(parameter).then(function(response){
 			$scope.states = response.data;
-			$scope.loadScreen = false;
 			$scope.modalMessage = null;
 			$scope.error = false;
+			$scope.loadScreen = false;
 		});
 	}
 	
@@ -127,6 +127,7 @@ var app = angular.module("recordState",[]).controller("recordStateController", [
 	}
 	
 	$scope.location = function(){
+		console.log('TESTE');
 		location.href ="root.html";
 	}
 	
