@@ -21,6 +21,9 @@ module.exports = (sequelize, Sequelize) => {
 		},
 		expDate : {
 			type: "TIMESTAMP", allowNull : false
+		},
+		type : {
+			type: Sequelize.DataTypes.STRING, allowNull : false
 		}
 	},
 	{

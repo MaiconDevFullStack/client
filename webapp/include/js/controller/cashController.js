@@ -2,7 +2,6 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 	
 	$scope.sale = {};
 	$scope.sale.product = [];
-	$scope.sale.service = [];
 	$scope.modalTitle = null;
 	$scope.modalMessage = null;
 	$scope.modalObject = null;
@@ -12,13 +11,9 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 	retrieve();
 	
 	function retrieve(){
-		$scope.services = [];
 		$scope.products = [];
 		productAPI.get().then(function(response){
-			$scope.products = response.data;
-			serviceAPI.get().then(function(response){
-				$scope.services = response.data;
-			});		
+			$scope.products = response.data;	
 		});
 	}
 	
@@ -31,10 +26,6 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 			if(codeBar == $scope.products[a].codeBar){
 				$scope.sale.product.push($scope.products[a]);
 				//$scope.sale.product[a].qtdProduct = 1;
-				
-				for(b in $scope.sale.product){
-					console.log($scope.sale.product[b].name.includes('Cerveja Heineken'));	
-				}
 			}
 		}
 		

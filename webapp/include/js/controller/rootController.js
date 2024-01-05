@@ -1,4 +1,4 @@
-var app = angular.module("root",['ngRoute']);
+var app = angular.module("root",[]);
 app.controller("rootController", ["$scope", '$rootScope', function($scope, $rootScope){
 	$scope.userLog = $rootScope.userLog
 	$scope.loadScreen = true;

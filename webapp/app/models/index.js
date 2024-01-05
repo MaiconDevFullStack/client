@@ -52,13 +52,21 @@ db.sales.belongsTo(db.costumers, {
   	as: "costumer",
 });
 
-
 //RELATIONS BETWEEN MODELS
-db.products.belongsToMany(db.sales, { through: 'sale_product' });
-db.sales.belongsToMany(db.products, { through: 'sale_product' });
 
+db.products.belongsToMany(db.sales, {
+	timestamps: false,
+	through: 'sale_product' 
+});
+db.sales.belongsToMany(db.products, { 
+	timestamps: false,
+	through: 'sale_product' 
+});
+
+
+/*
 db.services.belongsToMany(db.sales, { through: 'sale_service' });
 db.sales.belongsToMany(db.services, { through: 'sale_service' });
-
+*/
 
 module.exports = db;

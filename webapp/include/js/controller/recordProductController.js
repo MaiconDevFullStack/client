@@ -52,6 +52,12 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 			document.getElementById("iDescription").focus();
 			return;
 		}
+		else if(!product.type){
+			$scope.error = true;
+			$scope.modalMessage = 'Please Select the Product Type!';
+			document.getElementById("iType").focus();
+			return;
+		}
 		else if(!product.costPrice){
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the Cost Price!';
@@ -142,6 +148,12 @@ var app = angular.module("recordProduct",[]).controller("recordProductController
 			$scope.error = true;
 			$scope.modalMessage = 'Please Select the Description!';
 			document.getElementById("eDescription").focus();
+			return;
+		}
+		else if(!parameter2.type){
+			$scope.error = true;
+			$scope.modalMessage = 'Please Select the Product Type!';
+			document.getElementById("eType").focus();
 			return;
 		}
 		else if(!parameter2.costPrice){

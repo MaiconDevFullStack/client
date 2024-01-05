@@ -19,8 +19,6 @@ exports.create = (req, res) => {
     saleDate: req.body.saleDate,
     product: req.body.product,
     productId: req.body.product.id,
-    service: req.body.service,
-    serviceId: req.body.service.id
     //costumer: req.body.costumer,
     //costumerId: req.body.costumer.id
   };

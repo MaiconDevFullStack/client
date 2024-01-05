@@ -6,7 +6,7 @@ const db = require("../app/models");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8081;
 const PORT2 = 8082;
-const IP = '192.168.0.134';
+const IP = 'localhost';
 var net = require('net');
 
 app.use(upload());
