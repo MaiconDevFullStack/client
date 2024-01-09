@@ -20,7 +20,8 @@ exports.create = (req, res) => {
     description: req.body.description,
     costPrice: req.body.costPrice,
     costSale: req.body.costSale,
-    expDate: req.body.expDate
+    expDate: req.body.expDate,
+    type: req.body.type
   };
 
   // Save in the database

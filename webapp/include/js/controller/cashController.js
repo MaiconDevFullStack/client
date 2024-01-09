@@ -20,12 +20,12 @@ var app = angular.module('cash',['recordProduct', 'recordService']).controller('
 	//IMPLEMENTNG SALE
 	$scope.btnInsert = function(codeBar){
 		
-		$scope.sale.value = 0;
+		var saleValue = 0;
+		$scope.sale.value = saleValue;
 		
 		for(a in $scope.products){
 			if(codeBar == $scope.products[a].codeBar){
 				$scope.sale.product.push($scope.products[a]);
-				//$scope.sale.product[a].qtdProduct = 1;
 			}
 		}
 		

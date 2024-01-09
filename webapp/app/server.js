@@ -63,7 +63,7 @@ console.log('Server listening on ' + IP +':'+ PORT2);
 
 
 db.sequelize.sync().then(() => {
-  	console.log("Sync db");
+  	console.log("Sync db successfully");
   }).catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
